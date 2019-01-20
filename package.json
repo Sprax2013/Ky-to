@@ -12,6 +12,7 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "node-fetch": "^2.3.0",
+    "node-superfetch": "^0.1.9",
     "nodemon": "^1.18.9"
   }
 }
