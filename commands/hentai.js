@@ -8,12 +8,17 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-     var imgNeko = snekfetch.get(api).then(r =>{
-        const embed = new Discord.RichEmbed()
-                .setTitle("Nekos!")
-                .setColor(0x00AE86)
-                .setFooter(`${msg.author}`+ `'s Waifu`)
-                .setImage(r.body.neko)
-        msg.channel.send(embed)
-     })
+
+    if (msg.channel.nsfw === false) {
+        return msg.reply(":warning: Yea.. no this channel isn't NSFW.")
+    } else {
+        var imgNeko = snekfetch.get(api).then(r =>{
+            const embed = new Discord.RichEmbed()
+                    .setTitle("Oh my, how Lewd! >.<")
+                    .setColor(0x00AE86)
+                    .setFooter(`${msg.author}`+ `'s Waifu`)
+                    .setImage(r.body.neko)
+            msg.channel.send(embed)
+         })
+    }
 }
