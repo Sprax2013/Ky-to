@@ -17,3 +17,5 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
         msg.channel.send(embed)
      })
 }
+
+
