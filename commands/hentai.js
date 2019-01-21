@@ -16,7 +16,7 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
             const embed = new Discord.RichEmbed()
                     .setTitle("Oh my, how Lewd! >.<")
                     .setColor(0x00AE86)
-                    .setFooter(`${msg.author}`+ `'s Waifu`)
+                    .setFooter(`${msg.author.tag}`+ `'s Waifu`)
                     .setImage(r.body.neko)
             msg.channel.send(embed)
          })
