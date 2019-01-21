@@ -116,7 +116,7 @@ client.on("guildDelete", guild => {
     updateBotActivity();
 });
 
-client.on("message", async msg => {
+client.on("message", msg => {
     if (msg.author.bot) return;
     if (!msg.channel instanceof dc.TextChannel) return; // Vorerst keine DMs. Statt commands soll er normal chatten c:
     if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
