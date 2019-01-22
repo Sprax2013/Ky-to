@@ -6,5 +6,21 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    msg.channel.sendMessage(`#onCommand(bot[.user.id] = ${bot.user.id}, msg, cmd = ${cmd}, args = ${args})`);
+    var prefix = index.getGuildPrefix(msg.guild.id)
+    
+    const embed = new dc.RichEmbed()
+    .setTitle("Kyūto Command List")
+    .setDescription(`Current Prefix: **${prefix}**`)
+
+    .setColor(0x00AE86)
+    .setFooter("As requested by " + msg.author.tag)
+
+    .addBlankField(true)
+    .addField("This is a field title, it can hold 256 characters",
+    "This is a field value, it can hold 1024 characters.")
+
+   
+    msg.channel.send({embed});
+
+
 }
