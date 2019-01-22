@@ -12,11 +12,18 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
         const embed = new Discord.RichEmbed()
                 .setTitle(r.body.response)
                 .setColor(0x00AE86)
-                .setFooter(`${msg.author.tag} made me do this!`)
+                .setFooter(`${msg.author.tag}`+ `'s Waifu`)
                 .setImage(r.body.url)
-                console.log(r.body.url)
         msg.channel.send(embed)
      })
-}
+
+
+
+
+
+
+
+
+    }
 
 
