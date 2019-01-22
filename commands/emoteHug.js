@@ -1,6 +1,5 @@
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
 const api = "https://nekos.life/api/hug";
-var imgNeko = ""
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
@@ -17,8 +16,10 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
             let tag1 = msg.author.tag,
                 tag2 = mentions[0].tag;
 
+            let title = tag1 === tag2 ? `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs him-/herself` : `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs ${tag2.substr(0, tag2.lastIndexOf('#'))}`;
+
             const embed = new Discord.RichEmbed()
-                .setTitle(`${tag1.substr(0, tag1.lastIndexOf('#'))} hugs ${tag2.substr(0, tag2.lastIndexOf('#'))}`)
+                .setTitle(title)
                 .setColor(0xFF4F5D)
                 .setImage(r.body.url)
             msg.channel.send(embed)
