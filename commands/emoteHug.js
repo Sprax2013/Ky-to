@@ -8,14 +8,19 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    if (args.length === 0) {
+    let mentions = Array.from(msg.mentions.users.values());
+
+    if (mentions.length === 0) {
         msg.reply(":warning: You need someone to Hug :(")
     } else {
-        var imgNeko = snekfetch.get(api).then(r =>{
+        snekfetch.get(api).then(r => {
+            let tag1 = msg.author.tag,
+                tag2 = mentions[0].tag;
+
             const embed = new Discord.RichEmbed()
-                    .setTitle(`${msg.author.tag} hugs ${args}`)
-                    .setColor(0xFF4F5D) 
-                    .setImage(r.body.url)
+                .setTitle(`${tag1.substr(0, tag1.lastIndexOf('#'))} hugs ${tag2.substr(0, tag2.lastIndexOf('#'))}`)
+                .setColor(0xFF4F5D)
+                .setImage(r.body.url)
             msg.channel.send(embed)
         })
     }
