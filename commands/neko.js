@@ -1,28 +1,21 @@
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
-var imgNeko = ""
+var api = "https://nekos.life/api/v2/img/ngif"
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
     name: 'neko', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
 };
 
-function random(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-if(random(2) === 1){
-    var api = "https://nekos.life/api/neko"
-} else {
-    var api = "https://nekos.life/api/v2/img/ngif"
-}
-
-console.log(api)
-
-
-
-
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
+
+    if (mentions = "gif") {
+        msg.reply("gif")
+    } else {
+        msg.reply("png")
+    }
+
+    let mentions = Array.from(msg.mentions.users.values());
 
      var imgNeko = snekfetch.get("https://nekos.life/api/neko").then(r =>{
         const embed = new Discord.RichEmbed()
