@@ -7,5 +7,5 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    msg.channel.sendMessage(`#onCommand(bot[.user.id] = ${bot.user.id}, msg, cmd = ${cmd}, args = ${args})`);
+    msg.channel.send(`#onCommand(bot[.user.id] = ${bot.user.id}, msg, cmd = ${cmd}, args = ${args})`);
 }
