@@ -122,12 +122,13 @@ client.on("message", msg => {
     if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
 
     const args = msg.content.slice(1).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
+    const cmdOrg = args.shift();
+    const cmd = cmdOrg.toLowerCase();
 
     if (client.cmds.has(cmd)) {
-        client.cmds.get(cmd).onCommand(client, msg, cmd, args);
+        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args);
     } else if (client.cmdAliases.has(cmd)) {
-        client.cmdAliases.get(cmd).onCommand(client, msg, cmd, args);
+        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args);
     } else {
         msg.channel.send('Unknown Command :thinking:');
     }
