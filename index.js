@@ -1,5 +1,11 @@
 const fs = require('fs');
 const dc = require('discord.js');
+var http = require('http');
+
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
+
+var serve = serveStatic("./");
 
 const client = new dc.Client();
 
@@ -205,3 +211,11 @@ module.exports = {
 
 // Alle 30s prüfen, ob Änderungen in die Datei geschrieben werden müssen
 setInterval(module.exports.saveToFile, 30 * 1000);
+
+// HTML Server weil Alpha was testen will :3
+var server = http.createServer(function(req, res) {
+    var done = finalhandler(req, res);
+    serve(req, res, done);
+  });
+  
+  server.listen(8000);

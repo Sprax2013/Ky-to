@@ -8,3 +8,5 @@
  - !magicball -> If args => set Title as Args else r.body.response
             Done!
 - Localisation-System -> Server-Admins können die Bot-Sprache ändern. Community kann Übersetzungen online einreichen (Hat Sprax für Java gemacht. Kann er umschreiben)
+- Token neu Generieren wenn wir auf GitHub sind
+- 
