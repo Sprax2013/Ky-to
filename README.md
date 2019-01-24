@@ -7,3 +7,4 @@
             Kinda done, added !neko gif and !neko help
  - !magicball -> If args => set Title as Args else r.body.response
             Done!
+- Localisation-System -> Server-Admins können die Bot-Sprache ändern. Community kann Übersetzungen online einreichen (Hat Sprax für Java gemacht. Kann er umschreiben)
