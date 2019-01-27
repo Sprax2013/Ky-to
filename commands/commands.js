@@ -7,6 +7,8 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
+  var prefix = index.getGuildPrefix(msg.guild.id)
+
     const start = new Discord.RichEmbed()
       .setTitle("Help")
       .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${index.getGuildPrefix(msg.guild.id)}**`)
@@ -19,12 +21,12 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
     .addBlankField(true)
     .setColor(0xFFB7D8)
 
-    .addField(`${index.getGuildPrefix(msg.guild.id)}nekos`, `!neko Show's a Image of a Neko. Use !neko help for more Information.`)
-    .addField(`${index.getGuildPrefix(msg.guild.id)}lewd`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
-    .addField(`${index.getGuildPrefix(msg.guild.id)}cum`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
-    .addField(`${index.getGuildPrefix(msg.guild.id)}fox`, `Show's a Image of a Fox Girl.`)
-    .addField(`${index.getGuildPrefix(msg.guild.id)}magicball`, `Let the Fate decide!`)
-    .addField(`${index.getGuildPrefix(msg.guild.id)}hug`, `Lets you hug another User.`)
+    .addField(`${prefix}nekos`, `!neko Show's a Image of a Neko. Use !neko help for more Information.`)
+    .addField(`${prefix}lewd`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
+    .addField(`${prefix}cum`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
+    .addField(`${prefix}fox`, `Show's a Image of a Fox Girl.`)
+    .addField(`${prefix}magicball`, `Let the Fate decide!`)
+    .addField(`${prefix}hug`, `Lets you hug another User.`)
   msg.author.send(api)
 
 
@@ -35,10 +37,10 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
   .addBlankField(true)
   .setColor(0xB7C0EE)
 
-  .addField(`${index.getGuildPrefix(msg.guild.id)}help`, `Shows you this List.`)
-  .addField(`${index.getGuildPrefix(msg.guild.id)}google`, `Lets you Google right from the Discord Chat.`)
-  .addField(`${index.getGuildPrefix(msg.guild.id)}invite`, `Generates a Bot Invite Link for you to share.`)
-  .addField(`${index.getGuildPrefix(msg.guild.id)}ping`, `Shows you your Ping.`)
+  .addField(`${prefix}help`, `Shows you this List.`)
+  .addField(`${prefix}google`, `Lets you Google right from the Discord Chat.`)
+  .addField(`${prefix}invite`, `Generates a Bot Invite Link for you to share.`)
+  .addField(`${prefix}ping`, `Shows you your Ping.`)
 msg.author.send(commands)
 
 
@@ -49,6 +51,6 @@ const admin = new Discord.RichEmbed()
 .addBlankField(true)
 .setColor(0xEF2B48)
 
-.addField(`${index.getGuildPrefix(msg.guild.id)}prefix`, `**[ADMINISTRATOR]** Lets you set the Prefix for the Bot.`)
+.addField(`${prefix}prefix`, `**[ADMINISTRATOR]** Lets you set the Prefix for the Bot.`)
 msg.author.send(admin)
 }
