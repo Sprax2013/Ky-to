@@ -49,55 +49,67 @@ function initCommands() {
     client.cmds = new dc.Collection();
     client.cmdAliases = new dc.Collection();
 
-    fs.readdir('./commands', (err, files) => {
-        if (err) {
-            console.log(err);
-            return;
-        }
+    let walk = dir => {
+        var results = [];
+        let list = fs.readdirSync(dir);
 
-        //Alle Dateien, die auf .js Enden und nicht mit einem '.' beginnen
-        let jsfile = files.filter(f => f.indexOf('.') !== 0 && f.split(".").pop().toLocaleLowerCase() === 'js');
-        if (jsfile.length <= 0) {
-            console.log('No commands have been loaded.');
-            return;
-        }
+        list.forEach(file => {
+            file = dir + '/' + file;
+            var stat = fs.statSync(file);
 
-        jsfile.forEach((f) => {
-            let props = require(`./commands/${f}`);
-
-            if (props.cmd) {
-                if (!client.cmds.has(props.cmd.name.toLowerCase())) {
-                    client.cmds.set(props.cmd.name.toLowerCase(), props);
-                } else {
-                    console.log(`The command '${props.cmd.name.toLowerCase()}' has already been registered by another file`);
-                }
-
-                let aliasCount = 0;
-                if (props.cmd.aliases) {
-                    props.cmd.aliases.forEach(alias => {
-                        if (!client.cmdAliases.has(alias.toLowerCase())) {
-                            client.cmdAliases.set(alias.toLowerCase(), props);
-                            aliasCount++;
-                        } else {
-                            console.log(`The alias '${alias.toLowerCase()}' has already been registered by another file`);
-                        }
-                    });
-                }
-
-                if (aliasCount > 0) {
-                    if (aliasCount === 1) {
-                        console.log(`'${f}' has been loaded (${aliasCount} alias)!`);
-                    } else {
-                        console.log(`'${f}' has been loaded (${aliasCount} aliases)!`);
-                    }
-                } else {
-                    console.log(`'${f}' has been loaded (no aliases)!`);
-                }
-
+            if (stat && stat.isDirectory()) {
+                results = results.concat(walk(file));
             } else {
-                console.log(`Failed loading '${f}': 'cmd' could not be read (missing?)`);
+                results.push(file);
             }
         });
+
+        return results;
+    }
+
+    let files = walk('./commands');
+
+    //Alle Dateien, die auf .js Enden und nicht mit einem '.' beginnen
+    let jsfile = files.filter(f => f.split('/').pop().indexOf('.') !== 0 && f.split(".").pop().toLocaleLowerCase() === 'js');
+    if (jsfile.length <= 0) {
+        console.log('No commands have been loaded.');
+        return;
+    }
+
+    jsfile.forEach((f) => {
+        let props = require(f);
+
+        if (props.cmd) {
+            if (!client.cmds.has(props.cmd.name.toLowerCase())) {
+                client.cmds.set(props.cmd.name.toLowerCase(), props);
+            } else {
+                console.log(`The command '${props.cmd.name.toLowerCase()}' has already been registered by another file`);
+            }
+
+            let aliasCount = 0;
+            if (props.cmd.aliases) {
+                props.cmd.aliases.forEach(alias => {
+                    if (!client.cmdAliases.has(alias.toLowerCase())) {
+                        client.cmdAliases.set(alias.toLowerCase(), props);
+                        aliasCount++;
+                    } else {
+                        console.log(`The alias '${alias.toLowerCase()}' has already been registered by another file`);
+                    }
+                });
+            }
+
+            if (aliasCount > 0) {
+                if (aliasCount === 1) {
+                    console.log(`'${f.substr('./commands/'.length)}' has been loaded (${aliasCount} alias)!`);
+                } else {
+                    console.log(`'${f.substr('./commands/'.length)}' has been loaded (${aliasCount} aliases)!`);
+                }
+            } else {
+                console.log(`'${f.substr('./commands/'.length)}' has been loaded!`);
+            }
+        } else {
+            console.log(`Failed loading '${f}': 'cmd' could not be read (missing?)`);
+        }
     });
 }
 
@@ -213,9 +225,9 @@ module.exports = {
 setInterval(module.exports.saveToFile, 30 * 1000);
 
 // HTML Server weil Alpha was testen will :3
-var server = http.createServer(function(req, res) {
+var server = http.createServer(function (req, res) {
     var done = finalhandler(req, res);
     serve(req, res, done);
-  });
-  
-  server.listen(8000);
+});
+
+server.listen(8000);
