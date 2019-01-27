@@ -7,7 +7,7 @@ module.exports.cmd = {
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
     const embed = new dc.RichEmbed()
-    .setTitle("Invite Link")
+    .setTitle(">> Invite Link <<")
     .setDescription(`Use **${index.getGuildPrefix(msg.guild.id)}commands** after the Bot is installed!`)
     .setColor(0x00AE86)
     .setURL(`https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=526454942328946719`)
