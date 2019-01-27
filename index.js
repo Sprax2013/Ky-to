@@ -77,20 +77,20 @@ function initCommands() {
     }
 
     jsfile.forEach((f) => {
-        let props = require(f);
+        let prop = require(f);
 
-        if (props.cmd) {
-            if (!client.cmds.has(props.cmd.name.toLowerCase())) {
-                client.cmds.set(props.cmd.name.toLowerCase(), props);
+        if (prop.cmd) {
+            if (!client.cmds.has(prop.cmd.name.toLowerCase())) {
+                client.cmds.set(prop.cmd.name.toLowerCase(), prop);
             } else {
                 console.log(`The command '${props.cmd.name.toLowerCase()}' has already been registered by another file`);
             }
 
             let aliasCount = 0;
-            if (props.cmd.aliases) {
-                props.cmd.aliases.forEach(alias => {
+            if (prop.cmd.aliases) {
+                prop.cmd.aliases.forEach(alias => {
                     if (!client.cmdAliases.has(alias.toLowerCase())) {
-                        client.cmdAliases.set(alias.toLowerCase(), props);
+                        client.cmdAliases.set(alias.toLowerCase(), prop);
                         aliasCount++;
                     } else {
                         console.log(`The alias '${alias.toLowerCase()}' has already been registered by another file`);

@@ -9,25 +9,24 @@ module.exports.cmd = {
 module.exports.onCommand = async (bot, msg, cmd, args) => {
     const argsFix = args.join(" ");
 
-    var imgNeko = snekfetch.get(api).then(r =>{
-     if (argsFix <= 1){
-        const embed = new Discord.RichEmbed()
+    var imgNeko = snekfetch.get(api).then(r => {
+        if (argsFix <= 1) {
+            const embed = new Discord.RichEmbed()
                 .setTitle(r.body.response)
                 .setDescription(argsFix)
                 .setColor(0x00AE86)
-                .setFooter(`${msg.author.username}`+ `'s Future has been decided!`)
+                .setFooter(`${msg.author.username}` + `'s Future has been decided!`)
                 .setImage(r.body.url)
-        msg.channel.send(embed)
-         return
-     } else {
-        const embed = new Discord.RichEmbed()
+            msg.channel.send(embed)
+            return
+        } else {
+            const embed = new Discord.RichEmbed()
                 .setTitle(argsFix)
                 .setColor(0x00AE86)
-                .setFooter(`${msg.author.username}`+ `'s Future has been decided!`)
+                .setFooter(`${msg.author.username}` + `'s Future has been decided!`)
                 .setImage(r.body.url)
-        msg.channel.send(embed)
-        return
-     }
+            msg.channel.send(embed)
+            return
+        }
     })
 }
-

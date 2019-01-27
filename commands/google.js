@@ -24,11 +24,12 @@ module.exports.onCommand = async (bot, msg, cmd) => {
                     .setColor(`#ffffff`)
                     .setAuthor(`Result for "${suffix}"`, `https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png`)
                     .setDescription(`**Link**: [${link.title}](${link.href})\n**Description**:\n${link.description}`)
-                    .setFooter(`${msg.author.tag}`+ `'s Search History`)
+                    .setFooter(`${msg.author.tag}` + `'s Search History`)
                 return message.channel.send({
                     embed: embed
                 });
-            } return
+            }
+            return
         }
     });
 }

@@ -3,19 +3,19 @@ const index = require('./../index');
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
-    name: 'help'
+  name: 'help'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
   var prefix = index.getGuildPrefix(msg.guild.id)
 
-    const start = new Discord.RichEmbed()
-      .setTitle("Help")
-      .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${index.getGuildPrefix(msg.guild.id)}**`)
-      .setColor(0x7067CF)
-    msg.author.send(start)
+  const start = new Discord.RichEmbed()
+    .setTitle("Help")
+    .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${index.getGuildPrefix(msg.guild.id)}**`)
+    .setColor(0x7067CF)
+  msg.author.send(start)
 
-    const api = new Discord.RichEmbed()
+  const api = new Discord.RichEmbed()
     .setTitle("API")
     .setDescription("API Commands provided by **nekos.life**.")
     .addBlankField(true)
@@ -32,25 +32,25 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
 
 
   const commands = new Discord.RichEmbed()
-  .setTitle("Commands")
-  .setDescription("Helpful Commands for you and your Server.")
-  .addBlankField(true)
-  .setColor(0xB7C0EE)
+    .setTitle("Commands")
+    .setDescription("Helpful Commands for you and your Server.")
+    .addBlankField(true)
+    .setColor(0xB7C0EE)
 
-  .addField(`${prefix}help`, `Shows you this List.`)
-  .addField(`${prefix}google`, `Lets you Google right from the Discord Chat.`)
-  .addField(`${prefix}invite`, `Generates a Bot Invite Link for you to share.`)
-  .addField(`${prefix}ping`, `Shows you your Ping.`)
-msg.author.send(commands)
+    .addField(`${prefix}help`, `Shows you this List.`)
+    .addField(`${prefix}google`, `Lets you Google right from the Discord Chat.`)
+    .addField(`${prefix}invite`, `Generates a Bot Invite Link for you to share.`)
+    .addField(`${prefix}ping`, `Shows you your Ping.`)
+  msg.author.send(commands)
 
 
 
-const admin = new Discord.RichEmbed()
-.setTitle("Admin Commands")
-.setDescription("Commands that help you Administrate your Server.")
-.addBlankField(true)
-.setColor(0xEF2B48)
+  const admin = new Discord.RichEmbed()
+    .setTitle("Admin Commands")
+    .setDescription("Commands that help you Administrate your Server.")
+    .addBlankField(true)
+    .setColor(0xEF2B48)
 
-.addField(`${prefix}prefix`, `**[ADMINISTRATOR]** Lets you set the Prefix for the Bot.`)
-msg.author.send(admin)
+    .addField(`${prefix}prefix`, `**[ADMINISTRATOR]** Lets you set the Prefix for the Bot.`)
+  msg.author.send(admin)
 }
