@@ -1,10 +1,9 @@
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
-const api = "https://nekos.life/api/lewd/neko";
-var imgNeko = ""
+const api = "https://nekos.life/api/v2/img/smug";
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
-    name: 'lewd', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
+    name: 'testneko', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
@@ -17,7 +16,7 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
                 .setTitle("Oh my, how Lewd! >.<")
                 .setColor(0x00AE86)
                 .setFooter(`${msg.author.tag}` + `'s Waifu`)
-                .setImage(r.body.neko)
+                .setImage(r.body.url)
             msg.channel.send(embed)
         })
     }

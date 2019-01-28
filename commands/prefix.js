@@ -1,4 +1,3 @@
-const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
 const dc = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
@@ -6,6 +5,8 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
+    const index = require('../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
+    
     if (msg.member && msg.member.hasPermission('ADMINISTRATOR')) {
         if (!args[0] || args[0].toLowerCase() === 'help') {
             msg.channel.send(`Usage: \`${index.getGuildPrefix(msg.guild.id)}${cmd} <New command-prefix to use>\``);

@@ -1,5 +1,4 @@
 const dc = require('discord.js'); // Praktisch für RichEmbed etc.
-const index = require('./../index');
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
@@ -7,13 +6,27 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
+  const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
   var prefix = index.getGuildPrefix(msg.guild.id)
+
 
   const start = new Discord.RichEmbed()
     .setTitle("Help")
     .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${index.getGuildPrefix(msg.guild.id)}**`)
     .setColor(0x7067CF)
   msg.author.send(start)
+
+
+
+  const cmdnew = new Discord.RichEmbed()
+  .setTitle("New Commands!")
+  .setDescription(``)
+  .setColor(0xFF6207)
+
+  .addField(`${prefix}avatar`, `Generate a new Anime Avatar for you`)
+msg.author.send(cmdnew)
+
+
 
   const api = new Discord.RichEmbed()
     .setTitle("API")
@@ -22,8 +35,10 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
     .setColor(0xFFB7D8)
 
     .addField(`${prefix}nekos`, `!neko Show's a Image of a Neko. Use !neko help for more Information.`)
-    .addField(`${prefix}lewd`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
+    .addField(`${prefix}lewd`, `**[NSFW]** !lewd  Show's a Image of a Lewd Neko. Use !lewd help for more Information.`)
     .addField(`${prefix}cum`, `**[NSFW]** Show's a Image of a Lewd Girl.`)
+    .addField(`${prefix}avatar`, `Generate a new Anime Avatar for you`)
+    .addField(`${prefix}hug`, `Lets you hug another User.`)
     .addField(`${prefix}fox`, `Show's a Image of a Fox Girl.`)
     .addField(`${prefix}magicball`, `Let the Fate decide!`)
     .addField(`${prefix}hug`, `Lets you hug another User.`)
@@ -53,4 +68,9 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
 
     .addField(`${prefix}prefix`, `**[ADMINISTRATOR]** Lets you set the Prefix for the Bot.`)
   msg.author.send(admin)
+
+
+
+
+  msg.reply(":mailbox_with_mail: Check your DMs!")
 }

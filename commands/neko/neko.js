@@ -1,6 +1,6 @@
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
-const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
-var api = "https://nekos.life/api/v2/img/ngif"
+var nekoimg = "https://nekos.life/api/neko"
+var nekogif = "https://nekos.life/api/v2/img/ngif"
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
@@ -8,11 +8,12 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args, ) => {
+    const index = require('./../../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
     const command = args.shift();
     let mentions = Array.from(msg.mentions.users.values());
 
     if (command === 'gif') {
-        var imgNeko = snekfetch.get("https://nekos.life/api/v2/img/ngif").then(r => {
+        var imgNeko = snekfetch.get(nekogif).then(r => {
             let embed = new Discord.RichEmbed()
                 .setTitle("NYAAAAA!")
                 .setColor(0x00AE86)
@@ -35,11 +36,11 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
         return
     } else {
         if (mentions.length === 0) {
-            var imgNeko = snekfetch.get("https://nekos.life/api/neko").then(r => {
+            var imgNeko = snekfetch.get(nekoimg).then(r => {
                 let embed = new Discord.RichEmbed()
                     .setTitle("NYAAAAA!")
                     .setColor(0x00AE86)
-                    .setFooter(`${msg.author.username}` + `'s Waifu`)
+                    .setFooter(`${msg.author.username}` + `'s Waifu     |     Try ${index.getGuildPrefix(msg.guild.id)}neko help for more `)
                     .setImage(r.body.neko)
                 msg.channel.send(embed)
             })
