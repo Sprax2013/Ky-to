@@ -1,14 +1,14 @@
-const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
+const index = require('./../../index');
+const Discord = require('discord.js');
 const lewdgif = "https://nekos.life/api/v2/img/nsfw_neko_gif";
 const lewdimg = "https://nekos.life/api/lewd/neko";
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
-    name: 'lewd', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
+    name: 'lewd'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args, ) => {
-    const index = require('./../../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
     const command = args.shift();
     let mentions = Array.from(msg.mentions.users.values());
     if (msg.channel.nsfw === false) {

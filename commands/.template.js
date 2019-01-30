@@ -4,7 +4,10 @@ const dc = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
     name: 'template', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
-    aliases: ['t'] // Alternative Bezeichnungen des Befehls (Kann auch als Fallback dienen)
+    aliases: ['t'], // Alternative Bezeichnungen des Befehls (Kann auch als Fallback dienen)
+    usage: 'template <Arg1|Arg1-Alternativ> <Arg2>', // TODO: Wie markieren wir Argumente hier?
+    description: 'Command Description', // TODO
+    category: 0 // TODO
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {

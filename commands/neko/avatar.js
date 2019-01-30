@@ -1,9 +1,9 @@
-const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
+const Discord = require('discord.js');
 const api = "https://nekos.life/api/v2/img/avatar";
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
-    name: 'avatar', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
+    name: 'avatar'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {

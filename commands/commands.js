@@ -1,5 +1,5 @@
-const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
-const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
+const index = require('./../index');
+const Discord = require('discord.js');
 
 module.exports.cmd = {
   name: 'commands',
