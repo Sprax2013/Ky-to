@@ -2,10 +2,14 @@ const index = require('./index');
 
 const LanguageEnum = Object.freeze({
     'GERMAN': {
-        langCode: 'de'
+        langCode: 'de',
+        name: 'Deutsch',
+        synonyms: ['Deutsch']
     },
     'ENGLISH': {
-        langCode: 'en'
+        langCode: 'en',
+        name: 'English',
+        synonyms: ['Englisch']
     }
 });
 
@@ -27,7 +31,7 @@ if (!String.prototype.format) {
 module.exports = {
     LanguageEnum: LanguageEnum,
     getStringForGuild: (strIdentifier, guildID, fallBackString = null) => {
-        return module.exports.getString(strIdentifier, index.getGuildLanguage(guildID), fallBackString);
+        return module.exports.getString(strIdentifier, index.getGuildLanguage(index.getUtils.getGuildID(guildID)), fallBackString);
     },
     getString: (strIdentifier, langEnum, fallBackString = null) => {
         var result = null;
@@ -80,8 +84,14 @@ module.exports = {
             if (LanguageEnum.hasOwnProperty(key)) {
                 var lang = LanguageEnum[key];
 
-                if (lang.langCode === str) {
+                if (key.equalsIgnoreCase(str) || lang.langCode.equalsIgnoreCase(str)) {
                     return lang;
+                } else if (lang.synonyms) {
+                    for (const synonym of lang.synonyms) {
+                        if (synonym.equalsIgnoreCase(str)) {
+                            return lang;
+                        }
+                    }
                 }
             }
         }

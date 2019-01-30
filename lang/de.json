@@ -1,3 +1,6 @@
 {
-    "test": "Dies ist die deutsche Version der Test-Message ;3"
+    "test": "Dies ist die deutsche Version der Test-Message ;3",
+    "cmd": {
+        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+    }
 }
