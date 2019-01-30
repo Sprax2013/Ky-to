@@ -7,19 +7,21 @@ module.exports.cmd = {
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
     if (msg.member && msg.member.hasPermission('ADMINISTRATOR')) {
-        let guildPrefix = index.getGuildPrefix(msg.guild.id);
-
-        if (!args[0] || args[0].toLowerCase() === 'help') {
-            msg.channel.send(`Usage: \`${guildPrefix}${cmd} <New command-prefix to use>\``);
+        if (!args[0] || args[0].equalsIgnoreCase('help')) {
+            msg.channel.send(`Usage: \`${index.getGuildPrefix(msg)}${cmd} <New command-prefix to use>\``);
         } else {
             if (args[0].length === 1) {
-                index.setGuildPrefix(msg.guild.id, args[0]);
+                if (index.getGuildPrefix(msg) === args[0]) {
+                    msg.channel.send(`Prefix is already set to ${index.getGuildPrefix(msg)}`);
+                } else {
+                    index.setGuildPrefix(msg, args[0]);
 
-                msg.channel.send(new dc.RichEmbed()
-                    .setColor('0xE7193F')
-                    .setTitle('Settings changed successfully!')
-                    .setDescription(`Prefix has been set to **${guildPrefix}**`)
-                    .setFooter(`On behalf of ${msg.author.tag}`));
+                    msg.channel.send(new dc.RichEmbed()
+                        .setColor('0xE7193F')
+                        .setTitle('Settings changed successfully!')
+                        .setDescription(`Prefix has been set to **${index.getGuildPrefix(msg)}**`)
+                        .setFooter(`On behalf of ${msg.author.tag}`));
+                }
             } else {
                 msg.channel.send('The prefix may only contain one symbol.');
             }

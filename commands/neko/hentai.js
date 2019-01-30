@@ -17,7 +17,7 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
     if (command === 'gif') {
         var imgNeko = snekfetch.get(lewdgif).then(r => {
             let embed = new Discord.RichEmbed()
-            .setTitle("Oh my, how Lewd! >.<")
+                .setTitle("Oh my, how Lewd! >.<")
                 .setColor(0x00AE86)
                 .setFooter(`${msg.author.username}` + `'s Animated Waifu`)
                 .setImage(r.body.url)
@@ -25,14 +25,17 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
         })
         return
     }
+
+    let prefix = index.getGuildPrefix(msg);
+
     if (command === 'help') {
         let embed = new Discord.RichEmbed()
             .setTitle("Neko Help")
             .setColor(0x00AE86)
             .addBlankField(true)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}lewd `, `Shows you a Image of a Lewd Neko.`)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}lewd gif`, `Shows you a GIF of a Lewd Neko.`)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}lewd help`, `Shows you this List.`)
+            .addField(`${prefix}lewd `, `Shows you a Image of a Lewd Neko.`)
+            .addField(`${prefix}lewd gif`, `Shows you a GIF of a Lewd Neko.`)
+            .addField(`${prefix}lewd help`, `Shows you this List.`)
 
         msg.channel.send(embed)
         return
@@ -40,9 +43,9 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
         if (mentions.length === 0) {
             var imgNeko = snekfetch.get(lewdimg).then(r => {
                 let embed = new Discord.RichEmbed()
-                .setTitle("Oh my, how Lewd! >.<")
+                    .setTitle("Oh my, how Lewd! >.<")
                     .setColor(0x00AE86)
-                    .setFooter(`${msg.author.username}` + `'s Waifu     |     Try ${index.getGuildPrefix(msg.guild.id)}lewd help for more `)
+                    .setFooter(`${msg.author.username}` + `'s Waifu     |     Try ${index.getGuildPrefix(prefix)}lewd help for more `)
                     .setImage(r.body.neko)
                 msg.channel.send(embed)
             })

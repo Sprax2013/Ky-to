@@ -8,5 +8,5 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    msg.channel.send(loc.getStringForGuild('cmd:debug', msg.guild.id).format(bot.user.id, cmd, args));
+    msg.channel.send(loc.getStringForGuild('cmd:debug', msg).format(bot.user.id, cmd, args));
 }

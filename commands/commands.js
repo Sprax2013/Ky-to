@@ -7,12 +7,12 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-  var prefix = index.getGuildPrefix(msg.guild.id)
+  var prefix = index.getGuildPrefix(msg)
 
 
   const start = new Discord.RichEmbed()
     .setTitle("Help")
-    .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${index.getGuildPrefix(msg.guild.id)}**`)
+    .setDescription(`Here is a full List of all the Commands. \n Prefix on your Server: **${prefix}**`)
     .setColor(0x7067CF)
   msg.author.send(start)
 

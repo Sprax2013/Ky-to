@@ -14,6 +14,7 @@ var json = {
 /* module.exports */
 
 module.exports = {
+    getUtils: require('./utils'),
     getLocalization: () => {
         return localization;
     },
@@ -24,6 +25,8 @@ module.exports = {
         return cfg.default.prefix;
     },
     getGuildPrefix: (guildID) => {
+        guildID = module.exports.getUtils.getGuildID(guildID);
+
         if (guildID) {
             if (!guilds[guildID] || !guilds[guildID]['prefix']) {
                 module.exports.setGuildPrefix(guildID, module.exports.getDefaultCommandPrefix());
@@ -33,6 +36,8 @@ module.exports = {
         }
     },
     setGuildPrefix: (guildID, prefixChar) => {
+        guildID = module.exports.getUtils.getGuildID(guildID);
+
         let success = false;
 
         if (guildID && prefixChar) {
@@ -58,6 +63,8 @@ module.exports = {
         return success;
     },
     getGuildLanguage: (guildID) => {
+        guildID = module.exports.getUtils.getGuildID(guildID);
+
         if (guildID) {
             if (!guilds[guildID] || !guilds[guildID]['lang']) {
                 module.exports.setGuildLanguage(guildID, module.exports.getDefaultLanguage());
@@ -67,6 +74,8 @@ module.exports = {
         }
     },
     setGuildLanguage: (guildID, langEnum) => {
+        guildID = module.exports.getUtils.getGuildID(guildID);
+
         let success = false;
 
         if (guildID && langEnum) {
