@@ -1,3 +1,4 @@
+const index = require('../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
 const dc = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
@@ -5,11 +6,11 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    const index = require('../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
-    
     if (msg.member && msg.member.hasPermission('ADMINISTRATOR')) {
+        let guildPrefix = index.getGuildPrefix(msg.guild.id);
+
         if (!args[0] || args[0].toLowerCase() === 'help') {
-            msg.channel.send(`Usage: \`${index.getGuildPrefix(msg.guild.id)}${cmd} <New command-prefix to use>\``);
+            msg.channel.send(`Usage: \`${guildPrefix}${cmd} <New command-prefix to use>\``);
         } else {
             if (args[0].length === 1) {
                 index.setGuildPrefix(msg.guild.id, args[0]);
@@ -17,7 +18,7 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
                 msg.channel.send(new dc.RichEmbed()
                     .setColor('0xE7193F')
                     .setTitle('Settings changed successfully!')
-                    .setDescription(`Prefix has been set to **${index.getGuildPrefix(msg.guild.id)}**`)
+                    .setDescription(`Prefix has been set to **${guildPrefix}**`)
                     .setFooter(`On behalf of ${msg.author.tag}`));
             } else {
                 msg.channel.send('The prefix may only contain one symbol.');

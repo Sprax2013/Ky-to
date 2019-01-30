@@ -9,7 +9,7 @@ module.exports.cmd = {
 module.exports.onCommand = async (bot, msg, cmd, args) => {
     const argsFix = args.join(" ");
 
-    var imgNeko = snekfetch.get(api).then(r => {
+    snekfetch.get(api).then(r => {
         if (argsFix <= 1) {
             const embed = new Discord.RichEmbed()
                 .setTitle(r.body.response)

@@ -1,0 +1,9 @@
+{
+    "test": "This is the english Test-Message",
+    "cmd": {
+        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})",
+        "test": {
+            "test": "Testiiii"
+        }
+    }
+}

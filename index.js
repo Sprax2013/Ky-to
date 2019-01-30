@@ -1,26 +1,186 @@
 const fs = require('fs');
 const dc = require('discord.js');
-var http = require('http');
-
-var finalhandler = require('finalhandler');
-var serveStatic = require('serve-static');
-
-var serve = serveStatic("./");
-
-const client = new dc.Client();
 
 createFiles();
 const cfg = require('./storage/config.json');
 const guilds = require('./storage/guilds.json');
 
+var json = {
+    "cmd": {
+        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+    }
+};
+
+/* module.exports */
+
+module.exports = {
+    getLocalization: () => {
+        return localization;
+    },
+    getDefaultLanguage: () => {
+        return localization.getLanguageEnumFromString(cfg.default.lang);
+    },
+    getDefaultCommandPrefix: () => {
+        return cfg.default.prefix;
+    },
+    getGuildPrefix: (guildID) => {
+        if (guildID) {
+            if (!guilds[guildID] || !guilds[guildID]['prefix']) {
+                module.exports.setGuildPrefix(guildID, module.exports.getDefaultCommandPrefix());
+            }
+
+            return guilds[guildID]['prefix'];
+        }
+    },
+    setGuildPrefix: (guildID, prefixChar) => {
+        let success = false;
+
+        if (guildID && prefixChar) {
+            if (prefixChar.length === 1) {
+                if (!guilds[guildID]) {
+                    guilds[guildID] = {
+                        prefix: prefixChar
+                    };
+
+                    filesChanged = true;
+                } else {
+                    if (guilds[guildID]['prefix'] !== prefixChar) {
+                        guilds[guildID]['prefix'] = prefixChar;
+
+                        filesChanged = true;
+                    }
+                }
+
+                success = true;
+            }
+        }
+
+        return success;
+    },
+    getGuildLanguage: (guildID) => {
+        if (guildID) {
+            if (!guilds[guildID] || !guilds[guildID]['lang']) {
+                module.exports.setGuildLanguage(guildID, module.exports.getDefaultLanguage());
+            }
+
+            return localization.getLanguageEnumFromString(guilds[guildID]['lang']);
+        }
+    },
+    setGuildLanguage: (guildID, langEnum) => {
+        let success = false;
+
+        if (guildID && langEnum) {
+            if (!guilds[guildID]) {
+                guilds[guildID] = {
+                    lang: langEnum.langCode
+                };
+
+                filesChanged = true;
+            } else {
+                if (guilds[guildID]['lang'] !== langEnum.langCode) {
+                    guilds[guildID]['lang'] = langEnum.langCode;
+
+                    filesChanged = true;
+                }
+            }
+
+            success = true;
+        }
+
+        return success;
+    },
+    saveToFile: () => {
+        if (filesChanged) {
+            module.exports.forceSaveToFile();
+            console.log('Changes have automatically been written to ./storage');
+        }
+    },
+    forceSaveToFile: () => {
+        fs.writeFile('./storage/config.json', JSON.stringify(cfg), (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+        fs.writeFile('./storage/guilds.json', JSON.stringify(guilds), (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+
+        filesChanged = false;
+    }
+}
+
+const localization = require('./localization');
+
 if (cfg.botToken === 'INSERT_TOKEN_HERE') {
     console.log('Insert your Bot-Token (./storage/config.json)');
     process.exit(1);
+} else if (!module.exports.getDefaultLanguage()) {
+    console.log('Insert a valid default language and make sure that the translations are complete)');
+    process.exit(2);
+} else if (!module.exports.getDefaultCommandPrefix()) {
+    console.log('There is no default command-prefix in the config!');
+    process.exit(3);
 }
 
+const client = new dc.Client();
 var filesChanged = false;
 
 initCommands();
+
+/* Discord */
+
+client.on("ready", () => {
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+
+    updateBotActivity();
+});
+
+client.on("guildCreate", guild => {
+    console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+
+    updateBotActivity();
+});
+
+client.on("guildDelete", guild => {
+    console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+
+    updateBotActivity();
+});
+
+client.on("message", msg => {
+    if (msg.author.bot) return;
+    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst keine DMs. Statt commands soll er normal chatten c:
+    if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
+
+    const args = msg.content.slice(1).trim().split(/ +/g);
+    const cmdOrg = args.shift();
+    const cmd = cmdOrg.toLowerCase();
+
+    if (client.cmds.has(cmd)) {
+        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args);
+    } else if (client.cmdAliases.has(cmd)) {
+        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args);
+    } else {
+        msg.channel.send('Unknown Command :thinking:');
+    }
+});
+
+client.login(cfg.botToken);
+
+function updateBotActivity() {
+    if (client.guilds.size === 1) {
+        client.user.setActivity(`on ${client.guilds.size} server`);
+    } else {
+        client.user.setActivity(`on ${client.guilds.size} servers`);
+    }
+}
+
+// Alle 30s prüfen, ob Änderungen in die Datei geschrieben werden müssen
+setInterval(module.exports.saveToFile, 30 * 1000);
+
+/* private functions */
 
 function createFiles() {
     if (!fs.existsSync('./commands')) {
@@ -112,122 +272,3 @@ function initCommands() {
         }
     });
 }
-
-
-/* Discord */
-
-client.on("ready", () => {
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-
-    updateBotActivity();
-});
-
-client.on("guildCreate", guild => {
-    console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-
-    updateBotActivity();
-});
-
-client.on("guildDelete", guild => {
-    console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-
-    updateBotActivity();
-});
-
-client.on("message", msg => {
-    if (msg.author.bot) return;
-    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst keine DMs. Statt commands soll er normal chatten c:
-    if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
-
-    const args = msg.content.slice(1).trim().split(/ +/g);
-    const cmdOrg = args.shift();
-    const cmd = cmdOrg.toLowerCase();
-
-    if (client.cmds.has(cmd)) {
-        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args);
-    } else if (client.cmdAliases.has(cmd)) {
-        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args);
-    } else {
-        msg.channel.send('Unknown Command :thinking:');
-    }
-});
-
-client.login(cfg.botToken);
-
-function updateBotActivity() {
-    if (client.guilds.size === 1) {
-        client.user.setActivity(`on ${client.guilds.size} server`);
-    } else {
-        client.user.setActivity(`on ${client.guilds.size} servers`);
-    }
-}
-
-/* module.exports */
-
-module.exports = {
-    getGuildPrefix: guildID => {
-        if (guildID) {
-            if (!guilds[guildID] || !guilds[guildID]['prefix']) {
-                module.exports.setGuildPrefix(guildID, cfg.default.prefix);
-            }
-
-            return guilds[guildID]['prefix'];
-        }
-    },
-    setGuildPrefix: (guildID, prefixChar) => {
-        let success = false;
-
-        if (guildID && prefixChar) {
-            if (prefixChar.length === 1) {
-                if (!guilds[guildID]) {
-                    guilds[guildID] = {
-                        prefix: prefixChar
-                    };
-
-                    filesChanged = true;
-                } else {
-                    if (guilds[guildID]['prefix'] !== prefixChar) {
-                        guilds[guildID]['prefix'] = prefixChar;
-
-                        filesChanged = true;
-                    }
-                }
-
-                success = true;
-            }
-        }
-
-        return success;
-    },
-    saveToFile: () => {
-        if (filesChanged) {
-            module.exports.forceSaveToFile();
-            console.log('Changes have automatically been written to ./storage');
-        }
-    },
-    forceSaveToFile: () => {
-        fs.writeFile('./storage/config.json', JSON.stringify(cfg), (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
-        fs.writeFile('./storage/guilds.json', JSON.stringify(guilds), (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
-
-        filesChanged = false;
-    }
-}
-
-// Alle 30s prüfen, ob Änderungen in die Datei geschrieben werden müssen
-setInterval(module.exports.saveToFile, 30 * 1000);
-
-// HTML Server weil Alpha was testen will :3
-var server = http.createServer(function (req, res) {
-    var done = finalhandler(req, res);
-    serve(req, res, done);
-});
-
-server.listen(8000);

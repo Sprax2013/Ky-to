@@ -8,7 +8,7 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-    var imgNeko = snekfetch.get(api).then(r => {
+    snekfetch.get(api).then(r => {
         const embed = new Discord.RichEmbed()
             .setTitle("Ring Ding Ding Ding Dinge Dinge Ding.")
             .setColor(0x00AE86)

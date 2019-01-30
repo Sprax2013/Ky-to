@@ -1,12 +1,12 @@
-const dc = require('discord.js'); // Praktisch für RichEmbed etc.
+const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
 const Discord = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
-  name: 'help'
+  name: 'commands',
+  aliases: ['help', '?']
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
-  const index = require('./../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
   var prefix = index.getGuildPrefix(msg.guild.id)
 
 
@@ -19,12 +19,12 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
 
 
   const cmdnew = new Discord.RichEmbed()
-  .setTitle("New Commands!")
-  .setDescription(``)
-  .setColor(0xFF6207)
+    .setTitle("New Commands!")
+    .setDescription(``)
+    .setColor(0xFF6207)
 
-  .addField(`${prefix}avatar`, `Generate a new Anime Avatar for you`)
-msg.author.send(cmdnew)
+    .addField(`${prefix}avatar`, `Generate a new Anime Avatar for you`)
+  msg.author.send(cmdnew)
 
 
 

@@ -3,7 +3,7 @@ const api = "https://nekos.life/api/hug";
 const snekfetch = require('snekfetch');
 
 module.exports.cmd = {
-    name: 'hug', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
+    name: 'hug' // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args) => {
@@ -16,7 +16,9 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
             let tag1 = msg.author.tag,
                 tag2 = mentions[0].tag;
 
-            let title = tag1 === tag2 ? `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs him-/herself` : `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs ${tag2.substr(0, tag2.lastIndexOf('#'))}`;
+            let title = tag1 === tag2 ?
+                `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs him-/herself` :
+                `${tag1.substr(0, tag1.lastIndexOf('#'))} hugs ${tag2.substr(0, tag2.lastIndexOf('#'))}`;
 
             const embed = new Discord.RichEmbed()
                 .setTitle(title)

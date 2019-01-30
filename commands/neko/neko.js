@@ -13,7 +13,7 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
     let mentions = Array.from(msg.mentions.users.values());
 
     if (command === 'gif') {
-        var imgNeko = snekfetch.get(nekogif).then(r => {
+        snekfetch.get(nekogif).then(r => {
             let embed = new Discord.RichEmbed()
                 .setTitle("NYAAAAA!")
                 .setColor(0x00AE86)
@@ -36,7 +36,7 @@ module.exports.onCommand = async (bot, msg, cmd, args, ) => {
         return
     } else {
         if (mentions.length === 0) {
-            var imgNeko = snekfetch.get(nekoimg).then(r => {
+            snekfetch.get(nekoimg).then(r => {
                 let embed = new Discord.RichEmbed()
                     .setTitle("NYAAAAA!")
                     .setColor(0x00AE86)

@@ -11,7 +11,7 @@ module.exports.onCommand = async (bot, msg, cmd, args) => {
     if (msg.channel.nsfw === false) {
         return msg.reply(":warning: Yea.. no this channel isn't NSFW.")
     } else {
-        var imgNeko = snekfetch.get(api).then(r => {
+        snekfetch.get(api).then(r => {
             const embed = new Discord.RichEmbed()
                 .setTitle("Oh my, how Lewd! >.<")
                 .setColor(0x00AE86)
