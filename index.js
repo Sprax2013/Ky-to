@@ -177,7 +177,6 @@ function updateBotActivity() {
             type: 'LISTENING'
         })
         // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
-        
         .catch(console.error);
 }
 
