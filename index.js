@@ -8,6 +8,17 @@ const guilds = require('./storage/guilds.json');
 /* module.exports */
 
 module.exports = {
+    CommandCategory: Object.freeze({
+        'NEKOS_LIFE': {
+            name: 'NEKOS_LIFE'
+        },
+        'ADMIN': {
+            name: 'ADMIN'
+        },
+        'MISC': {
+            name: 'MISC'
+        }
+    }),
     getUtils: require('./utils'),
     getLocalization: () => {
         return localization;
@@ -154,7 +165,7 @@ client.on("guildDelete", guild => {
 
 client.on("message", msg => {
     if (msg.author.bot) return;
-    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst keine DMs. Statt commands soll er normal chatten c:
+    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
 
     if (cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(msg.guild.id)) return;
     if (!cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(msg.guild.id)) return;
@@ -197,7 +208,7 @@ function createFiles() {
             lang: 'en'
         },
         guildList: {
-            asWhitelist: true,
+            asWhitelist: false,
             guildIDs: []
         }
     };

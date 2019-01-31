@@ -1,7 +1,7 @@
 const index = require('./../index');
 const Discord = require('discord.js');
 const loc = index.getLocalization();
-const dc = Discord 
+const dc = Discord
 module.exports.cmd = {
     name: 'settings',
     aliases: ['Einstellungen']
@@ -20,52 +20,52 @@ module.exports.onCommand = async (bot, msg, cmd, args = []) => {
                     if (lang) {
                         // Sprache geändert             ${index.getGuildLanguage(msg).name}
                         msg.channel.send(new dc.RichEmbed()
-                        .setColor('0xE7193F')
-                        .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                        .setDescription(`${loc.getStringForGuild('settings:lang', msg).format(bot.user.id, cmd, args)} ${index.getGuildLanguage(msg).name}`)
-                       )
+                            .setColor('0xE7193F')
+                            .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+                            .setDescription(`${loc.getStringForGuild('settings:lang', msg).format(bot.user.id, cmd, args)} ${index.getGuildLanguage(msg).name}`)
+                        )
                     } else {
-                // Sprache exestiert nicht + Sprachen auflisten
-                msg.channel.send(new dc.RichEmbed()
-                 .setColor('0xE7193F')
-                 .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                 .setDescription(loc.getStringForGuild('settings:langNotFound', msg).format(bot.user.id, cmd, args))
-                 .addField(`de`, `Deutsch / German`)
-                 .addField(`en`, `Englisch / English`)
-                )
+                        // Sprache exestiert nicht + Sprachen auflisten
+                        msg.channel.send(new dc.RichEmbed()
+                            .setColor('0xE7193F')
+                            .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+                            .setDescription(loc.getStringForGuild('settings:langNotFound', msg).format(bot.user.id, cmd, args))
+                            .addField(`de`, `Deutsch / German`)
+                            .addField(`en`, `Englisch / English`)
+                        )
                     }
                 } else {
-                // Du musst eine Sprache angeben + Sprachen auflisten
-                msg.channel.send(new dc.RichEmbed()
-                 .setColor('0xE7193F')
-                 .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                 .setDescription(loc.getStringForGuild('settings:langNoString', msg).format(bot.user.id, cmd, args))
-                 .addField(`de`, `Deutsch / German`)
-                 .addField(`en`, `Englisch / English`)
-                )
+                    // Du musst eine Sprache angeben + Sprachen auflisten
+                    msg.channel.send(new dc.RichEmbed()
+                        .setColor('0xE7193F')
+                        .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+                        .setDescription(loc.getStringForGuild('settings:langNoString', msg).format(bot.user.id, cmd, args))
+                        .addField(`de`, `Deutsch / German`)
+                        .addField(`en`, `Englisch / English`)
+                    )
                 }
             } else {
                 // Nicht erlaubt Sprache zu ändern
                 msg.channel.send(new dc.RichEmbed()
-                 .setColor('0xE7193F')
-                 .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                 .setDescription(loc.getStringForGuild('settings:langNoRights', msg).format(bot.user.id, cmd, args))
+                    .setColor('0xE7193F')
+                    .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+                    .setDescription(loc.getStringForGuild('settings:langNoRights', msg).format(bot.user.id, cmd, args))
                 )
             }
         } else {
-                // Unbekannte Befehlstruktur
-                msg.channel.send(new dc.RichEmbed()
-                 .setColor('0xE7193F')
-                 .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                 .setDescription(loc.getStringForGuild('settings:langwtf', msg).format(bot.user.id, cmd, args))
-                )
+            // Unbekannte Befehlstruktur
+            msg.channel.send(new dc.RichEmbed()
+                .setColor('0xE7193F')
+                .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+                .setDescription(loc.getStringForGuild('settings:langwtf', msg).format(bot.user.id, cmd, args))
+            )
         }
     } else {
-                // Help (!settings)
-                msg.channel.send(new dc.RichEmbed()
-                 .setColor('0xE7193F')
-                 .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
-                 .addField(loc.getStringForGuild('settings:helpLangD', msg).format(bot.user.id, cmd, args), `${prefix}settings lang`)
-                )
+        // Help (!settings)
+        msg.channel.send(new dc.RichEmbed()
+            .setColor('0xE7193F')
+            .setTitle(loc.getStringForGuild('settings:setTitle', msg).format(bot.user.id, cmd, args))
+            .addField(loc.getStringForGuild('settings:helpLangD', msg).format(bot.user.id, cmd, args), `${prefix}settings lang`)
+        )
     }
 }

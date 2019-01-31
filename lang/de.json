@@ -1,7 +1,9 @@
 {
-    "test": "Dies ist die deutsche Version der Test-Message ;3",
-    "cmd": {
-        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+    "commands": {
+        "Template": {
+            "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand",
+            "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+        }
     },
     "settings": {
         "langChanged": "Die Sprache wurde geändert. Sie ist nun: ",
@@ -18,5 +20,10 @@
         "setAuthor": "Ergebniss für ",
         "setDescription": "Beschreibung",
         "setFooter": "s Suchverlauf"
+    },
+    "CommandCategory": {
+        "NEKOS_LIFE": "Nekos.life",
+        "ADMIN": "Admin",
+        "MISC": "Sonstige"
     }
 }

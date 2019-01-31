@@ -13,31 +13,22 @@ const LanguageEnum = Object.freeze({
     }
 });
 
-/* StackOverflow ftw: https://stackoverflow.com/a/4673436/9346616 */
-if (!String.prototype.format) {
-    String.prototype.format = function () {
-        var args = arguments;
-
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined' ?
-                args[number] :
-                match;
-        });
-    };
-}
-
 /* module.exports */
 
 module.exports = {
     LanguageEnum: LanguageEnum,
-    getStringForGuild: (strIdentifier, guildID, fallBackString = null) => {
-        return module.exports.getString(strIdentifier, index.getGuildLanguage(index.getUtils.getGuildID(guildID)), fallBackString);
+    getStringForGuild: (commandFile, strIdentifier, guildID, fallBackString = null) => {
+        return module.exports.getString(commandFile, strIdentifier, index.getGuildLanguage(index.getUtils.getGuildID(guildID)), fallBackString);
     },
-    getString: (strIdentifier, langEnum, fallBackString = null) => {
+    getString: (commandFile, strIdentifier, langEnum, fallBackString = null) => {
         var result = null;
 
         if (!langEnum) {
             langEnum = index.getDefaultLanguage();
+        }
+
+        if (commandFile && strIdentifier) {
+            strIdentifier = strIdentifier.replace(/{%cmd}/gi, `commands:${commandFile.cmd.name}`);
         }
 
         var langJSON;
@@ -78,6 +69,12 @@ module.exports = {
         }
 
         return result ? result : fallBackString;
+    },
+    getCommandCategoryForGuild: (cmdCat, guildID) => {
+        return module.exports.getCommandCategory(cmdCat, index.getGuildLanguage(index.getUtils.getGuildID(guildID)));
+    },
+    getCommandCategory: (cmdCat, lang) => {
+        return module.exports.getString('CommandCategory:' + cmdCat.name, lang);
     },
     getLanguageEnumFromString: (str) => {
         for (const key in LanguageEnum) {
