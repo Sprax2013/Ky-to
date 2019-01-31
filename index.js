@@ -176,6 +176,7 @@ function updateBotActivity() {
     client.user.setActivity(`!commands [${client.guilds.size} server${client.guilds.size !==1 ? 's' : ''}]`, {
             type: 'LISTENING'
         })
+
         // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
         
         .catch(console.error);
