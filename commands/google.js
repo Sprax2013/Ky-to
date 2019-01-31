@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const google = require('google');
+const index = require('./../index');
+const loc = index.getLocalization();
+const ico = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png"
 google.resultsPerPage = 25;
 
 module.exports.cmd = {
@@ -26,12 +29,14 @@ module.exports.onCommand = async (bot, msg, cmd) => {
             } else {
                 return message.channel.send(new Discord.RichEmbed()
                     .setColor(`#ffffff`)
-                    .setAuthor(`Result for "${suffix}"`, `https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png`)
-                    .setDescription(`**Link**: [${link.title}](${link.href})\n**Description**:\n${link.description}`)
-                    .setFooter(`${msg.author.tag}` + `'s Search History`));
+                    .setAuthor(`${loc.getStringForGuild('google:setAuthor', msg).format(bot.user.id, cmd, args)} "${suffix}"`, `https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png`)
+                    .setDescription(`**Link**: [${link.title}](${link.href})\n**${loc.getStringForGuild('google:setDescription', msg).format(bot.user.id, cmd, args)}**:\n${link.description}`)
+                    .setFooter(`${msg.author.tag}` + `'${loc.getStringForGuild('google:setFooter', msg).format(bot.user.id, cmd, args)}`));
             }
 
             return;
         }
     });
 }
+
+// ${loc.getStringForGuild('google:setAuthor', msg).format(bot.user.id, cmd, args)}

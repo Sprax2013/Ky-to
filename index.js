@@ -198,7 +198,8 @@ function createFiles() {
         fs.writeFileSync('./storage/config.json', JSON.stringify({
             botToken: 'INSERT_TOKEN_HERE',
             default: {
-                prefix: '!'
+                prefix: '!',
+                lang: 'en'
             }
         }));
     }

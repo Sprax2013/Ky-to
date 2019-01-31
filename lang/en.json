@@ -1,9 +1,22 @@
 {
     "test": "This is the english Test-Message",
     "cmd": {
-        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})",
-        "test": {
-            "test": "Testiiii"
-        }
+        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+    },
+    "settings": {
+        "langChanged": "Language has been changed to: ",
+        "langNotFound": "I don't know that Language yet.",
+        "langNoString": "You need set the Language to something",
+        "langNoRights": "You aren't allowed to change the Language",
+        "langwtf": "Something wen't wrong. Try !settings for help",
+        "lang": "Language has been changed to: ",
+        "setTitle": "Settings",
+        "helpLangD": "Language"
+    },
+    "google": {
+        "errorNoInput": ":warning: You need to give a search Input!",
+        "setAuthor": "Result for ",
+        "setDescription": "Description",
+        "setFooter": "'s Search History"
     }
 }
