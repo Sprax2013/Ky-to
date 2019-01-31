@@ -5,12 +5,6 @@ createFiles();
 const cfg = require('./storage/config.json');
 const guilds = require('./storage/guilds.json');
 
-var json = {
-    "cmd": {
-        "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
-    }
-};
-
 /* module.exports */
 
 module.exports = {
@@ -179,11 +173,11 @@ client.on("message", msg => {
 client.login(cfg.botToken);
 
 function updateBotActivity() {
-    if (client.guilds.size === 1) {
-        client.user.setActivity(`on ${client.guilds.size} server`);
-    } else {
-        client.user.setActivity(`on ${client.guilds.size} servers`);
-    }
+    client.user.setActivity(`!commands [${client.guilds.size} server${client.guilds.size !==1 ? 's' : ''}]`, {
+            type: 'LISTENING'
+        })
+        // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
+        .catch(console.error);
 }
 
 // Alle 30s prüfen, ob Änderungen in die Datei geschrieben werden müssen
