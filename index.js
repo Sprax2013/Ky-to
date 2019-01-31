@@ -155,6 +155,10 @@ client.on("guildDelete", guild => {
 client.on("message", msg => {
     if (msg.author.bot) return;
     if (!msg.channel instanceof dc.TextChannel) return; // Vorerst keine DMs. Statt commands soll er normal chatten c:
+
+    if (cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(msg.guild.id)) return;
+    if (!cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(msg.guild.id)) return;
+
     if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
 
     const args = msg.content.slice(1).trim().split(/ +/g);
@@ -186,6 +190,18 @@ setInterval(module.exports.saveToFile, 30 * 1000);
 /* private functions */
 
 function createFiles() {
+    const defaultConfig = {
+        botToken: 'INSERT_TOKEN_HERE',
+        default: {
+            prefix: ';',
+            lang: 'en'
+        },
+        guildList: {
+            asWhitelist: true,
+            guildIDs: []
+        }
+    };
+
     if (!fs.existsSync('./commands')) {
         fs.mkdirSync('./commands');
     }
@@ -195,12 +211,9 @@ function createFiles() {
     }
 
     if (!fs.existsSync('./storage/config.json')) {
-        fs.writeFileSync('./storage/config.json', JSON.stringify({
-            botToken: 'INSERT_TOKEN_HERE',
-            default: {
-                prefix: '!'
-            }
-        }));
+        fs.writeFileSync('./storage/config.json', JSON.stringify(defaultConfig));
+    } else {
+        fs.writeFileSync('./storage/config.json', JSON.stringify(Object.assign(defaultConfig, JSON.parse(fs.readFileSync('./storage/config.json', 'UTF-8')))));
     }
 
     if (!fs.existsSync('./storage/guilds.json')) {
