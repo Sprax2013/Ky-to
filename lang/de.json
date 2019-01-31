@@ -2,5 +2,21 @@
     "test": "Dies ist die deutsche Version der Test-Message ;3",
     "cmd": {
         "debug": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+    },
+    "settings": {
+        "langChanged": "Die Sprache wurde geändert. Sie ist nun: ",
+        "langNotFound": "Ich kenne diese Sprache nicht :(",
+        "langNoString": "Du musst eine Sprache angeben.",
+        "langNoRights": "Du darfst die Sprache nicht ändern",
+        "langwtf": "Etwas ist falsch gelaufen. Versuche `!settings` für Hilfe.",
+        "lang": "Die Sprache wurde geändert. Sie ist nun: ",
+        "setTitle": "Einstellungen",
+        "helpLangD": "Sprache"
+    },
+    "google": {
+        "errorNoInput": ":warning: Du musst einen Such-Input angeben!",
+        "setAuthor": "Ergebniss für ",
+        "setDescription": "Beschreibung",
+        "setFooter": "s Suchverlauf"
     }
 }
