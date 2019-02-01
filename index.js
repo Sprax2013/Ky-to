@@ -19,7 +19,7 @@ module.exports = {
             __KEY: 'MISC'
         }
     }),
-    getUtils: require('./utils'),
+    Utils: require('./utils'),
     getLocalization: () => {
         return localization;
     },
@@ -30,7 +30,7 @@ module.exports = {
         return cfg.default.prefix;
     },
     getGuildPrefix: (guildID) => {
-        guildID = module.exports.getUtils.getGuildID(guildID);
+        guildID = module.exports.Utils.getGuildID(guildID);
 
         if (guildID) {
             if (!guilds[guildID] || !guilds[guildID]['prefix']) {
@@ -41,7 +41,7 @@ module.exports = {
         }
     },
     setGuildPrefix: (guildID, prefixChar) => {
-        guildID = module.exports.getUtils.getGuildID(guildID);
+        guildID = module.exports.Utils.getGuildID(guildID);
 
         let success = false;
 
@@ -68,7 +68,7 @@ module.exports = {
         return success;
     },
     getGuildLanguage: (guildID) => {
-        guildID = module.exports.getUtils.getGuildID(guildID);
+        guildID = module.exports.Utils.getGuildID(guildID);
 
         if (guildID) {
             if (!guilds[guildID] || !guilds[guildID]['lang']) {
@@ -79,7 +79,7 @@ module.exports = {
         }
     },
     setGuildLanguage: (guildID, langEnum) => {
-        guildID = module.exports.getUtils.getGuildID(guildID);
+        guildID = module.exports.Utils.getGuildID(guildID);
 
         let success = false;
 

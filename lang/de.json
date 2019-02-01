@@ -29,6 +29,14 @@
             "RichTitle": ">> Einladungslink <<",
             "RichDescription": "Nutze **{0}Commands**, nachdem der Bot dem Server beigetreten ist!",
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
+        },
+        "Neko": {
+            "Avatar": {
+                "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann (Nekos.life-API)",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}s neuer Avatar"
+            }
         }
     },
     "google": {
@@ -51,5 +59,7 @@
             "GERMAN": "Deutsch",
             "ENGLISH": "Englisch"
         }
-    }
+    },
+
+    "ERR_OCCURRED": "Es ist ein Fehler ist aufgetreten!"
 }

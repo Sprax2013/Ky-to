@@ -14,7 +14,8 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle', msg))
         .setDescription(loc.getStringForGuild(this, '{%cmd}:RichDescription', msg).format(index.getDefaultCommandPrefix()))
 
+        .setImage(bot.user.avatarURL)
         .setURL('https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=526454942328946719')
 
-        .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter', msg).format(msg.author.tag.substr(0, msg.author.tag.lastIndexOf('#'))), msg.author.avatarURL));
+        .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter', msg).format(index.Utils.getUsernameFromUser(msg)), msg.author.avatarURL));
 }
