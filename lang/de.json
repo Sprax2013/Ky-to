@@ -35,7 +35,9 @@
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann (Nekos.life-API)",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter": "{0}s neuer Avatar"
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}s neuer Avatar",
+                "RichFooter_NSFW": "{0}s neuer, unanständiger Avatar"
             },
             "Neko": {
                 "cmd.Description": "Zeigt ein zufälliges Neko-Bild (Nekos.life-API)",
@@ -50,8 +52,8 @@
                 "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild (Nekos.life-API)",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter_NSFW": "{0}'s lewd waifu   |   Weitere Variationen mit {1}",
-                "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   Weitere Variationen mit {1}"
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             }
         }
     },

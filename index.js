@@ -145,25 +145,29 @@ initCommands();
 
 /* Discord */
 
-client.on("ready", () => {
+client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
 
     updateBotActivity();
 });
 
-client.on("guildCreate", guild => {
+client.on('guildCreate', (guild) => {
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 
     updateBotActivity();
 });
 
-client.on("guildDelete", guild => {
+client.on('guildDelete', (guild) => {
     console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 
     updateBotActivity();
 });
 
-client.on("message", msg => {
+client.on('error', (err) => {
+    console.error(err);
+})
+
+client.on('message', (msg) => {
     if (msg.author.bot) return;
     if (!msg.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
 

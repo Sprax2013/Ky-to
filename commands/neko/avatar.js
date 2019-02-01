@@ -3,7 +3,8 @@ const loc = index.getLocalization();
 
 const dc = require('discord.js');
 
-const apiURL = 'https://nekos.life/api/v2/img/avatar';
+const apiURL = 'https://nekos.life/api/v2/img/avatar',
+    apiURL_NSFW = 'https://nekos.life/api/v2/img/nsfw_avatar';
 
 module.exports.cmd = {
     name: 'Avatar',
@@ -21,7 +22,8 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
 
                 .setImage(json.url)
 
-                .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter', msg).format(index.Utils.getUsernameFromUser(msg)), msg.author.avatarURL)
+                .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter', msg)
+                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
             );
         } else {
             msg.channel.send(

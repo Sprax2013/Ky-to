@@ -35,7 +35,9 @@
                 "cmd.Description": "Shows a random image that can be used as an avatar (Nekos.life-API)",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter": "{0}'s new Avatar"
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}'s new avatar",
+                "RichFooter_NSFW": "{0}'s new lewd avatar"
             },
             "Neko": {
                 "cmd.Description": "Shows a random neko image (Nekos.life-API)",
