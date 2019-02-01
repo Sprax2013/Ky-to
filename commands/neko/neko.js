@@ -1,50 +1,68 @@
 const index = require('./../../index');
-const Discord = require('discord.js');
-var nekoimg = "https://nekos.life/api/neko"
-var nekogif = "https://nekos.life/api/v2/img/ngif"
-const snekfetch = require('snekfetch');
+const loc = index.getLocalization();
+
+const dc = require('discord.js');
+
+const apiURL = 'https://nekos.life/api/v2/img/neko',
+    apiURL_NSFW = 'https://nekos.life/api/v2/img/lewd';
+const apiURL_GIF = 'https://nekos.life/api/v2/img/ngif',
+    apiURL_GIF_NSFW = 'https://nekos.life/api/v2/img/nsfw_neko_gif';
 
 module.exports.cmd = {
-    name: 'neko'
+    name: 'Neko',
+
+    localizationSubGroup: 'Neko'
 };
 
-module.exports.onCommand = async (bot, msg, cmd, args, ) => {
-    const command = args.shift();
-    let mentions = Array.from(msg.mentions.users.values());
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
+    let url = (args.length >= 1 &&
+            (args.includes('gif') || args.includes('animated'))) ?
+        apiURL_GIF : apiURL;
+    let footerIdent = '{%cmd}:RichFooter';
 
-    if (command === 'gif') {
-        snekfetch.get(nekogif).then(r => {
-            let embed = new Discord.RichEmbed()
-                .setTitle("NYAAAAA!")
-                .setColor(0x00AE86)
-                .setFooter(`${msg.author.username}` + `'s Animated Waifu`)
-                .setImage(r.body.url)
-            msg.channel.send(embed)
-        })
-        return
-    }
-    if (command === 'help') {
-        let embed = new Discord.RichEmbed()
-            .setTitle("Neko Help")
-            .setColor(0x00AE86)
-            .addBlankField(true)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}neko `, `Shows you a Image of a Neko.`)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}neko gif`, `Shows you a GIF of a Neko.`)
-            .addField(`${index.getGuildPrefix(msg.guild.id)}neko help`, `Shows you this List.`)
+    if (args.length >= 1) {
+        let gif = args.includes('gif') || args.includes('animated');
+        let nsfw = args.includes('nsfw') || args.includes('lewd');
 
-        msg.channel.send(embed)
-        return
-    } else {
-        if (mentions.length === 0) {
-            snekfetch.get(nekoimg).then(r => {
-                let embed = new Discord.RichEmbed()
-                    .setTitle("NYAAAAA!")
-                    .setColor(0x00AE86)
-                    .setFooter(`${msg.author.username}` + `'s Waifu     |     Try ${index.getGuildPrefix(msg.guild.id)}neko help for more `)
-                    .setImage(r.body.neko)
-                msg.channel.send(embed)
-            })
-            return
+        if (nsfw && !msg.channel.nsfw) {
+            msg.reply(loc.getStringForGuild(this, 'NOT_NSFW_CHANNEL', msg));
+            return;
+        }
+
+        if (gif && !nsfw) {
+            url = apiURL_GIF;
+
+            footerIdent += '_Animated';
+        } else if (gif && nsfw) {
+            url = apiURL_GIF_NSFW;
+
+            footerIdent += '_Animated_NSFW';
+        } else if (!gif && nsfw) {
+            url = apiURL_NSFW;
+
+            footerIdent += '_NSFW';
+        } else {
+            url = apiURL;
         }
     }
+
+    index.Utils.getJSONFromURL(url, (json) => {
+        if (json && json.url) {
+            msg.channel.send(
+                new dc.RichEmbed()
+                .setColor(0x00AE86)
+                .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle', msg))
+
+                .setImage(json.url)
+                .setFooter(loc.getStringForGuild(this, footerIdent, msg)
+                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}${cmd} GIF`), msg.author.avatarURL)
+            );
+        } else {
+            msg.channel.send(
+                new dc.RichEmbed()
+                .setColor(0x00AE86)
+                .setTitle(loc.getStringForGuild(this, 'ERR_OCCURRED', msg))
+            );
+        }
+    });
 }

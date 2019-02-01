@@ -36,9 +36,19 @@
 
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}'s new Avatar"
+            },
+            "Neko": {
+                "cmd.Description": "Shows a random neko image (Nekos.life-API)",
+
+                "RichTitle": "NYAAAAA!",
+                "RichFooter": "{0}'s Waifu   |   Try {1}",
+                "RichFooter_NSFW": "{0}'s lewd waifu",
+                "RichFooter_Animated": "{0}'s animated waifu",
+                "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu"
             }
         }
     },
+
     "google": {
         "errorNoInput": ":warning: You need to give a search Input!",
         "setAuthor": "Result for ",
@@ -61,5 +71,6 @@
         }
     },
 
+    "NOT_NSFW_CHANNEL": ":warning: Yea.. no this channel isn't marked as *NSFW*.",
     "ERR_OCCURRED": "An error occurred!"
 }

@@ -8,3 +8,5 @@
  - Lohnt sich der !Ping befehl? Denn der angezeigte Ping ist niemals korrekt (User sendet, Bot empfängt, verarbeitet async [empfangen und eigene Nachricht], berechnet) -> User-Ping, Bot-Ping und Bot-/Server-Auslastung sind alles Faktoren, die da reinspielen. Der Bot-Ping macht jedoch durchaus sinn, da dieser direkt geprüft werden kann
  - !Settings -> Abschalten, dass kyuto meldet, dass er einen Command nicht kennt
  - !Avatar -> RichTitle anpassen
+ - Bot-Start -> Die Nachricht anpassen, die Channel etc. zählt (Beachtung der White-/Blacklist)
+ - !help <Command> -> Zeigt die Usage zum Command

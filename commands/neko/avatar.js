@@ -11,7 +11,7 @@ module.exports.cmd = {
     localizationSubGroup: 'Neko'
 };
 
-module.exports.onCommand = async (bot, msg, cmd, args) => {
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
     index.Utils.getJSONFromURL(apiURL, (json) => {
         if (json && json.url) {
             msg.channel.send(
