@@ -2,6 +2,7 @@
     "Commands": {
         "Template": {
             "cmd.Description": "This is the command of the template. It answers with the arguments of #onCommand",
+
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
         "Settings": {
@@ -21,6 +22,13 @@
                 "TooLong": "The prefix may only be one character long!",
                 "NotAllowed": "You are not allowed to change the prefix!"
             }
+        },
+        "Invite": {
+            "cmd.Description": "Creates an invite link to add me to another server",
+
+            "RichTitle": ">> Invite Link <<",
+            "RichDescription": "Use **{0}Commands** after the Bot has joined the server!",
+            "RichFooter": "{0}'s request has been processed"
         }
     },
     "google": {

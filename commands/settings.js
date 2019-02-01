@@ -1,6 +1,7 @@
 const index = require('./../index');
-const dc = require('discord.js');
 const loc = index.getLocalization();
+
+const dc = require('discord.js');
 
 module.exports.cmd = {
     name: 'Settings',

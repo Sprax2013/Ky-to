@@ -2,6 +2,7 @@
     "Commands": {
         "Template": {
             "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand",
+
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
         "Settings": {
@@ -21,6 +22,13 @@
                 "TooLong": "Das Präfix darf nur ein Zeichen lang sein!",
                 "NotAllowed": "Du bist nicht berechtigt die Präfix zu ändern!"
             }
+        },
+        "Invite": {
+            "cmd.Description": "Erstellt einen Einladungslink, um mich zu einem anderen Server hinzuzufügen",
+
+            "RichTitle": ">> Einladungslink <<",
+            "RichDescription": "Nutze **{0}Commands**, nachdem der Bot dem Server beigetreten ist!",
+            "RichFooter": "{0}s Anfrage wurde verarbeitet"
         }
     },
     "google": {

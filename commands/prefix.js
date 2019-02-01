@@ -1,5 +1,6 @@
 const index = require('./../index');
 const loc = index.getLocalization();
+
 const settings = require('./settings');
 
 module.exports.cmd = {
