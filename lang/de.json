@@ -41,11 +41,17 @@
                 "cmd.Description": "Zeigt ein zufälliges Neko-Bild (Nekos.life-API)",
 
                 "RichTitle": "NYAAAAA!",
-                "RichFooter": "{0}'s Waifu   |   Probier Mal {1}",
-                "RichFooter_NSFW": "{0}s unanständige Waifu",
-                "RichFooter_Animated": "{0}s animierte Waifu",
-                "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu"
+                "RichFooter": "{0}'s Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_Animated": "{0}s animierte Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Cum": {
+                "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild (Nekos.life-API)",
 
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   Weitere Variationen mit {1}"
             }
         }
     },
@@ -71,6 +77,6 @@
         }
     },
 
-    "NOT_NSFW_CHANNEL": ":warning: Dieser Channel ist nicht als *NSFW* gekennzeichnet.",
+    "NOT_NSFW_CHANNEL": ":warning: Dieser Channel ist nicht als *NSFW* gekennzeichnet!",
     "ERR_OCCURRED": "Es ist ein Fehler ist aufgetreten!"
 }

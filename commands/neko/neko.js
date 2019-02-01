@@ -15,9 +15,7 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let url = (args.length >= 1 &&
-            (args.includes('gif') || args.includes('animated'))) ?
-        apiURL_GIF : apiURL;
+    let url = apiURL;
     let footerIdent = '{%cmd}:RichFooter';
 
     if (args.length >= 1) {
@@ -55,7 +53,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
 
                 .setImage(json.url)
                 .setFooter(loc.getStringForGuild(this, footerIdent, msg)
-                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}${cmd} GIF`), msg.author.avatarURL)
+                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
             );
         } else {
             msg.channel.send(
