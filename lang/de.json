@@ -1,19 +1,27 @@
 {
-    "commands": {
+    "Commands": {
         "Template": {
             "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand",
-            "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+            "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
+        },
+        "Settings": {
+            "cmd.Description": "Konfiguriert den Bot nach deinen Wünschen",
+
+            "Lang": {
+                "Set": "Die Sprache wurde auf {0} geändert",
+                "AlreadySet": "Die Sprache steht bereits auf {0}",
+                "NotFound": "Die gewünschte Sprache beherrsche ich noch nicht",
+                "NoneGiven": "Du musst eine Sprache angeben: `{0}`",
+                "NotAllowed": "Du bist nicht berechtigt die Sprache zu ändern!"
+            },
+            "Prefix": {
+                "Set": "Das Präfix wurde auf `{0}` geändert",
+                "AlreadySet": "Das Präfix steht bereits auf `{0}`",
+                "NoneGiven": "Du musst eine Präfix angeben: `{0}`",
+                "TooLong": "Das Präfix darf nur ein Zeichen lang sein!",
+                "NotAllowed": "Du bist nicht berechtigt die Präfix zu ändern!"
+            }
         }
-    },
-    "settings": {
-        "langChanged": "Die Sprache wurde geändert. Sie ist nun: ",
-        "langNotFound": "Ich kenne diese Sprache nicht :(",
-        "langNoString": "Du musst eine Sprache angeben.",
-        "langNoRights": "Du darfst die Sprache nicht ändern",
-        "langwtf": "Etwas ist falsch gelaufen. Versuche `!settings` für Hilfe.",
-        "lang": "Die Sprache wurde geändert. Sie ist nun: ",
-        "setTitle": "Einstellungen",
-        "helpLangD": "Sprache"
     },
     "google": {
         "errorNoInput": ":warning: Du musst einen Such-Input angeben!",
@@ -25,5 +33,15 @@
         "NEKOS_LIFE": "Nekos.life",
         "ADMIN": "Admin",
         "MISC": "Sonstige"
+    },
+    "Vocabulary": {
+        "Settings": "Einstellungen",
+        "Language": "Sprache",
+        "Prefix": "Präfix",
+
+        "Languages": {
+            "GERMAN": "Deutsch",
+            "ENGLISH": "Englisch"
+        }
     }
 }

@@ -1,15 +1,19 @@
 const index = require('./index');
 
 const LanguageEnum = Object.freeze({
-    'GERMAN': {
-        langCode: 'de',
-        name: 'Deutsch',
-        synonyms: ['Deutsch']
-    },
     'ENGLISH': {
+        __KEY: 'ENGLISH',
+
         langCode: 'en',
         name: 'English',
         synonyms: ['Englisch']
+    },
+    'GERMAN': {
+        __KEY: 'GERMAN',
+
+        langCode: 'de',
+        name: 'Deutsch',
+        synonyms: ['Deutsch']
     }
 });
 
@@ -27,9 +31,11 @@ module.exports = {
             langEnum = index.getDefaultLanguage();
         }
 
-        if (commandFile && strIdentifier) {
-            strIdentifier = strIdentifier.replace(/{%cmd}/gi, `commands:${commandFile.cmd.name}`);
+        if (commandFile) {
+            strIdentifier = strIdentifier.replace(/{%cmd}/gi, `Commands:${commandFile.cmd.name}`);
         }
+        strIdentifier = strIdentifier.replace(/{%voc}/gi, 'Vocabulary');
+
 
         var langJSON;
 
@@ -60,22 +66,31 @@ module.exports = {
         }
 
         if (!result && langEnum !== index.getDefaultLanguage()) {
-            console.error(new Error(`Could not '${strIdentifier}' wurde kein String für die Sprache '${langEnum}' gefunden!`));
+            console.error(new Error(`Could not '${strIdentifier}' wurde kein String für die Sprache '${langEnum.__KEY}' gefunden!`));
             result = module.exports.getString(strIdentifier, index.getDefaultLanguage());
 
             if (!result) {
-                console.error(new Error(`Für '${strIdentifier}' wurde kein String in der Standardsprache '${langEnum}' gefunden!`));
+                console.error(new Error(`Für '${strIdentifier}' wurde kein String in der Standardsprache '${langEnum.__KEY}' gefunden!`));
             }
         }
 
         return result ? result : fallBackString;
     },
+
     getCommandCategoryForGuild: (cmdCat, guildID) => {
         return module.exports.getCommandCategory(cmdCat, index.getGuildLanguage(index.getUtils.getGuildID(guildID)));
     },
     getCommandCategory: (cmdCat, lang) => {
-        return module.exports.getString('CommandCategory:' + cmdCat.name, lang);
+        return module.exports.getString(null, `CommandCategory:${cmdCat.__KEY}`, lang);
     },
+
+    getLanguageNameForGuild: (langToGetNameFor, guildID) => {
+        return module.exports.getLanguageName(langToGetNameFor, index.getGuildLanguage(index.getUtils.getGuildID(guildID)));
+    },
+    getLanguageName: (langToGetNameFor, lang) => {
+        return module.exports.getString(null, `{%voc}:Languages:${langToGetNameFor.__KEY}`, lang);
+    },
+
     getLanguageEnumFromString: (str) => {
         for (const key in LanguageEnum) {
             if (LanguageEnum.hasOwnProperty(key)) {

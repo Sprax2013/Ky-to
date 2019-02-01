@@ -9,6 +9,6 @@ module.exports.cmd = {
     category: index.CommandCategory.MISC // (Optional, Standard: 'MISC') Die Kategorie wird beim Auflisten von Befehlen genutzt
 };
 
-module.exports.onCommand = async (bot, msg, cmd, args) => {
-    msg.channel.send(loc.getStringForGuild(this, '{%cmd}:msg', msg).format(bot.user.id, cmd, args));
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
+    msg.channel.send(loc.getStringForGuild(this, '{%cmd}:msg', msg).format(bot.user.id, cmd, args, guildPrefix));
 }

@@ -10,13 +10,13 @@ const guilds = require('./storage/guilds.json');
 module.exports = {
     CommandCategory: Object.freeze({
         'NEKOS_LIFE': {
-            name: 'NEKOS_LIFE'
+            __KEY: 'NEKOS_LIFE'
         },
         'ADMIN': {
-            name: 'ADMIN'
+            __KEY: 'ADMIN'
         },
         'MISC': {
-            name: 'MISC'
+            __KEY: 'MISC'
         }
     }),
     getUtils: require('./utils'),
@@ -170,16 +170,17 @@ client.on("message", msg => {
     if (cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(msg.guild.id)) return;
     if (!cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(msg.guild.id)) return;
 
-    if (msg.content.indexOf(module.exports.getGuildPrefix(msg.guild.id)) !== 0) return;
+    var guildPrefix = module.exports.getGuildPrefix(msg.guild.id);
+    if (msg.content.indexOf(guildPrefix) !== 0) return;
 
     const args = msg.content.slice(1).trim().split(/ +/g);
     const cmdOrg = args.shift();
     const cmd = cmdOrg.toLowerCase();
 
     if (client.cmds.has(cmd)) {
-        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args);
+        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
     } else if (client.cmdAliases.has(cmd)) {
-        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args);
+        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
     } else {
         msg.channel.send('Unknown Command :thinking:');
     }

@@ -1,19 +1,27 @@
 {
-    "commands": {
+    "Commands": {
         "Template": {
             "cmd.Description": "This is the command of the template. It answers with the arguments of #onCommand",
-            "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2})"
+            "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
+        },
+        "Settings": {
+            "cmd.Description": "Configure the bot to your liking",
+
+            "Lang": {
+                "Set": "Language has been changed to '{0}'",
+                "AlreadySet": "The language is already set to {0}",
+                "NotFound": "I have not yet mastered the language.",
+                "NoneGiven": "You have to specify a language: `{0}`",
+                "NotAllowed": "You are not allowed to change the language!"
+            },
+            "Prefix": {
+                "Set": "The prefix has been changed to `{0}`",
+                "AlreadySet": "The prefix is already set to `{0}`",
+                "NoneGiven": "You have to specify a prefix: `{0}`",
+                "TooLong": "The prefix may only be one character long!",
+                "NotAllowed": "You are not allowed to change the prefix!"
+            }
         }
-    },
-    "settings": {
-        "langChanged": "Language has been changed to: ",
-        "langNotFound": "I don't know that Language yet.",
-        "langNoString": "You need set the Language to something",
-        "langNoRights": "You aren't allowed to change the Language",
-        "langwtf": "Something wen't wrong. Try !settings for help",
-        "lang": "Language has been changed to: ",
-        "setTitle": "Settings",
-        "helpLangD": "Language"
     },
     "google": {
         "errorNoInput": ":warning: You need to give a search Input!",
@@ -25,5 +33,15 @@
         "NEKOS_LIFE": "Nekos.life",
         "ADMIN": "Admin",
         "MISC": "Miscellaneous"
+    },
+    "Vocabulary": {
+        "Settings": "Settings",
+        "Language": "Language",
+        "Prefix": "Prefix",
+
+        "Languages": {
+            "GERMAN": "German",
+            "ENGLISH": "English"
+        }
     }
 }
