@@ -54,6 +54,8 @@ module.exports = {
         if (obj) {
             if (obj instanceof dc.Message) {
                 return obj.guild.id;
+            } else if (obj instanceof dc.Guild) {
+                return obj.id;
             }
         }
 

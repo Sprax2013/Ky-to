@@ -21,6 +21,9 @@ const LanguageEnum = Object.freeze({
 
 module.exports = {
     LanguageEnum: LanguageEnum,
+    getStringForConsole: (strIdentifier, fallBackString = null) => {
+        return module.exports.getString(null, strIdentifier, index.getConsoleLangugage(), fallBackString);
+    },
     getStringForGuild: (commandFile, strIdentifier, guildID, fallBackString = null) => {
         return module.exports.getString(commandFile, strIdentifier, index.getGuildLanguage(index.Utils.getGuildID(guildID)), fallBackString);
     },
@@ -39,7 +42,6 @@ module.exports = {
             strIdentifier = strIdentifier.replace(/{%cmd}/gi, replacer);
         }
         strIdentifier = strIdentifier.replace(/{%voc}/gi, 'Vocabulary');
-
 
         var langJSON;
 
@@ -80,6 +82,27 @@ module.exports = {
         }
 
         return result ? result : fallBackString;
+    },
+
+    getWordForConsole: (word, count = 1, fallBackString = word) => {
+        return module.exports.getWord(word, index.getConsoleLangugage(), count, fallBackString);
+    },
+    getWord: (word, langEnum, count = 1, fallBackString = word) => {
+        var result = module.exports.getString(null, `{%voc}:${word}`, langEnum, fallBackString);
+
+        if (typeof result === 'object') {
+            let keys = Object.keys(result);
+
+            if (count === 0 && keys.includes('Zero')) {
+                result = result.Zero;
+            } else if (count === 1 && keys.includes('Singular')) {
+                result = result.Singular;
+            } else if (keys.includes('Plural')) {
+                result = result.Plural;
+            }
+        }
+
+        return result;
     },
 
     getCommandCategoryForGuild: (cmdCat, guildID) => {

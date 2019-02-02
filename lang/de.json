@@ -1,4 +1,7 @@
 {
+    "Bot": {
+        "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})"
+    },
     "Commands": {
         "Template": {
             "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand",
@@ -100,6 +103,23 @@
         "Settings": "Einstellungen",
         "Language": "Sprache",
         "Prefix": "Präfix",
+
+        "Guild": {
+            "Zero": "Gilden",
+            "Singular": "Gilde",
+            "Plural": "Gilden"
+        },
+        "Client": {
+            "Zero": "Clients",
+            "Singular": "Client",
+            "Plural": "Clients"
+        },
+        "Bot": {
+            "Zero": "Bots",
+            "Singular": "Bot",
+            "Plural": "Bots"
+        },
+        "Channel": "Channel",
 
         "Languages": {
             "GERMAN": "Deutsch",

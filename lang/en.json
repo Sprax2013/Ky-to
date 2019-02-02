@@ -1,4 +1,7 @@
 {
+    "Bot": {
+        "Status": "Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)"
+    },
     "Commands": {
         "Template": {
             "cmd.Description": "This is the command of the template. It answers with the arguments of #onCommand",
@@ -92,6 +95,7 @@
         "setDescription": "Description",
         "setFooter": "'s Search History"
     },
+
     "CommandCategory": {
         "NEKOS_LIFE": "Nekos.life",
         "ADMIN": "Admin",
@@ -101,6 +105,27 @@
         "Settings": "Settings",
         "Language": "Language",
         "Prefix": "Prefix",
+
+        "Guild": {
+            "Zero": "Guilds",
+            "Singular": "Guild",
+            "Plural": "Guilds"
+        },
+        "Client": {
+            "Zero": "Clients",
+            "Singular": "Client",
+            "Plural": "Clients"
+        },
+        "Bot": {
+            "Zero": "Bots",
+            "Singular": "Bot",
+            "Plural": "Bots"
+        },
+        "Channel": {
+            "Zero": "Channels",
+            "Singular": "Channel",
+            "Plural": "Channels"
+        },
 
         "Languages": {
             "GERMAN": "German",

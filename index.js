@@ -26,6 +26,9 @@ module.exports = {
     getDefaultLanguage: () => {
         return localization.getLanguageEnumFromString(cfg.default.lang);
     },
+    getConsoleLangugage: () => {
+        return localization.getLanguageEnumFromString(cfg.consoleLang);
+    },
     getDefaultCommandPrefix: () => {
         return cfg.default.prefix;
     },
@@ -130,6 +133,9 @@ const localization = require('./localization');
 if (cfg.botToken === 'INSERT_TOKEN_HERE') {
     console.log('Insert your Bot-Token (./storage/config.json)');
     process.exit(1);
+} else if (!module.exports.getConsoleLangugage()) {
+    console.log('Insert a valid console language and make sure that the translations are complete)');
+    process.exit(1);
 } else if (!module.exports.getDefaultLanguage()) {
     console.log('Insert a valid default language and make sure that the translations are complete)');
     process.exit(2);
@@ -148,13 +154,46 @@ initCommands();
 /* Discord */
 
 client.on('ready', () => {
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    let guildCount = 0,
+        guildsIgnoredCount = 0,
+        channelCount = 0,
+        clientCount = 0,
+        botCount = 0;
+
+    for (const guild of client.guilds.values()) {
+        if (handleGuild(guild)) {
+            guildCount++;
+            channelCount += guild.channels.size;
+
+            for (const member of guild.members.values()) {
+                if (member.user.bot) {
+                    if (member.user !== client.user) {
+                        botCount++;
+                    }
+                } else {
+                    clientCount++;
+                }
+            }
+        } else {
+            guildsIgnoredCount++;
+        }
+    }
+    console.log(
+        localization.getStringForConsole(
+            'Bot:Status', 'Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)')
+        .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
+            `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
+            `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
+            `${clientCount} ${localization.getWordForConsole('Client', clientCount)}`,
+            `${botCount} ${localization.getWordForConsole('Bot', botCount)}`
+        )
+    );
 
     updateBotActivity();
 });
 
 client.on('guildCreate', (guild) => {
-    console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+    console.log(`New guild joined: ${guild.name} (ID: ${guild.id}). This guild has ${guild.memberCount - 1} members!`);
 
     updateBotActivity();
 });
@@ -173,8 +212,7 @@ client.on('message', (msg) => {
     if (msg.author.bot) return;
     if (!msg.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
 
-    if (cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(msg.guild.id)) return;
-    if (!cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(msg.guild.id)) return;
+    if (!handleGuild(msg)) return;
 
     var guildPrefix = module.exports.getGuildPrefix(msg.guild.id);
     if (msg.content.indexOf(guildPrefix) !== 0) return;
@@ -210,6 +248,7 @@ setInterval(module.exports.saveToFile, 30 * 1000);
 function createFiles() {
     const defaultConfig = {
         botToken: 'INSERT_TOKEN_HERE',
+        consoleLang: 'de',
         default: {
             prefix: ';',
             lang: 'en'
@@ -305,4 +344,10 @@ function initCommands() {
             console.log(`Failed loading '${f}': 'cmd' could not be read (missing?)`);
         }
     });
+}
+
+function handleGuild(guildID) {
+    guildID = module.exports.Utils.getGuildID(guildID);
+
+    return (cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(guildID)) || (!cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(guildID));
 }
