@@ -11,3 +11,4 @@
  - !help <Command> -> Zeigt die Usage zum Command
  - 'Commands:Nekos.Life-API:Avatar:RichTitle' einen String geben (für !avatar)
  - !settings -> Bestimmte Befehle und Gruppen deaktivieren (NSFWL komplett deaktivieren etc.)
+ - Der Bot hostet auf localhost mit dem express package einen Webserver, der (ohne MySQL) eine Einstellungs-Page hat. Jeder kann sich einen Token generieren, der für 2-8h gültig ist und sein Profil bearbeiten oder die Bot-Settings für alle Server, auf denen er Admin hat

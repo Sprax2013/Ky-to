@@ -138,6 +138,8 @@ if (cfg.botToken === 'INSERT_TOKEN_HERE') {
     process.exit(3);
 }
 
+require('./WebServer/webserver'); // Start WebServer or crash
+
 const client = new dc.Client();
 var filesChanged = false;
 

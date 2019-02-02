@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore ./storage"
+    "start": "nodemon --ignore ./storage --ignore ./logs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "express": "^4.16.4",
     "google": "^2.1.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "request": "^2.88.0"
   }

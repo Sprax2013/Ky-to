@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const request = require('request');
 const dc = require('discord.js');
 
@@ -76,5 +79,39 @@ module.exports = {
 
             callback(null);
         });
+    }
+}
+
+module.exports.mkdirs = (dirPath, callback) => {
+    if (typeof dirPath === 'function') {
+        dirPath = dirPath();
+    }
+
+    dirPath = path.resolve(dirPath);
+
+    try {
+        if (!fs.existsSync(dirPath)) {
+            var tempPath;
+
+            dirPath.split(/[/\\]/).forEach((dirName) => {
+                tempPath ? tempPath = path.join(tempPath, dirName) : tempPath = dirName;
+
+                if (!fs.existsSync(tempPath)) {
+                    fs.mkdirSync(tempPath);
+                }
+            });
+        }
+
+        if (callback) {
+            callback();
+        }
+
+        return true;
+    } catch (err) {
+        if (callback) {
+            callback(err);
+        }
+
+        return false;
     }
 }
