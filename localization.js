@@ -71,10 +71,11 @@ module.exports = {
 
         if (!result && langEnum !== index.getDefaultLanguage()) {
             console.error(`Für '${strIdentifier}' wurde kein String in der Sprache '${langEnum.__KEY}' gefunden!`);
-            result = module.exports.getString(commandFile, strIdentifier, index.getDefaultLanguage());
+            let defaultLang = index.getDefaultLanguage();
+            result = module.exports.getString(commandFile, strIdentifier, defaultLang);
 
             if (!result) {
-                console.error(`Für '${strIdentifier}' wurde kein String in der Standardsprache '${langEnum.__KEY}' gefunden!`);
+                console.error(`Für '${strIdentifier}' wurde kein String in der Standardsprache '${defaultLang.__KEY}' gefunden!`);
             }
         }
 

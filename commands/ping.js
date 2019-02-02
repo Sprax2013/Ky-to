@@ -1,12 +1,12 @@
 module.exports.cmd = {
-    name: 'ping'
+    name: 'Ping'
 };
 
 module.exports.onCommand = async (bot, msg) => {
     if (msg.isMentioned(bot.user)) {
-        msg.channel.send(`Pong! My latency's at ${Math.round(bot.ping)}ms`);
+        msg.channel.send(loc.getStringForGuild(this, '{%cmd}:BotPing', msg).format(Math.round(bot.ping)));
     } else {
-        let resMsg = await msg.channel.send('Ping is being investigated... As if it were a criminal :mag:');
-        resMsg.edit(`Pong! \`${resMsg.createdTimestamp - msg.createdTimestamp}ms\``);
+        let resMsg = await msg.channel.send(loc.getStringForGuild(this, '{%cmd}:BeingAppreciated', msg));
+        resMsg.edit(loc.getStringForGuild(this, '{%cmd}:UserPing', msg).format(Math.round((resMsg.createdTimestamp - msg.createdTimestamp) - bot.ping)));
     }
 }

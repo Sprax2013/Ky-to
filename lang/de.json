@@ -30,11 +30,17 @@
             "RichDescription": "Nutze **{0}Commands**, nachdem der Bot dem Server beigetreten ist!",
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
         },
-        "Neko": {
+        "Ping": {
+            "cmd.Description": "Versucht Deinen Ping zu ermitteln. Erwähne Kyūto, um seinen Ping zu sehen.",
+
+            "BeingAppreciated": "Ping wird geschätzt... :bar_chart:",
+            "BotPing": "Ich habe einen Ping von {0}ms",
+            "UserPing": "Dein Ping liegt bei etwa {0}ms"
+        },
+        "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann (Nekos.life-API)",
 
-                "RichTitle": "Oh my, how Lewd! >.<",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}s neuer Avatar",
                 "RichFooter_NSFW": "{0}s neuer, unanständiger Avatar"
@@ -54,6 +60,28 @@
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Hentai": {
+                "cmd.Description": "Zeigt ein zufälliges Hentai-Bild (Nekos.life-API)",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Pussy": {
+                "cmd.Description": "Zeigt ein zufälliges Pussy-Bild (Nekos.life-API)",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Fox": {
+                "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild (Nekos.life-API)",
+
+                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}'s Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
             }
         }
     },

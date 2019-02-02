@@ -9,7 +9,7 @@ const apiURL_NSFW = 'https://nekos.life/api/v2/img/cum_jpg',
 module.exports.cmd = {
     name: 'Cum',
 
-    localizationSubGroup: 'Neko'
+    localizationSubGroup: 'Nekos.Life-API'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {

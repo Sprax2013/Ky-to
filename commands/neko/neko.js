@@ -11,7 +11,7 @@ const apiURL_GIF = 'https://nekos.life/api/v2/img/ngif',
 module.exports.cmd = {
     name: 'Neko',
 
-    localizationSubGroup: 'Neko'
+    localizationSubGroup: 'Nekos.Life-API'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {

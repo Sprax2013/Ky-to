@@ -3,33 +3,43 @@ const loc = index.getLocalization();
 
 const dc = require('discord.js');
 
-const apiURL = 'https://nekos.life/api/v2/img/avatar',
-    apiURL_NSFW = 'https://nekos.life/api/v2/img/nsfw_avatar';
+const apiURL_NSFW = 'https://nekos.life/api/v2/img/pussy_jpg',
+    apiURL_GIF_NSFW = 'https://nekos.life/api/v2/img/pussy';
 
 module.exports.cmd = {
-    name: 'Avatar',
+    name: 'Pussy',
 
     localizationSubGroup: 'Nekos.Life-API'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let nsfw = args.length > 0 && (args.includes('nsfw') || args.includes('lewd'));
-
-    if (nsfw && !msg.channel.nsfw) {
+    if (!msg.channel.nsfw) {
         msg.reply(loc.getStringForGuild(this, 'NOT_NSFW_CHANNEL', msg));
         return;
     }
 
-    index.Utils.getJSONFromURL((nsfw ? apiURL_NSFW : apiURL), (json) => {
+    let url = apiURL_NSFW;
+    let footerIdent = '{%cmd}:RichFooter_NSFW';
+
+    if (args.length >= 1) {
+        let gif = args.includes('gif') || args.includes('animated');
+
+        if (gif) {
+            url = apiURL_GIF_NSFW;
+
+            footerIdent += '_Animated';
+        }
+    }
+
+    index.Utils.getJSONFromURL(url, (json) => {
         if (json && json.url) {
             msg.channel.send(
                 new dc.RichEmbed()
                 .setColor(0x00AE86)
-                .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle' + (nsfw ? '_NSFW' : ''), msg))
+                .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle', msg))
 
                 .setImage(json.url)
-
-                .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter' + (nsfw ? '_NSFW' : ''), msg)
+                .setFooter(loc.getStringForGuild(this, footerIdent, msg)
                     .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
             );
         } else {

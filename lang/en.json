@@ -30,11 +30,17 @@
             "RichDescription": "Use **{0}Commands** after the Bot has joined the server!",
             "RichFooter": "{0}'s request has been processed"
         },
-        "Neko": {
+        "Ping": {
+            "cmd.Description": "Tries to determine your Ping. Mention Kyūto to see his ping.",
+
+            "BeingAppreciated": "Ping is being appreciated... :bar_chart:",
+            "BotPing": "My latency is about {0}ms",
+            "UserPing": "You have about {0}ms of latency"
+        },
+        "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Shows a random image that can be used as an avatar (Nekos.life-API)",
 
-                "RichTitle": "Oh my, how Lewd! >.<",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}'s new avatar",
                 "RichFooter_NSFW": "{0}'s new lewd avatar"
@@ -54,6 +60,28 @@
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
                 "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
+            },
+            "Hentai": {
+                "cmd.Description": "Shows a random hentai image (Nekos.life-API)",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
+                "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
+            },
+            "Pussy": {
+                "cmd.Description": "Shows a random pussy image (Nekos.life-API)",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
+                "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
+            },
+            "Fox": {
+                "cmd.Description": "Shows a random fox image (Nekos.life-API)",
+
+                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}'s Waifu   |   More with {1}",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}"
             }
         }
     },

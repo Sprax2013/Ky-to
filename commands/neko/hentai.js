@@ -1,55 +1,53 @@
 const index = require('./../../index');
-const Discord = require('discord.js');
-const lewdgif = "https://nekos.life/api/v2/img/nsfw_neko_gif";
-const lewdimg = "https://nekos.life/api/lewd/neko";
-const snekfetch = require('snekfetch');
+const loc = index.getLocalization();
+
+const dc = require('discord.js');
+
+const apiURL_NSFW = 'https://nekos.life/api/v2/img/hentai',
+    apiURL_GIF_NSFW = 'https://nekos.life/api/v2/img/Random_hentai_gif';
 
 module.exports.cmd = {
-    name: 'lewd'
+    name: 'Hentai',
+
+    localizationSubGroup: 'Nekos.Life-API'
 };
 
-module.exports.onCommand = async (bot, msg, cmd, args, ) => {
-    const command = args.shift();
-    let mentions = Array.from(msg.mentions.users.values());
-    if (msg.channel.nsfw === false) {
-        return msg.reply(":warning: Yea.. no this channel isn't NSFW.")
-    }
-    if (command === 'gif') {
-        var imgNeko = snekfetch.get(lewdgif).then(r => {
-            let embed = new Discord.RichEmbed()
-                .setTitle("Oh my, how Lewd! >.<")
-                .setColor(0x00AE86)
-                .setFooter(`${msg.author.username}` + `'s Animated Waifu`)
-                .setImage(r.body.url)
-            msg.channel.send(embed)
-        })
-        return
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
+    if (!msg.channel.nsfw) {
+        msg.reply(loc.getStringForGuild(this, 'NOT_NSFW_CHANNEL', msg));
+        return;
     }
 
-    let prefix = index.getGuildPrefix(msg);
+    let url = apiURL_NSFW;
+    let footerIdent = '{%cmd}:RichFooter_NSFW';
 
-    if (command === 'help') {
-        let embed = new Discord.RichEmbed()
-            .setTitle("Neko Help")
-            .setColor(0x00AE86)
-            .addBlankField(true)
-            .addField(`${prefix}lewd `, `Shows you a Image of a Lewd Neko.`)
-            .addField(`${prefix}lewd gif`, `Shows you a GIF of a Lewd Neko.`)
-            .addField(`${prefix}lewd help`, `Shows you this List.`)
+    if (args.length >= 1) {
+        let gif = args.includes('gif') || args.includes('animated');
 
-        msg.channel.send(embed)
-        return
-    } else {
-        if (mentions.length === 0) {
-            var imgNeko = snekfetch.get(lewdimg).then(r => {
-                let embed = new Discord.RichEmbed()
-                    .setTitle("Oh my, how Lewd! >.<")
-                    .setColor(0x00AE86)
-                    .setFooter(`${msg.author.username}` + `'s Waifu     |     Try ${index.getGuildPrefix(prefix)}lewd help for more `)
-                    .setImage(r.body.neko)
-                msg.channel.send(embed)
-            })
-            return
+        if (gif) {
+            url = apiURL_GIF_NSFW;
+
+            footerIdent += '_Animated';
         }
     }
+
+    index.Utils.getJSONFromURL(url, (json) => {
+        if (json && json.url) {
+            msg.channel.send(
+                new dc.RichEmbed()
+                .setColor(0x00AE86)
+                .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle', msg))
+
+                .setImage(json.url)
+                .setFooter(loc.getStringForGuild(this, footerIdent, msg)
+                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
+            );
+        } else {
+            msg.channel.send(
+                new dc.RichEmbed()
+                .setColor(0x00AE86)
+                .setTitle(loc.getStringForGuild(this, 'ERR_OCCURRED', msg))
+            );
+        }
+    });
 }
