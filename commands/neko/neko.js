@@ -11,6 +11,8 @@ const apiURL_GIF = 'https://nekos.life/api/v2/img/ngif',
 module.exports.cmd = {
     name: 'Neko',
 
+    category: index.CommandCategory.NEKOS_LIFE,
+    
     localizationSubGroup: 'Nekos.Life-API'
 };
 

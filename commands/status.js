@@ -28,6 +28,8 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         }
     }
 
+    let ping = Math.round(bot.ping);
+
     let memoryUsage = Math.round((os.freemem() / os.totalmem()) * 100);
     if (memoryUsage >= 50) {
         memoryUsage = 'Normal *(50-90%)*';
@@ -49,6 +51,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                 `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
             ))
         .addBlankField()
+        .addField('API-Ping', `${ping}ms`)
         .addField('Memory Usage', memoryUsage)
         .addField('CPU Usage', ':mag:')
 
@@ -79,6 +82,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                     `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
                 ))
             .addBlankField()
+            .addField('API-Ping', `About ${ping}ms`)
             .addField('Memory Usage', memoryUsage)
             .addField('CPU Usage', cpuUsage)
 

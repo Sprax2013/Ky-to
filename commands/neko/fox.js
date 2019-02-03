@@ -9,6 +9,8 @@ const apiURL = 'https://nekos.life/api/v2/img/fox_girl',
 module.exports.cmd = {
     name: 'Fox',
 
+    category: index.CommandCategory.NEKOS_LIFE,
+
     localizationSubGroup: 'Nekos.Life-API'
 };
 

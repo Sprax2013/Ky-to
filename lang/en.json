@@ -6,11 +6,13 @@
     "Commands": {
         "Template": {
             "cmd.Description": "This is the command of the template. It answers with the arguments of #onCommand",
+            "cmd.Usage": "{0}{1}",
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
         "Settings": {
-            "cmd.Description": "Configure the bot to your liking",
+            "cmd.Description": "Lists the various setting options, such as language or command prefix",
+            "cmd.Usage": "{0}{1}",
 
             "Lang": {
                 "Set": "Language has been changed to '{0}'",
@@ -29,6 +31,7 @@
         },
         "Invite": {
             "cmd.Description": "Creates an invite link to add me to another server",
+            "cmd.Usage": "{0}{1}",
 
             "RichTitle": ">> Invite Link <<",
             "RichDescription": "Use **{0}Commands** after the Bot has joined the server!",
@@ -36,6 +39,7 @@
         },
         "Ping": {
             "cmd.Description": "Tries to determine your Ping. Mention Kyūto to see his ping.",
+            "cmd.Usage": "{0}{1} {2}",
 
             "BeingAppreciated": "Ping is being appreciated... :bar_chart:",
             "BotPing": "My latency is about {0}ms",
@@ -43,14 +47,16 @@
         },
         "Nekos.Life-API": {
             "Avatar": {
-                "cmd.Description": "Shows a random image that can be used as an avatar (Nekos.life-API)",
+                "cmd.Description": "Shows a random image that can be used as an avatar",
+                "cmd.Usage": "{0}{1} <Lewd>",
 
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}'s new avatar",
                 "RichFooter_NSFW": "{0}'s new lewd avatar"
             },
             "Neko": {
-                "cmd.Description": "Shows a random neko image (Nekos.life-API)",
+                "cmd.Description": "Shows a random neko image",
+                "cmd.Usage": "{0}{1} <Lewd> <Gif>",
 
                 "RichTitle": "NYAAAAA!",
                 "RichFooter": "{0}'s Waifu   |   More with {1}",
@@ -59,28 +65,32 @@
                 "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
             },
             "Cum": {
-                "cmd.Description": "Shows a random cum image (Nekos.life-API)",
+                "cmd.Description": "Shows a random cum image",
+                "cmd.Usage": "{0}{1} <Gif>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
                 "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
             },
             "Hentai": {
-                "cmd.Description": "Shows a random hentai image (Nekos.life-API)",
+                "cmd.Description": "Shows a random hentai image",
+                "cmd.Usage": "{0}{1} <Gif>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
                 "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
             },
             "Pussy": {
-                "cmd.Description": "Shows a random pussy image (Nekos.life-API)",
+                "cmd.Description": "Shows a random pussy image",
+                "cmd.Usage": "{0}{1} <Gif>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
                 "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
             },
             "Fox": {
-                "cmd.Description": "Shows a random fox image (Nekos.life-API)",
+                "cmd.Description": "Shows a random fox image",
+                "cmd.Usage": "{0}{1} <Lewd> <Gif>",
 
                 "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
@@ -98,15 +108,39 @@
     },
 
     "CommandCategory": {
-        "NEKOS_LIFE": "Nekos.life",
-        "ADMIN": "Admin",
-        "MISC": "Miscellaneous"
+        "NEKOS_LIFE": {
+            "name": "Nekos.life",
+            "description": "*Nekos.life* offers many images about **neko** and **anime** - Upon request, I will show you different images to a category of your choice"
+        },
+        "ADMIN": {
+            "name": "Admin",
+            "description": "Commands that require **admin rights on the server** - With these commands you can customize my functionality on each server"
+        },
+        "MISC": {
+            "name": "Miscellaneous",
+            "description": "Commands, which I could not assign a precise category"
+        },
+        "INFO": {
+            "name": "Info",
+            "description": "Commands that ??????????????????????????????????????????????????????????????????????????????????????????????????????????????? (Contact Sprax2013. That dumbass forgot to translate this)"
+        }
     },
     "Vocabulary": {
-        "Settings": "Settings",
-        "Language": "Language",
-        "Prefix": "Prefix",
-
+        "Settings": {
+            "Zero": "Settings",
+            "Singular": "Setting",
+            "Plural": "Settings"
+        },
+        "Language": {
+            "Zero": "Languages",
+            "Singular": "Language",
+            "Plural": "Languages"
+        },
+        "Prefix": {
+            "Zero": "Prefixes",
+            "Singular": "Prefix",
+            "Plural": "Prefixes"
+        },
         "Guild": {
             "Zero": "Guilds",
             "Singular": "Guild",

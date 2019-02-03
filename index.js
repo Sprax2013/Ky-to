@@ -10,13 +10,20 @@ const guilds = require('./storage/guilds.json');
 module.exports = {
     CommandCategory: Object.freeze({
         'NEKOS_LIFE': {
-            __KEY: 'NEKOS_LIFE'
+            __KEY: 'NEKOS_LIFE',
+            color: '0xFFB7D8'
         },
         'ADMIN': {
-            __KEY: 'ADMIN'
+            __KEY: 'ADMIN',
+            color: '0xEF2B48'
         },
         'MISC': {
-            __KEY: 'MISC'
+            __KEY: 'MISC',
+            color: '0xB7C0EE'
+        },
+        'INFO': {
+            __KEY: 'INFO',
+            color: ''
         }
     }),
     handleGuild: handleGuild,
@@ -194,13 +201,17 @@ client.on('ready', () => {
 });
 
 client.on('guildCreate', (guild) => {
-    console.log(`New guild joined: ${guild.name} (ID: ${guild.id}). This guild has ${guild.memberCount - 1} members!`);
+    if (handleGuild(guild)) {
+        console.log(`New guild joined: ${guild.name} (ID: ${guild.id}). This guild has ${guild.memberCount - 1} members!`);
+    }
 
     updateBotActivity();
 });
 
 client.on('guildDelete', (guild) => {
-    console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+    if (handleGuild(guild)) {
+        console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+    }
 
     updateBotActivity();
 });
@@ -314,6 +325,10 @@ function initCommands() {
         let prop = require(f);
 
         if (prop.cmd) {
+            if (!prop.cmd.category) {
+                prop.cmd.category = module.exports.CommandCategory.MISC;
+            }
+
             if (!client.cmds.has(prop.cmd.name.toLowerCase())) {
                 client.cmds.set(prop.cmd.name.toLowerCase(), prop);
             } else {

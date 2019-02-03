@@ -9,6 +9,8 @@ const apiURL_NSFW = 'https://nekos.life/api/v2/img/hentai',
 module.exports.cmd = {
     name: 'Hentai',
 
+    category: index.CommandCategory.NEKOS_LIFE,
+
     localizationSubGroup: 'Nekos.Life-API'
 };
 

@@ -9,6 +9,8 @@ const apiURL_NSFW = 'https://nekos.life/api/v2/img/pussy_jpg',
 module.exports.cmd = {
     name: 'Pussy',
 
+    category: index.CommandCategory.NEKOS_LIFE,
+
     localizationSubGroup: 'Nekos.Life-API'
 };
 

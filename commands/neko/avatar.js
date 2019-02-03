@@ -9,11 +9,13 @@ const apiURL = 'https://nekos.life/api/v2/img/avatar',
 module.exports.cmd = {
     name: 'Avatar',
 
+    category: index.CommandCategory.NEKOS_LIFE,
+
     localizationSubGroup: 'Nekos.Life-API'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let nsfw = args.length > 0 && (args.includes('nsfw') || args.includes('lewd'));
+    let nsfw = args.length > 0 && (args.includes('lewd') || args.includes('nsfw'));
 
     if (nsfw && !msg.channel.nsfw) {
         msg.reply(loc.getStringForGuild(this, 'NOT_NSFW_CHANNEL', msg));
