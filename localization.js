@@ -87,6 +87,9 @@ module.exports = {
     getWordForConsole: (word, count = 1, fallBackString = word) => {
         return module.exports.getWord(word, index.getConsoleLangugage(), count, fallBackString);
     },
+    getWordForGuild: (word, guildID, count = 1, fallBackString = word) => {
+        return module.exports.getWord(word, index.getGuildLanguage(index.Utils.getGuildID(guildID)), count, fallBackString);
+    },
     getWord: (word, langEnum, count = 1, fallBackString = word) => {
         var result = module.exports.getString(null, `{%voc}:${word}`, langEnum, fallBackString);
 

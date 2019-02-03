@@ -1,6 +1,7 @@
 {
     "Bot": {
-        "Status": "Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)"
+        "Status": "Bot is active on {0} (while ignoring {1}), in {2} for {3} (+{4})",
+        "Status_Public": "Bot is active on {0} with {1} for {2} (not counting any bots)"
     },
     "Commands": {
         "Template": {

@@ -1,6 +1,7 @@
 {
     "Bot": {
-        "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})"
+        "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})",
+        "Status_Public": "Der Bot ist in {0} aktiv, mit {1} für insgesammt {2} (außgenommen Bots)"
     },
     "Commands": {
         "Template": {
