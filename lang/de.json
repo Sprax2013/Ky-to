@@ -45,6 +45,20 @@
             "BotPing": "Ich habe einen Ping von {0}ms",
             "UserPing": "Dein Ping liegt bei etwa {0}ms"
         },
+        "Prefix": {
+            "cmd.Description": "Ändert die Command-Prefix, auf die ich reagiere - **Die Kurzform vom Settings-Befehl**",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Status": {
+            "cmd.Description": "Zeigt meinen aktuellen Status und den des Systems an, auf dem ich laufe",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Commands": {
+            "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie",
+            "cmd.Usage": "{0}{1}",
+
+            "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
+        },
         "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann",
@@ -120,7 +134,7 @@
         },
         "INFO": {
             "name": "Info",
-            "description": "Befehle, die dir ??????????????????????????????????????????????????????????????????????????????????????????????????????????????? (Spreib Sprax2013 an. Der Vollidiot hat die Kacke hier vergessen zu übersetzen)"
+            "description": "***Bitte eine Beschreibung, für diese Kategorie vorschlagen***"
         }
     },
     "Vocabulary": {

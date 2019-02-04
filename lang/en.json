@@ -45,6 +45,20 @@
             "BotPing": "My latency is about {0}ms",
             "UserPing": "You have about {0}ms of latency"
         },
+        "Prefix": {
+            "cmd.Description": "Changes the command prefix that I respond to - **The short form of the Settings-Command**",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Status": {
+            "cmd.Description": "Shows my current status and that of the system I am running on",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Commands": {
+            "cmd.Description": "Lists all commands sorted by category",
+            "cmd.Usage": "{0}{1}",
+
+            "CheckDMs": "Check your DMs :mailbox_with_mail: (Delete messages in **{0} seconds**)"
+        },
         "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Shows a random image that can be used as an avatar",
@@ -122,7 +136,7 @@
         },
         "INFO": {
             "name": "Info",
-            "description": "Commands that ??????????????????????????????????????????????????????????????????????????????????????????????????????????????? (Contact Sprax2013. That dumbass forgot to translate this)"
+            "description": "***Please suggest a description for this category***"
         }
     },
     "Vocabulary": {

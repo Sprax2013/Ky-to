@@ -5,7 +5,9 @@ const dc = require('discord.js');
 
 module.exports.cmd = {
     name: 'Invite',
-    aliases: ['Einladung']
+    aliases: ['Einladung'],
+
+    category: index.CommandCategory.INFO
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {

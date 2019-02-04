@@ -117,3 +117,10 @@ module.exports.mkdirs = (dirPath, callback) => {
         return false;
     }
 }
+
+// You have to use await in combination with #sleep
+module.exports.sleep = (ms) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}

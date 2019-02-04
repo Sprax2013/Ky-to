@@ -6,7 +6,7 @@ const os = require('os-utils');
 module.exports.cmd = {
     name: 'Status',
 
-    category: index.CommandCategory.MISC
+    category: index.CommandCategory.INFO
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {

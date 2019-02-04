@@ -23,7 +23,7 @@ module.exports = {
         },
         'INFO': {
             __KEY: 'INFO',
-            color: ''
+            color: '0xFFFF33'
         }
     }),
     handleGuild: handleGuild,

@@ -1,5 +1,9 @@
+const index = require('./../index');
+
 module.exports.cmd = {
-    name: 'Ping'
+    name: 'Ping',
+
+    category: index.CommandCategory.INFO
 };
 
 module.exports.onCommand = async (bot, msg) => {

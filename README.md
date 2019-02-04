@@ -12,3 +12,4 @@
  - Der Bot hostet eine Einstellungs- und Profile-Page. Jeder kann sich einen Token generieren (!Editor, !ControlPanel, !Webinterface, etc.), der für 2-8h gültig ist und sein Profil bearbeiten oder die Bot-Settings für alle Server, auf denen er Admin hat
  - Der Bot führt Statistiken, welcher Command wie oft genutzt wurde mit welchen Argumenten (Anonymisiert.) - Zusätzlich die Anzahl von Ausgeführten Befehlen pro Guilde
  - !Status - gibt die gleiche Meldung, wie in der COnsole beim onReady ausgibt + den aktuellen Ping. Vllt. noch kleine Stats über das System (CPU-Auslastung: Gering/Normal/Hoch und für den RAM vllt. noch [Keine tatsächlichen Werte im Chat pls])
+ - !Avatar <Gif>
