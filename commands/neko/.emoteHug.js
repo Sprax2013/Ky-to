@@ -1,3 +1,5 @@
+// ToDo: Recode
+
 const Discord = require('discord.js');
 const api = "https://nekos.life/api/hug";
 const snekfetch = require('snekfetch');
