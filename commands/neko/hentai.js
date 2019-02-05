@@ -3,8 +3,18 @@ const loc = index.getLocalization();
 
 const dc = require('discord.js');
 
-const apiURL_NSFW = 'https://nekos.life/api/v2/img/hentai',
-    apiURL_GIF_NSFW = 'https://nekos.life/api/v2/img/Random_hentai_gif';
+const apiURL_NSFW = ['https://nekos.life/api/v2/img/hentai', 'https://nekos.life/api/v2/img/solo', 'https://nekos.life/api/v2/img/tits'],
+    apiURL_NSFW_FEET = 'https://nekos.life/api/v2/img/feet',
+    // apiURL_NSFW_YURI = ['https://nekos.life/api/v2/img/yuri', 'https://nekos.life/api/v2/img/eroyuri'],    // GIF version
+    apiURL_NSFW_BJ = 'https://nekos.life/api/v2/img/blowjob',
+
+    apiURL_GIF_NSFW = [
+        'https://nekos.life/api/v2/img/Random_hentai_gif', 'https://nekos.life/api/v2/img/pwankg', 'https://nekos.life/api/v2/img/solog',
+        'https://nekos.life/api/v2/img/classic', 'https://nekos.life/api/v2/img/kuni', 'https://nekos.life/api/v2/img/boobs'
+    ],
+    apiURL_GIF_NSFW_FEET = 'https://nekos.life/api/v2/img/feetg',
+    // apiURL_GIF_NSFW_ANAL = 'https://nekos.life/api/v2/img/anal', // Non-Gif version ??
+    apiURL_GIF_NSFW_BJ = 'https://nekos.life/api/v2/img/bj';
 
 module.exports.cmd = {
     name: 'Hentai',
@@ -20,16 +30,38 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         return;
     }
 
-    let url = apiURL_NSFW;
+    let url = apiURL_NSFW.random();
     let footerIdent = '{%cmd}:RichFooter_NSFW';
 
     if (args.length >= 1) {
         let gif = args.includes('gif') || args.includes('animated');
 
+        let feet = args.includes('feet') || args.includes('foot');
+        // let yuri = args.includes('yuri') || args.includes('lesbian');
+        let bj = args.includes('blowjob') || args.includes('bj');
+
         if (gif) {
-            url = apiURL_GIF_NSFW;
+            if (feet) {
+                url = apiURL_GIF_NSFW_FEET;
+            }
+            //  else if (yuri) {
+            //     url = apiURL_GIF_NSFW_YURI;
+            // }
+            else if (bj) {
+                url = apiURL_GIF_NSFW_BJ;
+            } else {
+                url = apiURL_GIF_NSFW.random();
+            }
 
             footerIdent += '_Animated';
+        } else if (feet) {
+            url = apiURL_NSFW_FEET;
+        }
+        //  else if (yuri) {
+        //     url = apiURL_NSFW_YURI;
+        // }
+        else if (bj) {
+            url = apiURL_NSFW_BJ;
         }
     }
 

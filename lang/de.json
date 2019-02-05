@@ -93,7 +93,7 @@
             },
             "Hentai": {
                 "cmd.Description": "Zeigt ein zufälliges Hentai-Bild",
-                "cmd.Usage": "{0}{1} <Gif>",
+                "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",

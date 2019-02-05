@@ -3,8 +3,12 @@ const loc = index.getLocalization();
 
 const dc = require('discord.js');
 
-const apiURL = 'https://nekos.life/api/v2/img/neko',
-    apiURL_NSFW = 'https://nekos.life/api/v2/img/lewd';
+const apiURL = ['https://nekos.life/api/v2/img/neko', 'https://nekos.life/api/v2/img/kemonomimi'],
+    apiURL_NSFW = [
+        'https://nekos.life/api/v2/img/lewd', 'https://nekos.life/api/v2/img/eron',
+        'https://nekos.life/api/v2/img/lewdkemo', 'https://nekos.life/api/v2/img/erokemo'
+    ];
+
 const apiURL_GIF = 'https://nekos.life/api/v2/img/ngif',
     apiURL_GIF_NSFW = 'https://nekos.life/api/v2/img/nsfw_neko_gif';
 
@@ -12,12 +16,12 @@ module.exports.cmd = {
     name: 'Neko',
 
     category: index.CommandCategory.NEKOS_LIFE,
-    
+
     localizationSubGroup: 'Nekos.Life-API'
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let url = apiURL;
+    let url = apiURL.random();
     let footerIdent = '{%cmd}:RichFooter';
 
     if (args.length >= 1) {
@@ -38,7 +42,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
 
             footerIdent += '_Animated_NSFW';
         } else if (!gif && nsfw) {
-            url = apiURL_NSFW;
+            url = apiURL_NSFW.random();
 
             footerIdent += '_NSFW';
         } else {

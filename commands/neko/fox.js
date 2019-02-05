@@ -3,8 +3,8 @@ const loc = index.getLocalization();
 
 const dc = require('discord.js');
 
-const apiURL = 'https://nekos.life/api/v2/img/fox_girl',
-    apiURL_NSFW = 'https://nekos.life/api/v2/img/lewdk';
+const apiURL = ['https://nekos.life/api/v2/img/fox_girl', 'https://nekos.life/api/v2/img/holo'],
+    apiURL_NSFW = ['https://nekos.life/api/v2/img/lewdk', 'https://nekos.life/api/v2/img/holoero', 'https://nekos.life/api/v2/img/hololewd', 'https://nekos.life/api/v2/img/erok'];
 
 module.exports.cmd = {
     name: 'Fox',
@@ -22,7 +22,9 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         return;
     }
 
-    index.Utils.getJSONFromURL((nsfw ? apiURL_NSFW : apiURL), (json) => {
+    let rndNumber = Math.random();
+
+    index.Utils.getJSONFromURL((nsfw ? apiURL_NSFW.random() : apiURL.random()), (json) => {
         if (json && json.url) {
             msg.channel.send(
                 new dc.RichEmbed()
