@@ -32,9 +32,14 @@
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
         "Google": {
+            "cmd.Description": "**BETA** Shows the first result of a Google search query",
+            "cmd.Usage": "{0}{1}",
+
             "NoResults": "I could not find any search results.",
             "NoQuery": "You must enter a search query",
-            "QueryTooLong": "The search query is too long"
+            "QueryTooLong": "The search query is too long",
+
+            "RichFooter": "{0}'s request has been processed"
         },
         "Settings": {
             "cmd.Description": "Lists the various setting options, such as language or command prefix",
@@ -138,7 +143,7 @@
             },
             "Fox": {
                 "cmd.Description": "Shows a random fox image",
-                "cmd.Usage": "{0}{1} <Lewd> <Gif>",
+                "cmd.Usage": "{0}{1} <Lewd>",
 
                 "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",

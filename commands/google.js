@@ -50,7 +50,9 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                         .setColor(0x046CF4)
                         .setTitle(title)
 
-                        .setDescription(description);
+                        .setDescription(description)
+
+                        .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter', msg).format(index.Utils.getUsernameFromUser(msg)));
 
                     if (url) {
                         richEmbed.setURL(url);

@@ -1,4 +1,5 @@
 const index = require('./../index');
+const loc = index.getLocalization();
 
 module.exports.cmd = {
     name: 'Ping',

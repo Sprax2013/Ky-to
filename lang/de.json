@@ -32,9 +32,14 @@
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
         "Google": {
+            "cmd.Description": "**BETA** Zeigt das erste Ergebnis einer gewünschten Google-Suchanfrage",
+            "cmd.Usage": "{0}{1}",
+
             "NoResults": "Ich konnte keine Suchergebnisse finden.",
             "NoQuery": "Du musst eine Suchanfrage eingeben",
-            "QueryTooLong": "Die Suchanfrage ist zu lang"
+            "QueryTooLong": "Die Suchanfrage ist zu lang",
+
+            "RichFooter": "{0}s Anfrage wurde verarbeitet"
         },
         "Settings": {
             "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf",
@@ -65,7 +70,7 @@
         },
         "Ping": {
             "cmd.Description": "Versucht Deinen Ping zu ermitteln. Erwähne Kyūto, um seinen Ping zu sehen.",
-            "cmd.Usage": "{0}{1} <{2}>",
+            "cmd.Usage": "{0}{1}",
 
             "BeingAppreciated": "Ping wird geschätzt... :bar_chart:",
             "BotPing": "Ich habe einen Ping von {0}ms",
@@ -138,7 +143,7 @@
             },
             "Fox": {
                 "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild",
-                "cmd.Usage": "{0}{1} <Lewd> <Gif>",
+                "cmd.Usage": "{0}{1} <Lewd>",
 
                 "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
@@ -153,13 +158,6 @@
                 "RichFooter": "{0}s Anfrage wurde verarbeitet"
             }
         }
-    },
-
-    "google": {
-        "errorNoInput": ":warning: Du musst einen Such-Input angeben!",
-        "setAuthor": "Ergebniss für ",
-        "setDescription": "Beschreibung",
-        "setFooter": "s Suchverlauf"
     },
 
     "CommandCategory": {
@@ -220,6 +218,11 @@
             "Zero": "Bots",
             "Singular": "Bot",
             "Plural": "Bots"
+        },
+        "SearchQuery": {
+            "Zero": "Suchanfragen",
+            "Singular": "Suchanfrage",
+            "Plural": "Suchanfragen"
         },
         "Channel": "Channel",
 
