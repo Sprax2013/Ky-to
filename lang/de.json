@@ -1,7 +1,27 @@
 {
     "Bot": {
-        "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})",
-        "Status_Public": "Der Bot ist in {0} aktiv, mit {1} für insgesammt {2} (außgenommen Bots)"
+        "Console": {
+            "InsertBotToken": "Du musst einen Bot-Token eintragen {0}",
+            "InvalidDefaultLanguage": "Die Standardsprache in {0} scheint ungültig zu sein",
+            "InvalidDefaultPrefix": "Das Standardpräfix in {0} scheint ungültig zu sein",
+            "SavedToFile": "Dateiänderungen wurden automatisch in {0} gespeichert",
+
+            "NoCommandsLoaded": "Es wurden keine Befehle geladen",
+            "InvalidCommandFile": "\"{0}\" ist ungültig - Bitte mit \"{1}\" vergleichen",
+            "AlreadyRegistered": "\"{0}\" hat versucht, den {2} \"{1}\" zu registrieren, der bereits von einer anderen Datei verwendet wird",
+            "CommandLoaded": "\"{0}\" wurde geladen!",
+            "CommandLoadedWithAliases": "\"{0}\" wurde geladen ({1})!",
+
+            "JoinedGuild": "Ich wurde der Gilde \"{0}\" (ID: {1}) hinzugefügt",
+            "LeftGuild": "Ich wurde von der Gilde \"{0}\" (ID: {1}) entfernt",
+
+            "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})"
+        },
+        "Status_Public": "Der Bot ist in {0} aktiv, mit {1} für insgesammt {2} (außgenommen Bots)",
+
+        "ThanksForInvite": "Vielen Dank, dass Du mich zu deinem Server hinzugefügt hast! :3\nIch schlage vor, dass du mit `{0}Einstellungen` (auf dem Server) beginnst\nEine Befehlliste bekommst du mit `{0}Befehle`\n\nPS: Aktuell reagiere ich nicht auf DMs",
+        "UnknownCommand": "Unbekannter Befehl :thinking:",
+        "ChannelNotNSFW": ":warning: Dieser Channel ist nicht als *NSFW* gekennzeichnet!"
     },
     "Commands": {
         "Template": {
@@ -60,6 +80,9 @@
             "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
         },
         "Wallpaper": {
+            "cmd.Description": "Sendet ein zufälliges Hintergrundbild, dass Du verwenden kannst",
+            "cmd.Usage": "{0}{1}",
+
             "RichTitle": "Dein neuer Wallpaper",
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
         },
@@ -78,7 +101,7 @@
                 "cmd.Usage": "{0}{1} <Lewd> <Gif>",
 
                 "RichTitle": "NYAAAAA!",
-                "RichFooter": "{0}'s Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter": "{0}s Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_Animated": "{0}s animierte Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
@@ -113,21 +136,26 @@
 
                 "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
-                "RichFooter": "{0}'s Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter": "{0}s Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Facts": {
+                "cmd.Description": "Zeigt einen zufälligen \"Fakt\"",
+                "cmd.Usage": "{0}{1}",
+
                 "RichTitle": "Zufälliger (wissenschaftlicher) Fakt",
                 "RichFooter": "{0}s Anfrage wurde verarbeitet"
             }
         }
     },
+
     "google": {
         "errorNoInput": ":warning: Du musst einen Such-Input angeben!",
         "setAuthor": "Ergebniss für ",
         "setDescription": "Beschreibung",
         "setFooter": "s Suchverlauf"
     },
+
     "CommandCategory": {
         "NEKOS_LIFE": {
             "name": "Nekos.life",
@@ -147,10 +175,31 @@
         }
     },
     "Vocabulary": {
-        "Settings": "Einstellungen",
-        "Language": "Sprache",
-        "Prefix": "Präfix",
-
+        "Alias": {
+            "Zero": "Aliase",
+            "Singular": "Alias",
+            "Plural": "Aliase"
+        },
+        "Command": {
+            "Zero": "Befehle",
+            "Singular": "Befehl",
+            "Plural": "Befehle"
+        },
+        "Settings": {
+            "Zero": "Einstellungen",
+            "Singular": "Einstellung",
+            "Plural": "Einstellungen"
+        },
+        "Language": {
+            "Zero": "Sprachen",
+            "Singular": "Sprache",
+            "Plural": "Sprachen"
+        },
+        "Prefix": {
+            "Zero": "Präfixe",
+            "Singular": "Präfix",
+            "Plural": "Präfixe"
+        },
         "Guild": {
             "Zero": "Gilden",
             "Singular": "Gilde",
@@ -174,6 +223,5 @@
         }
     },
 
-    "NOT_NSFW_CHANNEL": ":warning: Dieser Channel ist nicht als *NSFW* gekennzeichnet!",
     "ERR_OCCURRED": "Es ist ein Fehler ist aufgetreten!"
 }

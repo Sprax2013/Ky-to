@@ -38,7 +38,14 @@ module.exports = {
         return localization.getLanguageEnumFromString(cfg.consoleLang);
     },
     getDefaultCommandPrefix: () => {
-        return cfg.default.prefix;
+        if (cfg.default.prefix && cfg.default.prefix.length === 1) {
+            return cfg.default.prefix;
+        }
+    },
+    hasGuildPrefix: (guildID) => {
+        guildID = module.exports.Utils.getGuildID(guildID);
+
+        return guildID && guilds[guildID] && guilds[guildID]['prefix'];
     },
     getGuildPrefix: (guildID) => {
         guildID = module.exports.Utils.getGuildID(guildID);
@@ -117,18 +124,19 @@ module.exports = {
     saveToFile: () => {
         if (filesChanged) {
             module.exports.forceSaveToFile();
-            console.log('Changes have automatically been written to ./storage');
+
+            console.log(localization.getStringForConsole('Bot:Console:SavedToFile', 'Changes have automatically been written to {0}').format('./storage'));
         }
     },
     forceSaveToFile: () => {
         fs.writeFile('./storage/config.json', JSON.stringify(cfg), (err) => {
             if (err) {
-                console.log(err);
+                console.error(err);
             }
         });
         fs.writeFile('./storage/guilds.json', JSON.stringify(guilds), (err) => {
             if (err) {
-                console.log(err);
+                console.error(err);
             }
         });
 
@@ -138,18 +146,18 @@ module.exports = {
 
 const localization = require('./localization');
 
-if (cfg.botToken === 'INSERT_TOKEN_HERE') {
-    console.log('Insert your Bot-Token (./storage/config.json)');
+if (!module.exports.getConsoleLangugage()) {
+    console.error('Your console-language in ./storage/config.json seems to be invalid');
     process.exit(1);
-} else if (!module.exports.getConsoleLangugage()) {
-    console.log('Insert a valid console language and make sure that the translations are complete)');
-    process.exit(1);
-} else if (!module.exports.getDefaultLanguage()) {
-    console.log('Insert a valid default language and make sure that the translations are complete)');
+} else if (cfg.botToken === 'INSERT_TOKEN_HERE') {
+    console.error(localization.getStringForConsole('Bot:Console:InsertBotToken', 'Insert your Bot-Token {0}').format('(./storage/config.json)'));
     process.exit(2);
-} else if (!module.exports.getDefaultCommandPrefix()) {
-    console.log('There is no default command-prefix in the config!');
+} else if (!module.exports.getDefaultLanguage()) {
+    console.error(localization.getStringForConsole('Bot:Console:InvalidDefaultLanguage', 'Your default language in {0} seems to be invalid').format('./storage/config.json'));
     process.exit(3);
+} else if (!module.exports.getDefaultCommandPrefix()) {
+    console.error(localization.getStringForConsole('Bot:Console:InvalidDefaultPrefix', 'The default prefix in {0} seems to be invalid!').format('./storage/config.json'));
+    process.exit(4);
 }
 
 require('./webserver/webserver'); // Start WebServer or crash
@@ -182,13 +190,18 @@ client.on('ready', () => {
                     clientCount++;
                 }
             }
+
+            if (!module.exports.hasGuildPrefix(guild)) {
+                sendInitMsgToGuildOwner(guild);
+            }
         } else {
             guildsIgnoredCount++;
         }
     }
+
     console.log(
         localization.getStringForConsole(
-            'Bot:Status', 'Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)')
+            'Bot:Console:Status', 'Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)')
         .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
             `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
             `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
@@ -202,7 +215,9 @@ client.on('ready', () => {
 
 client.on('guildCreate', (guild) => {
     if (handleGuild(guild)) {
-        console.log(`New guild joined: ${guild.name} (ID: ${guild.id}). This guild has ${guild.memberCount - 1} members!`);
+        console.log(localization.getStringForConsole('Bot:Console:JoinedGuild', 'I have been added to \'{0}\' (ID: {1})').format(guild.name, guild.id))
+
+        sendInitMsgToGuildOwner(guild);
     }
 
     updateBotActivity();
@@ -210,7 +225,7 @@ client.on('guildCreate', (guild) => {
 
 client.on('guildDelete', (guild) => {
     if (handleGuild(guild)) {
-        console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+        console.log(localization.getStringForConsole('Bot:Console:LeftGuild', 'I have been removed from \'{0}\' (ID: {1})').format(guild.name, guild.id));
     }
 
     updateBotActivity();
@@ -238,14 +253,14 @@ client.on('message', (msg) => {
     } else if (client.cmdAliases.has(cmd)) {
         client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
     } else {
-        msg.channel.send('Unknown Command :thinking:');
+        msg.channel.send(localization.getStringForGuild(null, 'UnknownCommand', msg));
     }
 });
 
 client.login(cfg.botToken);
 
 function updateBotActivity() {
-    client.user.setActivity(`!commands [${client.guilds.size} server${client.guilds.size !==1 ? 's' : ''}]`, {
+    client.user.setActivity(`${module.exports.getDefaultCommandPrefix()}Commands [${client.guilds.size} server${client.guilds.size !== 1 ? 's' : ''}]`, {
             type: 'LISTENING'
         })
         // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
@@ -317,7 +332,7 @@ function initCommands() {
     //Alle Dateien, die auf .js Enden und nicht mit einem '.' beginnen
     let jsfile = files.filter(f => f.split('/').pop().indexOf('.') !== 0 && f.split(".").pop().toLocaleLowerCase() === 'js');
     if (jsfile.length <= 0) {
-        console.log('No commands have been loaded.');
+        console.log(localization.getStringForConsole('Bot:Console:NoCommandsLoaded', 'No commands were loaded'));
         return;
     }
 
@@ -325,6 +340,8 @@ function initCommands() {
         let prop = require(f);
 
         if (prop.cmd) {
+            let cmdPath = f.substr('./commands/'.length);
+
             if (!prop.cmd.category) {
                 prop.cmd.category = module.exports.CommandCategory.MISC;
             }
@@ -332,7 +349,7 @@ function initCommands() {
             if (!client.cmds.has(prop.cmd.name.toLowerCase())) {
                 client.cmds.set(prop.cmd.name.toLowerCase(), prop);
             } else {
-                console.log(`The command '${props.cmd.name.toLowerCase()}' has already been registered by another file`);
+                console.log(localization.getStringForConsole('Bot:Console:AlreadyRegistered', '\'{0}\' tried to register the {2} \'{1}\' that is already in use by another file').format(cmdPath, props.cmd.name, localization.getWordForConsole('Command')));
             }
 
             let aliasCount = 0;
@@ -342,22 +359,18 @@ function initCommands() {
                         client.cmdAliases.set(alias.toLowerCase(), prop);
                         aliasCount++;
                     } else {
-                        console.log(`The alias '${alias.toLowerCase()}' has already been registered by another file`);
+                        console.log(localization.getStringForConsole('Bot:Console:AlreadyRegistered', '\'{0}\' tried to register the {2} \'{1}\' that is already in use by another file').format(cmdPath, props.cmd.name, localization.getWordForConsole('Alias')));
                     }
                 });
             }
 
             if (aliasCount > 0) {
-                if (aliasCount === 1) {
-                    console.log(`'${f.substr('./commands/'.length)}' has been loaded (${aliasCount} alias)!`);
-                } else {
-                    console.log(`'${f.substr('./commands/'.length)}' has been loaded (${aliasCount} aliases)!`);
-                }
+                console.log(localization.getStringForConsole('Bot:Console:CommandLoadedWithAliases', '\'{0}\' has been loaded ({1})!').format(cmdPath, `${aliasCount} ${localization.getWordForConsole('Alias', aliasCount)}`));
             } else {
-                console.log(`'${f.substr('./commands/'.length)}' has been loaded!`);
+                console.log(localization.getStringForConsole('Bot:Console:CommandLoaded', '\'{0}\' has been loaded!').format(cmdPath));
             }
         } else {
-            console.log(`Failed loading '${f}': 'cmd' could not be read (missing?)`);
+            console.log(localization.getStringForConsole('Bot:Console:InvalidCommandFile', '\'{0}\' is invalid - Please compare it to \'{1}\'').format(f, './commands/.template.js'));
         }
     });
 }
@@ -366,4 +379,8 @@ function handleGuild(guildID) {
     guildID = module.exports.Utils.getGuildID(guildID);
 
     return (cfg.guildList.asWhitelist && cfg.guildList.guildIDs.includes(guildID)) || (!cfg.guildList.asWhitelist && !cfg.guildList.guildIDs.includes(guildID));
+}
+
+function sendInitMsgToGuildOwner(guild) {
+    guild.owner.send(localization.getStringForGuild(null, 'Bot:ThanksForInvite', guild).format(module.exports.getGuildPrefix(guild)));
 }

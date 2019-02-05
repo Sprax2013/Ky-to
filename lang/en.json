@@ -1,7 +1,27 @@
 {
     "Bot": {
-        "Status": "Bot is active on {0} (while ignoring {1}), in {2} for {3} (+{4})",
-        "Status_Public": "Bot is active on {0} with {1} for {2} (not counting any bots)"
+        "Console": {
+            "InsertBotToken": "Insert your Bot-Token {0}",
+            "InvalidDefaultLanguage": "Your default language in {0} seems to be invalid",
+            "InvalidDefaultPrefix": "The default prefix in {0} seems to be invalid",
+            "SavedToFile": "Changes have automatically been written to {0}",
+
+            "NoCommandsLoaded": "No commands were loaded",
+            "InvalidCommandFile": "'{0}' is invalid - Please compare it to '{1}'",
+            "AlreadyRegistered": "'{0}' tried to register the {2} '{1}' that is already in use by another file",
+            "CommandLoaded": "'{0}' has been loaded!",
+            "CommandLoadedWithAliases": "'{0}' has been loaded ({1})!",
+
+            "JoinedGuild": "I have been added to '{0}' (ID: {1})",
+            "LeftGuild": "I have been removed from '{0}' (ID: {1})",
+
+            "Status": "Bot is active on {0} (while ignoring {1}), in {2} for {3} (+{4})"
+        },
+        "Status_Public": "Bot is active on {0} with {1} for {2} (not counting any bots)",
+
+        "ThanksForInvite": "Thank you for adding me to your server! :3\nI recommend starting with `{0}Settings` (on your server)\nFor a list of commands, see `{0}Commands`\n\nPS: At the moment I do not react to DMs",
+        "UnknownCommand": "Unknown Command :thinking:",
+        "ChannelNotNSFW": ":warning: Yea.. no this channel isn't marked as *NSFW*."
     },
     "Commands": {
         "Template": {
@@ -60,6 +80,9 @@
             "CheckDMs": "Check your DMs :mailbox_with_mail: (Delete messages in **{0} seconds**)"
         },
         "Wallpaper": {
+            "cmd.Description": "Send a random wallpaper that you can use",
+            "cmd.Usage": "{0}{1}",
+
             "RichTitle": "Your new wallpaper",
             "RichFooter": "{0}'s request has been processed"
         },
@@ -117,6 +140,9 @@
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}"
             },
             "Facts": {
+                "cmd.Description": "Shows a random 'fact'",
+                "cmd.Usage": "{0}{1}",
+
                 "RichTitle": "Random (science) Fact",
                 "RichFooter": "Requested by {0}"
             }
@@ -149,6 +175,16 @@
         }
     },
     "Vocabulary": {
+        "Alias": {
+            "Zero": "Aliases",
+            "Singular": "Alias",
+            "Plural": "Aliases"
+        },
+        "Command": {
+            "Zero": "Commands",
+            "Singular": "Command",
+            "Plural": "Commands"
+        },
         "Settings": {
             "Zero": "Settings",
             "Singular": "Setting",
@@ -191,6 +227,5 @@
         }
     },
 
-    "NOT_NSFW_CHANNEL": ":warning: Yea.. no this channel isn't marked as *NSFW*.",
     "ERR_OCCURRED": "An error occurred!"
 }

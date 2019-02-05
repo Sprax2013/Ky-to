@@ -11,11 +11,11 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    var embedTitel = loc.getStringForGuild(this, '{%voc}:Settings', msg);
+    var embedTitel = loc.getWordForGuild('Settings', msg, 2);
 
     if (args.length > 0) {
         if (args[0].equalsIgnoreCase('language') || args[0].equalsIgnoreCase('lang') || args[0].equalsIgnoreCase('sprache')) {
-            embedTitel = `${embedTitel} - ${loc.getStringForGuild(this, '{%voc}:Language', msg)}`;
+            embedTitel = `${embedTitel} - ${loc.getWordForGuild('Language', msg)}`;
 
             if (msg.member && msg.member.hasPermission('ADMINISTRATOR')) {
                 if (args.length > 1) {
@@ -45,7 +45,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                             .setTitle(embedTitel)
                             .setDescription(
                                 loc.getStringForGuild(this, '{%cmd}:Lang:NoneGiven', msg)
-                                .format(`${guildPrefix}${cmd} ${args[0]} <${loc.getStringForGuild(this, '{%voc}:Language', msg)}>`)
+                                .format(`${guildPrefix}${cmd} ${args[0]} <${loc.getWordForGuild('Language', msg)}>`)
                             )
                             .addBlankField(), msg)
                     );
@@ -55,7 +55,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                 sendBasicRichEmbed(msg, embedTitel, loc.getStringForGuild(this, '{%cmd}:Lang:NotAllowed', msg));
             }
         } else if (args[0].equalsIgnoreCase('prefix') || args[0].equalsIgnoreCase('präfix')) {
-            embedTitel = `${embedTitel} - ${loc.getStringForGuild(this, '{%voc}:Prefix', msg)}`;
+            embedTitel = `${embedTitel} - ${loc.getWordForGuild('Prefix', msg)}`;
 
             if (msg.member && msg.member.hasPermission('ADMINISTRATOR')) {
                 if (args.length > 1) {
@@ -76,7 +76,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                 } else {
                     // Keine Präfix angegeben
                     sendBasicRichEmbed(msg, embedTitel, loc.getStringForGuild(this, '{%cmd}:Prefix:NoneGiven', msg)
-                        .format(`${guildPrefix}${cmd} ${args[0]} <${loc.getStringForGuild(this, '{%voc}:Prefix', msg)}>`));
+                        .format(`${guildPrefix}${cmd} ${args[0]} <${loc.getWordForGuild('Prefix', msg)}>`));
                 }
             } else {
                 // Keine Admin-Rechte
@@ -118,8 +118,8 @@ function sendBasicRichEmbed(msg, embedTitel, description) {
 }
 
 function sendCommandUsage(msg, cmd, guildPrefix, embedTitel) {
-    let vocLanguage = loc.getStringForGuild(module.exports, '{%voc}:Language', msg);
-    let vocPrefix = loc.getStringForGuild(module.exports, '{%voc}:Prefix', msg);
+    let vocLanguage = loc.getWordForGuild('Language', msg);
+    let vocPrefix = loc.getWordForGuild('Prefix', msg);
 
     msg.channel.send(
         new dc.RichEmbed()

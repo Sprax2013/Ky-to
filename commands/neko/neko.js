@@ -29,7 +29,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         let nsfw = args.includes('nsfw') || args.includes('lewd');
 
         if (nsfw && !msg.channel.nsfw) {
-            msg.reply(loc.getStringForGuild(this, 'NOT_NSFW_CHANNEL', msg));
+            msg.reply(loc.getStringForGuild(this, 'Bot:ChannelNotNSFW', msg));
             return;
         }
 

@@ -11,12 +11,11 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let newCmd = loc.getStringForGuild(this, '{%voc}:Settings', msg);
-    let newArgs = [loc.getStringForGuild(this, '{%voc}:Prefix', msg)];
+    let newArgs = [loc.getWordForGuild('Prefix', msg)];
 
     if (args.length >= 1) {
         newArgs.push(args[0]);
     }
 
-    settings.onCommand(bot, msg, newCmd, newArgs, guildPrefix);
+    settings.onCommand(bot, msg, 'Settings', newArgs, guildPrefix);
 }
