@@ -96,8 +96,8 @@ module.exports = {
         if (typeof result === 'object') {
             let keys = Object.keys(result);
 
-            if (count === 0 && keys.includes('Zero')) {
-                result = result.Zero;
+            if (count === 0 && (keys.includes('Zero') || keys.includes('Plural'))) {
+                result = keys.includes('Zero') ? result.Zero : result.Plural;
             } else if (count === 1 && keys.includes('Singular')) {
                 result = result.Singular;
             } else if (keys.includes('Plural')) {
