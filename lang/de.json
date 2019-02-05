@@ -4,6 +4,7 @@
             "InsertBotToken": "Du musst einen Bot-Token eintragen {0}",
             "InvalidDefaultLanguage": "Die Standardsprache in {0} scheint ungültig zu sein",
             "InvalidDefaultPrefix": "Das Standardpräfix in {0} scheint ungültig zu sein",
+
             "SavedToFile": "Dateiänderungen wurden automatisch in {0} gespeichert",
 
             "NoCommandsLoaded": "Es wurden keine Befehle geladen",
@@ -29,6 +30,11 @@
             "cmd.Usage": "{0}{1}",
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
+        },
+        "Google": {
+            "NoResults": "Ich konnte keine Suchergebnisse finden.",
+            "NoQuery": "Du musst eine Suchanfrage eingeben",
+            "QueryTooLong": "Die Suchanfrage ist zu lang"
         },
         "Settings": {
             "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf",

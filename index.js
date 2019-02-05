@@ -141,6 +141,10 @@ module.exports = {
         });
 
         filesChanged = false;
+    },
+
+    getSprax2013APIToken: () => {
+        return cfg.Sprax2013_API_Token;
     }
 }
 
@@ -275,6 +279,7 @@ setInterval(module.exports.saveToFile, 30 * 1000);
 function createFiles() {
     const defaultConfig = {
         botToken: 'INSERT_TOKEN_HERE',
+        Sprax2013_API_Token: 'INSERT_TOKEN_HERE',
         consoleLang: 'de',
         default: {
             prefix: ';',

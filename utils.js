@@ -29,10 +29,18 @@ if (!String.prototype.equalsIgnoreCase) {
 }
 
 /* StackOverflow ftw: https://stackoverflow.com/a/24137301/9346616 */
-if (!String.prototype.random) {
+if (!Array.prototype.random) {
     Array.prototype.random = function () {
         return this[Math.floor((Math.random() * this.length))];
     }
+}
+
+if (!String.prototype.replaceAll) {
+    String.prototype.replaceAll = function (search, replacement = '') {
+        var target = this;
+
+        return target.replace(new RegExp(search, 'g'), replacement);
+    };
 }
 
 /* module.exports */
@@ -77,7 +85,7 @@ module.exports = {
         }, (err, res, body) => {
             if (err) {
                 console.error(err);
-            } else if (res.statusCode === 200) {
+            } else if (res.statusCode === 200 || res.statusCode === 304) {
                 try {
                     callback(JSON.parse(body));
                     return;

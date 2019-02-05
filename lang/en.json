@@ -4,6 +4,7 @@
             "InsertBotToken": "Insert your Bot-Token {0}",
             "InvalidDefaultLanguage": "Your default language in {0} seems to be invalid",
             "InvalidDefaultPrefix": "The default prefix in {0} seems to be invalid",
+
             "SavedToFile": "Changes have automatically been written to {0}",
 
             "NoCommandsLoaded": "No commands were loaded",
@@ -29,6 +30,11 @@
             "cmd.Usage": "{0}{1}",
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
+        },
+        "Google": {
+            "NoResults": "I could not find any search results.",
+            "NoQuery": "You must enter a search query",
+            "QueryTooLong": "The search query is too long"
         },
         "Settings": {
             "cmd.Description": "Lists the various setting options, such as language or command prefix",

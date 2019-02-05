@@ -1,42 +1,71 @@
-const Discord = require('discord.js');
-const google = require('google');
 const index = require('./../index');
 const loc = index.getLocalization();
-const ico = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png"
-google.resultsPerPage = 25;
+
+const querystring = require('querystring');
+const dc = require('discord.js');
+
+const apiURL = 'https://api.sprax2013.de/google/search?token={0}&q={1}&hl={2}';
 
 module.exports.cmd = {
-    name: 'google'
+    name: 'Google',
+    aliases: ['Web'],
+
+    category: index.CommandCategory.MISC
 };
 
-module.exports.onCommand = async (bot, msg, cmd) => {
-    let message = msg
-    let args = message.content.split(/[ ]+/);
-    let suffix = args.slice(1).join(' ');
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
+    let query = msg.content.substring(guildPrefix.length + cmd.length).trim();
 
-    if (!suffix) {
-        message.reply(`:warning: You need to give a search Input!`)
+    for (const user of msg.mentions.users.values()) {
+        query = query.replaceAll(`<@${user.id}>`, index.Utils.getUsernameFromUser(user));
     }
 
-    google(suffix, function (err, res) {
-        if (err) message.reply(`:warning: ${err}`);
+    if (query && query.length > 0 && query.length <= 2048) {
+        index.Utils.getJSONFromURL(apiURL
+            .format(querystring.escape(index.getSprax2013APIToken()), querystring.escape(query), querystring.escape(index.getGuildLanguage(msg).langCode)),
+            (json) => {
+                if (json) {
+                    let title, description, url, imgUrl;
 
-        for (var i = 0; i < res.links.length; ++i) {
-            var link = res.links[i];
+                    if (Object.keys(json.rhs).length > 0) {
+                        title = `${json.rhs.title} (${json.rhs.subTitle})`;
+                        description = `${json.rhs.info.text} - ${json.rhs.info.url}`;
+                        url = json.rhs.info.url;
+                        imgUrl = json.rhs.img.src;
+                    } else if (json.results.length > 0) {
+                        title = json.results[0].title;
+                        url = json.results[0].url;
+                        description = json.results[0].description;
+                    } else {
+                        msg.channel.send(
+                            new dc.RichEmbed()
+                            .setColor(0x046CF4)
+                            .setTitle(loc.getStringForGuild(this, '{%cmd}:NoResults', msg))
+                        );
 
-            if (!link.href) {
-                res.next;
-            } else {
-                return message.channel.send(new Discord.RichEmbed()
-                    .setColor(`#ffffff`)
-                    .setAuthor(`${loc.getStringForGuild('google:setAuthor', msg).format(bot.user.id, cmd, args)} "${suffix}"`, `https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png`)
-                    .setDescription(`**Link**: [${link.title}](${link.href})\n**${loc.getStringForGuild('google:setDescription', msg).format(bot.user.id, cmd, args)}**:\n${link.description}`)
-                    .setFooter(`${msg.author.tag}` + `'${loc.getStringForGuild('google:setFooter', msg).format(bot.user.id, cmd, args)}`));
-            }
+                        return;
+                    }
 
-            return;
-        }
-    });
+                    let richEmbed = new dc.RichEmbed()
+                        .setColor(0x046CF4)
+                        .setTitle(title)
+
+                        .setDescription(description);
+
+                    if (url) {
+                        richEmbed.setURL(url);
+                    }
+
+                    if (imgUrl) {
+                        richEmbed.setImage(imgUrl);
+                    }
+
+                    msg.channel.send(richEmbed);
+                }
+            });
+    } else if (query.length <= 0) {
+        msg.reply(loc.getStringForGuild(this, '{%cmd}:NoQuery', msg));
+    } else {
+        msg.reply(loc.getStringForGuild(this, '{%cmd}:QueryTooLong', msg));
+    }
 }
-
-// ${loc.getStringForGuild('google:setAuthor', msg).format(bot.user.id, cmd, args)}
