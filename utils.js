@@ -28,6 +28,13 @@ if (!String.prototype.equalsIgnoreCase) {
     };
 }
 
+/* StackOverflow ftw: https://stackoverflow.com/a/24137301/9346616 */
+if (!String.prototype.random) {
+    Array.prototype.random = function () {
+        return this[Math.floor((Math.random() * this.length))];
+    }
+}
+
 /* module.exports */
 
 module.exports = {

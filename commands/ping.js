@@ -6,7 +6,7 @@ module.exports.cmd = {
     category: index.CommandCategory.INFO
 };
 
-module.exports.onCommand = async (bot, msg) => {
+module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
     if (msg.isMentioned(bot.user)) {
         msg.channel.send(loc.getStringForGuild(this, '{%cmd}:BotPing', msg).format(Math.round(bot.ping)));
     } else {

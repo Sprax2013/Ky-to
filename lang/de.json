@@ -59,11 +59,16 @@
 
             "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
         },
+        "Wallpaper": {
+            "RichTitle": "Dein neuer Wallpaper",
+            "RichFooter": "{0}s Anfrage wurde verarbeitet"
+        },
         "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann",
                 "cmd.Usage": "{0}{1} <Lewd>",
 
+                "RichTitle": "Ein neuer Avatar für dich",
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}s neuer Avatar",
                 "RichFooter_NSFW": "{0}s neuer, unanständiger Avatar"
@@ -110,6 +115,10 @@
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}'s Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Facts": {
+                "RichTitle": "Zufälliger (wissenschaftlicher) Fakt",
+                "RichFooter": "{0}s Anfrage wurde verarbeitet"
             }
         }
     },
