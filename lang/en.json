@@ -7,9 +7,9 @@
 
             "SavedToFile": "Changes have automatically been written to {0}",
 
-            "NoCommandsLoaded": "No commands were loaded",
             "InvalidCommandFile": "'{0}' is invalid - Please compare it to '{1}'",
             "AlreadyRegistered": "'{0}' tried to register the {2} '{1}' that is already in use by another file",
+            "NoCommandsLoaded": "No commands were loaded",
             "CommandLoaded": "'{0}' has been loaded!",
             "CommandLoadedWithAliases": "'{0}' has been loaded ({1})!",
 
@@ -31,6 +31,13 @@
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
+
+        "Commands": {
+            "cmd.Description": "Lists all commands sorted by category",
+            "cmd.Usage": "{0}{1}",
+
+            "CheckDMs": "Check your DMs :mailbox_with_mail: (Delete messages in **{0} seconds**)"
+        },
         "Google": {
             "cmd.Description": "**BETA** Shows the first result of a Google search query",
             "cmd.Usage": "{0}{1}",
@@ -40,25 +47,6 @@
             "QueryTooLong": "The search query is too long",
 
             "RichFooter": "{0}'s request has been processed"
-        },
-        "Settings": {
-            "cmd.Description": "Lists the various setting options, such as language or command prefix",
-            "cmd.Usage": "{0}{1}",
-
-            "Lang": {
-                "Set": "Language has been changed to '{0}'",
-                "AlreadySet": "The language is already set to {0}",
-                "NotFound": "I have not yet mastered the language.",
-                "NoneGiven": "You have to specify a language: `{0}`",
-                "NotAllowed": "You are not allowed to change the language!"
-            },
-            "Prefix": {
-                "Set": "The prefix has been changed to `{0}`",
-                "AlreadySet": "The prefix is already set to `{0}`",
-                "NoneGiven": "You have to specify a prefix: `{0}`",
-                "TooLong": "The prefix may only be one character long!",
-                "NotAllowed": "You are not allowed to change the prefix!"
-            }
         },
         "Invite": {
             "cmd.Description": "Creates an invite link to add me to another server",
@@ -80,15 +68,28 @@
             "cmd.Description": "Changes the command prefix that I respond to - **The short form of the Settings-Command**",
             "cmd.Usage": "{0}{1}"
         },
+        "Settings": {
+            "cmd.Description": "Lists the various setting options, such as language or command prefix",
+            "cmd.Usage": "{0}{1}",
+
+            "Lang": {
+                "Set": "Language has been changed to '{0}'",
+                "AlreadySet": "The language is already set to {0}",
+                "NotFound": "I have not yet mastered the language.",
+                "NoneGiven": "You have to specify a language: `{0}`",
+                "NotAllowed": "You are not allowed to change the language!"
+            },
+            "Prefix": {
+                "Set": "The prefix has been changed to `{0}`",
+                "AlreadySet": "The prefix is already set to `{0}`",
+                "NoneGiven": "You have to specify a prefix: `{0}`",
+                "TooLong": "The prefix may only be one character long!",
+                "NotAllowed": "You are not allowed to change the prefix!"
+            }
+        },
         "Status": {
             "cmd.Description": "Shows my current status and that of the system I am running on",
             "cmd.Usage": "{0}{1}"
-        },
-        "Commands": {
-            "cmd.Description": "Lists all commands sorted by category",
-            "cmd.Usage": "{0}{1}",
-
-            "CheckDMs": "Check your DMs :mailbox_with_mail: (Delete messages in **{0} seconds**)"
         },
         "Wallpaper": {
             "cmd.Description": "Send a random wallpaper that you can use",
@@ -97,6 +98,7 @@
             "RichTitle": "Your new wallpaper",
             "RichFooter": "{0}'s request has been processed"
         },
+
         "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Shows a random image that can be used as an avatar",
@@ -106,6 +108,38 @@
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}'s new avatar",
                 "RichFooter_NSFW": "{0}'s new lewd avatar"
+            },
+            "Cum": {
+                "cmd.Description": "Shows a random cum image",
+                "cmd.Usage": "{0}{1} <Gif>",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
+                "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
+            },
+            "Facts": {
+                "cmd.Description": "Shows a random 'fact'",
+                "cmd.Usage": "{0}{1}",
+
+                "RichTitle": "Random (science) Fact",
+                "RichFooter": "Requested by {0}"
+            },
+            "Fox": {
+                "cmd.Description": "Shows a random fox image",
+                "cmd.Usage": "{0}{1} <Lewd>",
+
+                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}'s Waifu   |   More with {1}",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}"
+            },
+            "Hentai": {
+                "cmd.Description": "Shows a random hentai image",
+                "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
+                "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
             },
             "Neko": {
                 "cmd.Description": "Shows a random neko image",
@@ -117,22 +151,6 @@
                 "RichFooter_Animated": "{0}'s animated waifu   |   More with {1}",
                 "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
             },
-            "Cum": {
-                "cmd.Description": "Shows a random cum image",
-                "cmd.Usage": "{0}{1} <Gif>",
-
-                "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
-                "RichFooter_Animated_NSFW": "{0}'s animated lewd waifu   |   More with {1}"
-            },
-            "Hentai": {
-                "cmd.Description": "Shows a random hentai image",
-                "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
-
-                "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
-                "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
-            },
             "Pussy": {
                 "cmd.Description": "Shows a random pussy image",
                 "cmd.Usage": "{0}{1} <Gif>",
@@ -140,31 +158,8 @@
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}",
                 "RichFooter_NSFW_Animated": "{0}'s animated lewd waifu   |   More with {1}"
-            },
-            "Fox": {
-                "cmd.Description": "Shows a random fox image",
-                "cmd.Usage": "{0}{1} <Lewd>",
-
-                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
-                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
-                "RichFooter": "{0}'s Waifu   |   More with {1}",
-                "RichFooter_NSFW": "{0}'s lewd waifu   |   More with {1}"
-            },
-            "Facts": {
-                "cmd.Description": "Shows a random 'fact'",
-                "cmd.Usage": "{0}{1}",
-
-                "RichTitle": "Random (science) Fact",
-                "RichFooter": "Requested by {0}"
             }
         }
-    },
-
-    "google": {
-        "errorNoInput": ":warning: You need to give a search Input!",
-        "setAuthor": "Result for ",
-        "setDescription": "Description",
-        "setFooter": "'s Search History"
     },
 
     "CommandCategory": {
@@ -187,54 +182,49 @@
     },
     "Vocabulary": {
         "Alias": {
-            "Zero": "Aliases",
             "Singular": "Alias",
             "Plural": "Aliases"
         },
-        "Command": {
-            "Zero": "Commands",
-            "Singular": "Command",
-            "Plural": "Commands"
-        },
-        "Settings": {
-            "Zero": "Settings",
-            "Singular": "Setting",
-            "Plural": "Settings"
-        },
-        "Language": {
-            "Zero": "Languages",
-            "Singular": "Language",
-            "Plural": "Languages"
-        },
-        "Prefix": {
-            "Zero": "Prefixes",
-            "Singular": "Prefix",
-            "Plural": "Prefixes"
-        },
-        "Guild": {
-            "Zero": "Guilds",
-            "Singular": "Guild",
-            "Plural": "Guilds"
-        },
-        "Client": {
-            "Zero": "Clients",
-            "Singular": "Client",
-            "Plural": "Clients"
-        },
         "Bot": {
-            "Zero": "Bots",
             "Singular": "Bot",
             "Plural": "Bots"
         },
         "Channel": {
-            "Zero": "Channels",
             "Singular": "Channel",
             "Plural": "Channels"
         },
+        "Client": {
+            "Singular": "Client",
+            "Plural": "Clients"
+        },
+        "Command": {
+            "Singular": "Command",
+            "Plural": "Commands"
+        },
+        "Guild": {
+            "Singular": "Guild",
+            "Plural": "Guilds"
+        },
+        "Language": {
+            "Singular": "Language",
+            "Plural": "Languages"
+        },
+        "Prefix": {
+            "Singular": "Prefix",
+            "Plural": "Prefixes"
+        },
+        "SearchQuery": {
+            "Singular": "Search query",
+            "Plural": "Search queries"
+        },
+        "Settings": {
+            "Singular": "Setting",
+            "Plural": "Settings"
+        },
 
         "Languages": {
-            "GERMAN": "German",
-            "ENGLISH": "English"
+            "ENGLISH": "English",
+            "GERMAN": "German"
         }
     },
 

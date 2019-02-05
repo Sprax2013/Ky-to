@@ -7,9 +7,9 @@
 
             "SavedToFile": "Dateiänderungen wurden automatisch in {0} gespeichert",
 
-            "NoCommandsLoaded": "Es wurden keine Befehle geladen",
             "InvalidCommandFile": "\"{0}\" ist ungültig - Bitte mit \"{1}\" vergleichen",
             "AlreadyRegistered": "\"{0}\" hat versucht, den {2} \"{1}\" zu registrieren, der bereits von einer anderen Datei verwendet wird",
+            "NoCommandsLoaded": "Es wurden keine Befehle geladen",
             "CommandLoaded": "\"{0}\" wurde geladen!",
             "CommandLoadedWithAliases": "\"{0}\" wurde geladen ({1})!",
 
@@ -31,6 +31,13 @@
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
+
+        "Commands": {
+            "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie",
+            "cmd.Usage": "{0}{1}",
+
+            "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
+        },
         "Google": {
             "cmd.Description": "**BETA** Zeigt das erste Ergebnis einer gewünschten Google-Suchanfrage",
             "cmd.Usage": "{0}{1}",
@@ -40,25 +47,6 @@
             "QueryTooLong": "Die Suchanfrage ist zu lang",
 
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
-        },
-        "Settings": {
-            "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf",
-            "cmd.Usage": "{0}{1}",
-
-            "Lang": {
-                "Set": "Die Sprache wurde auf {0} geändert",
-                "AlreadySet": "Die Sprache steht bereits auf {0}",
-                "NotFound": "Die gewünschte Sprache beherrsche ich noch nicht",
-                "NoneGiven": "Du musst eine Sprache angeben: `{0}`",
-                "NotAllowed": "Du bist nicht berechtigt die Sprache zu ändern!"
-            },
-            "Prefix": {
-                "Set": "Das Präfix wurde auf `{0}` geändert",
-                "AlreadySet": "Das Präfix steht bereits auf `{0}`",
-                "NoneGiven": "Du musst eine Präfix angeben: `{0}`",
-                "TooLong": "Das Präfix darf nur ein Zeichen lang sein!",
-                "NotAllowed": "Du bist nicht berechtigt die Präfix zu ändern!"
-            }
         },
         "Invite": {
             "cmd.Description": "Erstellt einen Einladungslink, um mich zu einem anderen Server hinzuzufügen",
@@ -80,15 +68,28 @@
             "cmd.Description": "Ändert die Command-Prefix, auf die ich reagiere - **Die Kurzform vom Settings-Befehl**",
             "cmd.Usage": "{0}{1}"
         },
+        "Settings": {
+            "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf",
+            "cmd.Usage": "{0}{1}",
+
+            "Lang": {
+                "Set": "Die Sprache wurde auf {0} geändert",
+                "AlreadySet": "Die Sprache steht bereits auf {0}",
+                "NotFound": "Die gewünschte Sprache beherrsche ich noch nicht",
+                "NoneGiven": "Du musst eine Sprache angeben: `{0}`",
+                "NotAllowed": "Du bist nicht berechtigt die Sprache zu ändern!"
+            },
+            "Prefix": {
+                "Set": "Das Präfix wurde auf `{0}` geändert",
+                "AlreadySet": "Das Präfix steht bereits auf `{0}`",
+                "NoneGiven": "Du musst eine Präfix angeben: `{0}`",
+                "TooLong": "Das Präfix darf nur ein Zeichen lang sein!",
+                "NotAllowed": "Du bist nicht berechtigt die Präfix zu ändern!"
+            }
+        },
         "Status": {
             "cmd.Description": "Zeigt meinen aktuellen Status und den des Systems an, auf dem ich laufe",
             "cmd.Usage": "{0}{1}"
-        },
-        "Commands": {
-            "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie",
-            "cmd.Usage": "{0}{1}",
-
-            "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
         },
         "Wallpaper": {
             "cmd.Description": "Sendet ein zufälliges Hintergrundbild, dass Du verwenden kannst",
@@ -97,6 +98,7 @@
             "RichTitle": "Dein neuer Wallpaper",
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
         },
+
         "Nekos.Life-API": {
             "Avatar": {
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann",
@@ -106,6 +108,38 @@
                 "RichTitle_NSFW": "Oh my, how Lewd! >.<",
                 "RichFooter": "{0}s neuer Avatar",
                 "RichFooter_NSFW": "{0}s neuer, unanständiger Avatar"
+            },
+            "Cum": {
+                "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild",
+                "cmd.Usage": "{0}{1} <Gif>",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Facts": {
+                "cmd.Description": "Zeigt einen zufälligen \"Fakt\"",
+                "cmd.Usage": "{0}{1}",
+
+                "RichTitle": "Zufälliger (wissenschaftlicher) Fakt",
+                "RichFooter": "{0}s Anfrage wurde verarbeitet"
+            },
+            "Fox": {
+                "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild",
+                "cmd.Usage": "{0}{1} <Lewd>",
+
+                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
+                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
+                "RichFooter": "{0}s Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
+            },
+            "Hentai": {
+                "cmd.Description": "Zeigt ein zufälliges Hentai-Bild",
+                "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
+
+                "RichTitle": "Oh my, how Lewd! >.<",
+                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
+                "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Neko": {
                 "cmd.Description": "Zeigt ein zufälliges Neko-Bild",
@@ -117,22 +151,6 @@
                 "RichFooter_Animated": "{0}s animierte Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             },
-            "Cum": {
-                "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild",
-                "cmd.Usage": "{0}{1} <Gif>",
-
-                "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
-                "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
-            },
-            "Hentai": {
-                "cmd.Description": "Zeigt ein zufälliges Hentai-Bild",
-                "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
-
-                "RichTitle": "Oh my, how Lewd! >.<",
-                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
-                "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
-            },
             "Pussy": {
                 "cmd.Description": "Zeigt ein zufälliges Pussy-Bild",
                 "cmd.Usage": "{0}{1} <Gif>",
@@ -140,22 +158,6 @@
                 "RichTitle": "Oh my, how Lewd! >.<",
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}",
                 "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
-            },
-            "Fox": {
-                "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild",
-                "cmd.Usage": "{0}{1} <Lewd>",
-
-                "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
-                "RichTitle_NSFW": "Oh my, how Lewd! >.<",
-                "RichFooter": "{0}s Waifu   |   Weitere Variationen mit {1}",
-                "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
-            },
-            "Facts": {
-                "cmd.Description": "Zeigt einen zufälligen \"Fakt\"",
-                "cmd.Usage": "{0}{1}",
-
-                "RichTitle": "Zufälliger (wissenschaftlicher) Fakt",
-                "RichFooter": "{0}s Anfrage wurde verarbeitet"
             }
         }
     },
@@ -179,56 +181,48 @@
         }
     },
     "Vocabulary": {
+        "Channel": "Channel",
+
         "Alias": {
-            "Zero": "Aliase",
             "Singular": "Alias",
             "Plural": "Aliase"
         },
+        "Bot": {
+            "Singular": "Bot",
+            "Plural": "Bots"
+        },
+        "Client": {
+            "Singular": "Client",
+            "Plural": "Clients"
+        },
         "Command": {
-            "Zero": "Befehle",
             "Singular": "Befehl",
             "Plural": "Befehle"
         },
-        "Settings": {
-            "Zero": "Einstellungen",
-            "Singular": "Einstellung",
-            "Plural": "Einstellungen"
+        "Guild": {
+            "Singular": "Gilde",
+            "Plural": "Gilden"
         },
         "Language": {
-            "Zero": "Sprachen",
             "Singular": "Sprache",
             "Plural": "Sprachen"
         },
         "Prefix": {
-            "Zero": "Präfixe",
             "Singular": "Präfix",
             "Plural": "Präfixe"
         },
-        "Guild": {
-            "Zero": "Gilden",
-            "Singular": "Gilde",
-            "Plural": "Gilden"
-        },
-        "Client": {
-            "Zero": "Clients",
-            "Singular": "Client",
-            "Plural": "Clients"
-        },
-        "Bot": {
-            "Zero": "Bots",
-            "Singular": "Bot",
-            "Plural": "Bots"
-        },
         "SearchQuery": {
-            "Zero": "Suchanfragen",
             "Singular": "Suchanfrage",
             "Plural": "Suchanfragen"
         },
-        "Channel": "Channel",
+        "Settings": {
+            "Singular": "Einstellung",
+            "Plural": "Einstellungen"
+        },
 
         "Languages": {
-            "GERMAN": "Deutsch",
-            "ENGLISH": "Englisch"
+            "ENGLISH": "Englisch",
+            "GERMAN": "Deutsch"
         }
     },
 
