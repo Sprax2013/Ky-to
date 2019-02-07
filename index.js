@@ -237,7 +237,7 @@ client.on('guildDelete', (guild) => {
 
 client.on('error', (err) => {
     console.error(err);
-})
+});
 
 client.on('message', (msg) => {
     if (msg.author.bot) return;
@@ -246,9 +246,17 @@ client.on('message', (msg) => {
     if (!handleGuild(msg)) return;
 
     var guildPrefix = module.exports.getGuildPrefix(msg.guild.id);
-    if (msg.content.indexOf(guildPrefix) !== 0) return;
+    let usedPefix;
 
-    const args = msg.content.slice(1).trim().split(/ +/g);
+    if (msg.content.indexOf(guildPrefix) === 0) {
+        usedPefix = guildPrefix;
+    } else if (msg.content.indexOf(`<@${client.user.id}>`) === 0) {
+        usedPefix = `<@${client.user.id}>`;
+    } else {
+        return;
+    }
+
+    const args = msg.content.substring(usedPefix.length).trim().split(/ +/g);
     const cmdOrg = args.shift();
     const cmd = cmdOrg.toLowerCase();
 
@@ -257,7 +265,7 @@ client.on('message', (msg) => {
     } else if (client.cmdAliases.has(cmd)) {
         client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
     } else {
-        msg.channel.send(localization.getStringForGuild(null, 'UnknownCommand', msg));
+        msg.channel.send(localization.getStringForGuild(null, 'Bot:UnknownCommand', msg));
     }
 });
 
