@@ -236,7 +236,8 @@ client.on('guildDelete', (guild) => {
 });
 
 client.on('error', (err) => {
-    console.error(err);
+    console.error(new Date() + ": Discord client encountered an error"); // ToDo translate
+    console.error(err); //ToDo Log to file (Filter ECONNRESET - Die API bekommt ab und an einen Timeout oder so... Der Bot läuft normal weiter...)
 });
 
 client.on('message', (msg) => {
