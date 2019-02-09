@@ -24,6 +24,9 @@ module.exports = {
         'INFO': {
             __KEY: 'INFO',
             color: '0xFFFF33'
+        },
+        'HIDDEN': {
+            __KEY: 'HIDDEN',
         }
     }),
     handleGuild: handleGuild,

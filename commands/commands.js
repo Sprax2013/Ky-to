@@ -29,29 +29,32 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         for (const key in index.CommandCategory) {
             if (index.CommandCategory.hasOwnProperty(key)) {
                 const cat = index.CommandCategory[key];
-                const locCat = loc.getCommandCategoryForGuild(cat, msg);
 
-                let embed = new dc.RichEmbed()
-                    .setColor(cat.color)
+                if (cat !== index.CommandCategory.HIDDEN) {
+                    const locCat = loc.getCommandCategoryForGuild(cat, msg);
 
-                    .setTitle(locCat.name)
-                    .setDescription(locCat.description).addBlankField()
-                    .setFooter(`~${bot.user.username}`, bot.user.avatarURL);
+                    let embed = new dc.RichEmbed()
+                        .setColor(cat.color)
 
-                let sendEmbed = false;
+                        .setTitle(locCat.name)
+                        .setDescription(locCat.description).addBlankField()
+                        .setFooter(`~${bot.user.username}`, bot.user.avatarURL);
 
-                for (const cmd of cmdArr) {
-                    if (cmd.cmd.category === cat) {
-                        sendEmbed = true;
+                    let sendEmbed = false;
 
-                        embed.addField(guildPrefix + cmd.cmd.name, `\`${loc.getStringForGuild(cmd, '{%cmd}:cmd.Usage', msg, '{0}{1}')
+                    for (const cmd of cmdArr) {
+                        if (cmd.cmd.category === cat) {
+                            sendEmbed = true;
+
+                            embed.addField(guildPrefix + cmd.cmd.name, `\`${loc.getStringForGuild(cmd, '{%cmd}:cmd.Usage', msg, '{0}{1}')
                     .format(guildPrefix, cmd.cmd.name, '@' + bot.user.tag)}\` | ${loc.getStringForGuild(cmd, '{%cmd}:cmd.Description', msg)}`);
+                        }
                     }
-                }
 
-                if (sendEmbed) {
-                    // ToDo: Send via DM
-                    msg.author.send(embed);
+                    if (sendEmbed) {
+                        // ToDo: Send via DM
+                        msg.author.send(embed);
+                    }
                 }
             }
         }
