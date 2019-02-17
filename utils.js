@@ -28,6 +28,12 @@ if (!String.prototype.equalsIgnoreCase) {
     };
 }
 
+if (!String.prototype.containsMultipleLines) {
+    String.prototype.containsMultipleLines = function () {
+        return this.split(/\r\n|\r|\n/, 1) > 0;
+    };
+}
+
 /* StackOverflow ftw: https://stackoverflow.com/a/24137301/9346616 */
 if (!Array.prototype.random) {
     Array.prototype.random = function () {
