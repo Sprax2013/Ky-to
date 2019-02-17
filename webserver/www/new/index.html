@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ToDo -->
+    <title>{%GuildsName's Settings/Sprax's Profile} | Kyūto-Webinterface</title>
+
+    <!-- Favicons + Meta-Tags -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link href="https://assets.sprax2013.de/bootstrap-dark-material-design/v4.1.1/bootstrap-dark-material-design.min.css"
+        rel="stylesheet">
+
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="#">
+                <img src="./tmp_dynamic/botAvatar.png" style="width: 2.2rem;height: 2.2rem;" class="d-inline-block align-top rounded-circle"
+                    alt="Kyūto-Logo">
+                Kyūto
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="col-1"></div>
+
+                <ul class="navbar-nav col" style="overflow-x: auto;">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank">Invite Kyūto onto a Discord-Server to change some of his settings</a>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <!-- class="active" -->
+                        <a class="nav-link" href="#">GuildName1
+                            <!--<span class="sr-only">(Current)</span>-->
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GuildName2
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="col-2">
+                    <a href="#" class="float-right">
+                        <img src="./tmp_dynamic/userAvatar.png" class="d-inline-block rounded-circle" style="width: 2.2rem;height: 2.2rem;"
+                            alt="{Usernames's Avatar}">Your Profile
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <h1 class="mt-5">Settings</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleSelect1" class="bmd-label-floating">Language</label>
+                <select class="form-control" id="exampleSelect1">
+                    <option>German</option>
+                    <option>English</option>
+                </select>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    <span class="text-muted"><a href="#">Legal Notice</a> | <a href="#">Privacy Policy</a></span>
+                </div>
+
+                <div class="col-2">
+                    <span class="text-muted">
+                        <img src="./assets/images/Discord-Logo-White.svg" style="width: 1rem; height: 1rem;">
+
+                        <a href="{%BOT_INVITE_LINK}" target="_blank">Add me to your Server!</a>
+                    </span>
+                </div>
+
+                <div class="col-3">
+                    <span class="text-muted">
+                        <img src="./assets/images/GitHub-Mark-Light-32px.png" style="width: 1rem; height: 1rem;">
+
+                        <a href="https://github.com/Sprax2013/Kyuto" target="_blank">
+                            Help us to translate into other languages!
+                        </a>
+                    </span>
+                </div>
+
+                <div class="col-1">
+                    <span class="text-muted">
+                        <!-- <img src="./assets/images/GitHub-Mark-Light-32px.png" style="width: 1rem; height: 1rem;"> -->
+
+                        <a href="https://github.com/Sprax2013/Kyuto" target="_blank">
+                            FAQ and Support
+                        </a>
+                    </span>
+                </div>
+
+                <div class="col text-right">
+                    <span class="text-muted">Made with ❤️ by <a href="https://Sprax2013.de">Sprax2013</a> &
+                        <a href="http://jnsaph.website/">APH</a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Required? -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha256-ZvOgfh+ptkpoa2Y4HkRY28ir89u/+VRyDE7sB7hEEcI="
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').bootstrapMaterialDesign();
+        });
+    </script>
+</body>
+
+</html>

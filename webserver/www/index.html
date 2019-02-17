@@ -1,12 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Hello World!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyūto - Settings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.1.0/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
 </head>
 
 <body>
-    <h1>Hello World!</h1>
+    <div>
+        <nav class="navbar navbar-light navbar-expand navigation-clean" style="background-color:rgb(40,45,50);">
+            <div class="container"><a class="navbar-brand" href="#" style="color:rgb(240, 249 ,255);">Kyūto</a><button
+                    class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1" style="color:rgb(240, 249 ,255);"><span
+                        class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="color:rgb(240, 249 ,255);"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color:rgb(240, 249, 250);">First</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color:rgb(240, 249, 250);">Second</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color:rgb(240, 249, 250);">Third</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false" href="#" style="color:rgb(240, 249, 250);">Servers</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Lyze</a><a
+                                    class="dropdown-item" role="presentation" href="#">Server 2</a><a class="dropdown-item"
+                                    role="presentation" href="#">Server 3</a></div>
+                        </li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color:rgb(240, 249, 250);width:0;">&nbsp;</a></li>
+                        <li class="nav-item" role="presentation" style="width:102px;"><a class="nav-link active" href="#"
+                                style="color:rgb(240, 249, 250);width:145px;">Profile<img class="rounded img-fluid" src="http://jnsaph.website/assets/img/Error404.svg"
+                                    width="10%" style="width:30px;"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" style="height:275px;">
+            <button class="btn btn-primary" type="button">Save</button>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label"
+                    for="formCheck-1">Male</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label"
+                    for="formCheck-2">Female</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label"
+                    for="formCheck-3">Sprax</label></div>
+        </div>
+    </div>
+
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item"></div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Col2</h3>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">Admin Console</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Kyuto</h3>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Datenschutzerklärung</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item"></div>
+                </div>
+                <p class="copyright">Made with ❤️ by <a href="http://www.sprax2013.de">Sprax2013 </a>&amp; <a href="http://www.jnsaph.website">APH&nbsp;</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
