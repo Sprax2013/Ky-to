@@ -4,9 +4,9 @@ const morgan = require('morgan');
 
 app.use(morgan('dev')); // TODO: Log to File (Non 200 und 304 Anfragen)
 
-app.use(require('./webinterface'));
-
 app.use(express.static(`${__dirname}/www/static/`));
+
+app.use(require('./webinterface'));
 
 // Anfrage konnte nicht zugeordnet werden
 app.use((req, res, next) => {

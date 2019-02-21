@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{%LANG_CODE}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta-Tags's SEO -->
+    <!-- TODO -->
 
     <!-- Favicon etc. -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -18,10 +21,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- ToDo -->
-    <title>{%GuildsName's Settings/Sprax's Profile} | Kyūto-Webinterface</title>
+    <title>{%PAGE_TITLE_SUFFIX}Kyūto-Webinterface</title>
 
-    <!-- Favicons + Meta-Tags -->
+    <!-- CSS -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link href="https://assets.sprax2013.de/bootstrap-dark-material-design/v4.1.1/bootstrap-dark-material-design.min.css"
@@ -30,13 +32,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
         crossorigin="anonymous">
 
-    <link href="./style.css" rel="stylesheet">
+    <link href="{%PAGE_URL}/style.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{%PAGE_URL}/{%USER_TOKEN}">
                 <img src="{%BOT_AVATAR}" style="width: 2.2rem;height: 2.2rem;" class="d-inline-block align-top rounded-circle"
                     alt="Logo">
                 Kyūto
@@ -50,24 +52,11 @@
                 <div class="col-1"></div>
 
                 <ul class="navbar-nav col" style="overflow-x: auto;">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#" target="_blank">Invite Kyūto onto a Discord-Server to change some of his settings</a>
-                    </li> -->
-
-                    <!-- {%Nav_Guilds} -->
-
-                    <li class="nav-item">
-                        <!-- class="active" --><a class="nav-link" href="#">GuildName1
-                            <!--<span class="sr-only">(Current)</span>--></a></li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">GuildName2
-                        </a>
-                    </li>
+                    {%NAV_GUILDS}
                 </ul>
 
                 <div class="col-2">
-                    <a href="#" class="float-right">
+                    <a href="{%PAGE_URL}/{%USER_TOKEN}/Profile" class="float-right">
                         <img src="{%USER_AVATAR}" class="d-inline-block rounded-circle" style="width: 2.2rem;height: 2.2rem;"
                             alt="{Usernames's Avatar}">Your Profile
                     </a>
@@ -77,7 +66,7 @@
     </header>
 
     <main role="main" class="container">
-        <h1 class="mt-5">Choose a server from the menu above!</h1>
+        <h1 class="mt-5">Please choose a server from the menu above</h1>
 
         <script>
             // <h1 class="mt-5">Settings</h1>
@@ -113,20 +102,20 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2">
-                    <span class="text-muted"><a href="#">Legal Notice</a> | <a href="#">Privacy Policy</a></span>
+                    <span class="text-muted"><a href="../legal">Legal Notice</a> | <a href="../privacy">Privacy Policy</a></span>
                 </div>
 
                 <div class="col-2">
                     <span class="text-muted">
-                        <img src="./assets/images/Discord-Logo-White.svg" style="width: 1rem; height: 1rem;">
+                        <img src="{%PAGE_URL}/assets/images/Discord-Logo-White.svg" style="width: 1rem; height: 1rem;">
 
-                        <a href="{%BOT_INVITE_LINK}" target="_blank">Add me to your Server!</a>
+                        <a href="{%BOT_INVITE}" target="_blank">Add me to your Server!</a>
                     </span>
                 </div>
 
                 <div class="col-3">
                     <span class="text-muted">
-                        <img src="./assets/images/GitHub-Mark-Light-32px.png" style="width: 1rem; height: 1rem;">
+                        <img src="{%PAGE_URL}/assets/images/GitHub-Mark-Light-32px.png" style="width: 1rem; height: 1rem;">
 
                         <a href="https://github.com/Sprax2013/Kyuto" target="_blank">
                             Help us to translate into other languages!
@@ -136,8 +125,6 @@
 
                 <div class="col-1">
                     <span class="text-muted">
-                        <!-- <img src="./assets/images/GitHub-Mark-Light-32px.png" style="width: 1rem; height: 1rem;"> -->
-
                         <a href="https://github.com/Sprax2013/Kyuto" target="_blank">
                             FAQ and Support
                         </a>
@@ -152,7 +139,6 @@
         </div>
     </footer>
 
-    <!-- Required? -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha256-ZvOgfh+ptkpoa2Y4HkRY28ir89u/+VRyDE7sB7hEEcI="
