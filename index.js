@@ -217,6 +217,8 @@ client.on('ready', () => {
         )
     );
 
+    module.exports.client = client;
+
     updateBotActivity();
 });
 
@@ -273,6 +275,7 @@ client.on('message', (msg) => {
     }
 });
 
+// DEBUG
 client.login(cfg.botToken);
 
 function updateBotActivity() {

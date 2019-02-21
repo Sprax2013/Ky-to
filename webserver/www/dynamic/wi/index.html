@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Favicon etc. -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="Kyūto-Webinterface">
+    <meta name="application-name" content="Kyūto-Webinterface">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- ToDo -->
     <title>{%GuildsName's Settings/Sprax's Profile} | Kyūto-Webinterface</title>
 
@@ -14,6 +27,9 @@
     <link href="https://assets.sprax2013.de/bootstrap-dark-material-design/v4.1.1/bootstrap-dark-material-design.min.css"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
+        crossorigin="anonymous">
+
     <link href="./style.css" rel="stylesheet">
 </head>
 
@@ -21,8 +37,8 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark">
             <a class="navbar-brand" href="#">
-                <img src="./tmp_dynamic/botAvatar.png" style="width: 2.2rem;height: 2.2rem;" class="d-inline-block align-top rounded-circle"
-                    alt="Kyūto-Logo">
+                <img src="{%BOT_AVATAR}" style="width: 2.2rem;height: 2.2rem;" class="d-inline-block align-top rounded-circle"
+                    alt="Logo">
                 Kyūto
             </a>
 
@@ -38,12 +54,11 @@
                         <a class="nav-link" href="#" target="_blank">Invite Kyūto onto a Discord-Server to change some of his settings</a>
                     </li> -->
 
+                    <!-- {%Nav_Guilds} -->
+
                     <li class="nav-item">
-                        <!-- class="active" -->
-                        <a class="nav-link" href="#">GuildName1
-                            <!--<span class="sr-only">(Current)</span>-->
-                        </a>
-                    </li>
+                        <!-- class="active" --><a class="nav-link" href="#">GuildName1
+                            <!--<span class="sr-only">(Current)</span>--></a></li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="#">GuildName2
@@ -53,7 +68,7 @@
 
                 <div class="col-2">
                     <a href="#" class="float-right">
-                        <img src="./tmp_dynamic/userAvatar.png" class="d-inline-block rounded-circle" style="width: 2.2rem;height: 2.2rem;"
+                        <img src="{%USER_AVATAR}" class="d-inline-block rounded-circle" style="width: 2.2rem;height: 2.2rem;"
                             alt="{Usernames's Avatar}">Your Profile
                     </a>
                 </div>
@@ -62,18 +77,37 @@
     </header>
 
     <main role="main" class="container">
-        <h1 class="mt-5">Settings</h1>
+        <h1 class="mt-5">Choose a server from the menu above!</h1>
 
-        <form>
-            <div class="form-group">
-                <label for="exampleSelect1" class="bmd-label-floating">Language</label>
-                <select class="form-control" id="exampleSelect1">
-                    <option>German</option>
-                    <option>English</option>
-                </select>
-            </div>
-        </form>
+        <script>
+            // <h1 class="mt-5">Settings</h1>
+
+            // <form>
+            //     <div class="form-group">
+            //         <label for="exampleSelect1" class="bmd-label-floating">Language</label>
+            //         <select class="form-control" id="exampleSelect1">
+            //             <option>German</option>
+            //             <option>English</option>
+            //         </select>
+            //     </div>
+
+            //     <div class="form-group">
+            //         <label for="cmdPrefix" class="bmd-label-floating">Command prefix</label>
+            //         <input type="text" maxlength="1" class="form-control" id="cmdPrefix">
+            //         <span class="bmd-help">I'll listen to messages starting with this - May only be 1 character!</span>
+            //     </div>
+
+            //     <!-- animated  -->
+            //     <!-- bounceInDown -->
+            //     <!-- wobble -->
+            //     <!-- bounceOutUp -->
+            //     <button type="submit" class="btn btn-raised btn-danger btn-float invisible" id="btnSave">
+            //         <i class="material-icons align-bottom">save</i>Save
+            //     </button>
+            // </form>
+        </script>
     </main>
+
 
     <footer class="footer">
         <div class="container-fluid">

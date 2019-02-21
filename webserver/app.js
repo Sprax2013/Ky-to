@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 
-app.use(morgan('dev')); // ToDo: Log to File (Non 200 und 304 Anfragen)
+app.use(morgan('dev')); // TODO: Log to File (Non 200 und 304 Anfragen)
+
+app.use(require('./webinterface'));
+
+app.use(express.static(`${__dirname}/www/static/`));
 
 // Anfrage konnte nicht zugeordnet werden
 app.use((req, res, next) => {
@@ -14,7 +18,7 @@ app.use((req, res, next) => {
     //     return next(err);
     // }
 
-    res.status(404).sendFile(`${__dirname}/www-error/404.html`, (err) => {
+    res.status(404).sendFile(`${__dirname}/www/error/404.html`, (err) => {
         if (err) {
             next(err);
         }
@@ -27,7 +31,7 @@ app.use((err, req, res, next) => {
         require('./../logging').WebServer.error(err);
     }
 
-    res.status(500).sendFile(`${__dirname}/www-error/500.html`, (err) => {
+    res.status(500).sendFile(`${__dirname}/www/error/500.html`, (err) => {
         // Falls 500.html nicht existiert
         if (err) {
             res.format({
