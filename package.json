@@ -1,21 +1,21 @@
 {
-  "name": "kyuto",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore ./storage --ignore ./logs"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^11.4.2",
-    "express": "^4.16.4",
-    "morgan": "^1.9.1",
-    "nekos.life": "^2.0.2",
-    "nodemon": "^1.18.9",
-    "os-utils": "0.0.14",
-    "request": "^2.88.0"
-  }
+    "name": "kyuto",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon --ignore ./storage --ignore ./logs"
+    },
+    "author": "Sprax2013 and APH",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^11.4.2",
+        "express": "^4.16.4",
+        "morgan": "^1.9.1",
+        "nekos.life": "^2.0.2",
+        "nodemon": "^1.18.10",
+        "os-utils": "0.0.14",
+        "request": "^2.88.0"
+    }
 }
