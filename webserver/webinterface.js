@@ -14,16 +14,16 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
         token = token.trim();
 
         let user;
-        let guild;
         for (const u of index.client.users.values()) {
             if (u.id === '174140530572263424') {
                 user = u;
             }
         }
-        for (const g of index.client.guilds.values()) {
-            if (g.id === '526127500800163861') {
-                guild = g;
-            }
+
+        let page = req.params.page;
+
+        if (page) {
+            page.trim();
         }
 
         if (isValidToken(token)) {
@@ -35,13 +35,18 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
                     return;
                 }
 
+                let guild;
                 let pageType = 0;
 
-                if (token) {
-                    if (token.equalsIgnoreCase('profile')) {
+                if (page) {
+                    if (page.equalsIgnoreCase('Profile')) {
                         pageType = 2;
                     } else {
                         pageType = 1;
+
+                        if (index.client.guilds.has(page)) {
+                            guild = index.client.guilds.get(page);
+                        }
                     }
                 }
 
@@ -90,6 +95,12 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                 return userToken;
             case 'LANG_CODE':
                 return langEnum.langCode;
+            case 'GUILD_ID':
+                if (guild) {
+                    return guild.id;
+                }
+
+                break;
             case 'PAGE_TITLE_SUFFIX':
                 if (pageType) {
                     if (pageType == 1 && guild) {
@@ -124,7 +135,7 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                     for (const g of index.client.guilds.values()) {
                         if (g.members.has(user.id) && g.members.get(user.id).hasPermission('ADMINISTRATOR')) {
                             let active = guild && g.id === guild.id;
-                            result += `<li class="nav-item"><a class="nav-link${active ?' active':''}" href="/wi/${userToken}/${guild.id}">${g.name}${active ?' <span class="sr-only">(Current)</span>':''}</a></li>`;
+                            result += `<li class="nav-item"><a class="nav-link${active ? ' active' : ''}" href="/wi/${userToken}/${g.id}">${g.name}${active ? ' <span class="sr-only">(Current)</span>' : ''}</a></li>`;
                         }
                     }
                 }
