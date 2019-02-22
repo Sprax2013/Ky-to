@@ -55,10 +55,10 @@
                     {%NAV_GUILDS}
                 </ul>
 
-                <div class="col-2">
+                <div class="col-2 {%D_NONE:NoUser}">
                     <a href="{%PAGE_URL}/{%USER_TOKEN}/Profile" class="float-right">
                         <img src="{%USER_AVATAR}" class="d-inline-block rounded-circle" style="width: 2.2rem;height: 2.2rem;"
-                            alt="{Usernames's Avatar}">Your Profile
+                            alt="Your Avatar">Your Profile
                     </a>
                 </div>
             </div>
@@ -66,25 +66,25 @@
     </header>
 
     <main role="main" class="container">
-        <div class="{%VISIBLE:NoToken}">
+        <div class="{%D_NONE:NoToken}">
             <h1 class="mt-5">You need an access token to use this page.</h1>
             <p>Write <code>!Token</code> in an channel that @Kyūto#5383 can read in.</p>
         </div>
-        <div class="{%VISIBLE:InvalidToken}">
-            <h1 class="mt-5">Your access token expired or is invalid</h1>
+        <div class="{%D_NONE:InvalidToken}">
+            <h1 class="mt-5">Your access token expired or is invalid!</h1>
             <p>Write <code>!Token</code> in an channel that @Kyūto#5383 can read in.</p>
         </div>
-        <div class="{%VISIBLE:InvalidGuild}">
+        <div class="{%D_NONE:InvalidGuild}">
             <h1 class="mt-5">The Guild you tried to access does not exist or I'm not a member of it.</h1>
-            <p>Choose another server from the menu or <a href="{%BOT_INVITE_LINK}" target="_blank">invite me</a></p>
+            <p>Choose another server from the menu or <a href="{%BOT_INVITE_LINK}" target="_blank">invite me</a> ;3</p>
         </div>
-        <div class="{%VISIBLE:NoPermissionOnGuild}">
+        <div class="{%D_NONE:NoPermissionOnGuild}">
             <h1 class="mt-5">You don't have the Administrator-Permission on the given guild.</h1>
             <p>You can visit your <a href="{%PAGE_URL}/{%USER_TOKEN}/Profile">profile</a> instead.</p>
         </div>
-        <div class="{%VISIBLE:ChooseServer}">
+        <div class="{%D_NONE:ChooseServer}">
             <h1 class="mt-5">Please choose a server from the menu above</h1>
-            <p>You can use this to configure Kyūto</p>
+            <p>You can use this webinterface to configure Kyūto and see your profile.</p>
         </div>
 
         <script>

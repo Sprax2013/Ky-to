@@ -14,58 +14,58 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
 
     if (token) {
         token = token.trim();
+    }
 
-        let user;
+    let user;
+
+    // DEBUG
+    if (token) {
         for (const u of index.client.users.values()) {
             if (u.id === '174140530572263424') {
                 user = u;
             }
         }
+    }
 
-        let page = req.params.page;
+    let page = req.params.page;
 
-        if (page) {
-            page.trim();
+    if (page) {
+        page.trim();
+    }
+
+    require('fs').readFile(`${__dirname}/www/dynamic/wi/index.html`, {
+        encoding: 'UTF-8'
+    }, (err, data) => {
+        if (err) {
+            next(err);
+            return;
         }
 
-        require('fs').readFile(`${__dirname}/www/dynamic/wi/index.html`, {
-            encoding: 'UTF-8'
-        }, (err, data) => {
-            if (err) {
-                next(err);
-                return;
-            }
+        let guild;
+        let pageType = 0;
 
-            let guild;
-            let pageType = 0;
+        if (page) {
+            if (page.equalsIgnoreCase('Profile')) {
+                pageType = 2;
+            } else {
+                pageType = 1;
 
-            if (page) {
-                if (page.equalsIgnoreCase('Profile')) {
-                    pageType = 2;
-                } else {
-                    pageType = 1;
-
-                    if (index.client.guilds.has(page)) {
-                        guild = index.client.guilds.get(page);
-                    }
+                if (index.client.guilds.has(page)) {
+                    guild = index.client.guilds.get(page);
                 }
             }
+        }
 
-
-
-            // TODO replace lang with users/guilds lang.
-            res.contentType('html').send(modifyWebinterfacePage(data, isValidToken(token) ? token : 'INVALID', guild ? guild : 'INVALID', user, pageType, undefined));
-        });
-    } else {
-        res.sendFile(`${__dirname}/www/dynamic/wi/noToken.html`);
-    }
+        // TODO replace lang with users/guilds lang.
+        res.contentType('html').send(modifyWebinterfacePage(data, isValidToken(token) ? token : 'INVALID', guild ? guild : 'INVALID', user, pageType, undefined));
+    });
 });
 
 module.exports = router;
 
 /* Helpers */
 function isValidToken(token) {
-    return token.lastIndexOf('.') < 0;
+    return token && token.lastIndexOf('.') < 0;
 }
 
 function modifyWebinterfacePage(rawHTML = '', userToken = '', guild = null, user = null, pageType = 0, langEnum = index.getLocalization().LanguageEnum.ENGLISH) {
@@ -92,7 +92,10 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
             case 'PAGE_URL':
                 return 'http://localhost:8089/wi';
             case 'USER_TOKEN':
-                return userToken;
+                if (userToken !== 'INVALID') {
+                    return userToken;
+                }
+                break;
             case 'LANG_CODE':
                 return langEnum.langCode;
             case 'GUILD_ID':
@@ -146,7 +149,7 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                 }
 
                 if (result.length <= 0) {
-                    result = '<li class="nav-item"><a class="nav-link" href="#" target="_blank">Invite Kyūto onto a Discord-Server to change some of his settings</a></li>';
+                    result = '<li class="nav-item"><a class="nav-link" href="{%BOT_INVITE_LINK}" target="_blank">Invite Kyūto onto a Discord-Server to change some of his settings</a></li>';
                 }
 
                 return result;
@@ -155,8 +158,14 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
         }
     }
 
-    if (param.toUpperCase().startsWith('VISIBLE:')) {
-        param = param.substring('VISIBLE:'.length);
+    if (param.toUpperCase().startsWith('D_NONE:')) {
+        param = param.substring('D_NONE:'.length);
+
+        if (param.equalsIgnoreCase('NoUser')) {
+            if (!user) {
+                return 'd-none';
+            }
+        } else
 
         if (param.equalsIgnoreCase('NoToken')) {
             if (userToken) {
@@ -175,7 +184,7 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                 return 'd-none';
             }
         } else if (param.equalsIgnoreCase('ChooseServer')) {
-            if (pageType !== 0) {
+            if (!user || pageType !== 0) {
                 return 'd-none';
             }
         }
