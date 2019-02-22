@@ -1,5 +1,7 @@
 const index = require('./../index');
 
+const discord = require('discord.js');
+
 const express = require('express');
 const router = express.Router();
 
@@ -26,36 +28,34 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
             page.trim();
         }
 
-        if (isValidToken(token)) {
-            require('fs').readFile(`${__dirname}/www/dynamic/wi/index.html`, {
-                encoding: 'UTF-8'
-            }, (err, data) => {
-                if (err) {
-                    next(err);
-                    return;
-                }
+        require('fs').readFile(`${__dirname}/www/dynamic/wi/index.html`, {
+            encoding: 'UTF-8'
+        }, (err, data) => {
+            if (err) {
+                next(err);
+                return;
+            }
 
-                let guild;
-                let pageType = 0;
+            let guild;
+            let pageType = 0;
 
-                if (page) {
-                    if (page.equalsIgnoreCase('Profile')) {
-                        pageType = 2;
-                    } else {
-                        pageType = 1;
+            if (page) {
+                if (page.equalsIgnoreCase('Profile')) {
+                    pageType = 2;
+                } else {
+                    pageType = 1;
 
-                        if (index.client.guilds.has(page)) {
-                            guild = index.client.guilds.get(page);
-                        }
+                    if (index.client.guilds.has(page)) {
+                        guild = index.client.guilds.get(page);
                     }
                 }
+            }
 
-                // TODO replace lang with users/guilds lang.
-                res.contentType('html').send(modifyWebinterfacePage(data, token, guild, user, pageType, undefined));
-            });
-        } else {
-            res.sendFile(`${__dirname}/www/dynamic/wi/invalidToken.html`);
-        }
+
+
+            // TODO replace lang with users/guilds lang.
+            res.contentType('html').send(modifyWebinterfacePage(data, isValidToken(token) ? token : 'INVALID', guild ? guild : 'INVALID', user, pageType, undefined));
+        });
     } else {
         res.sendFile(`${__dirname}/www/dynamic/wi/noToken.html`);
     }
@@ -113,6 +113,11 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                 break;
             case 'BOT_INVITE_LINK':
                 return 'https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=526454942328946719';
+            case 'BOT_NAME':
+                if (index.client) {
+                    return index.client.user.username;
+                }
+                break;
             case 'BOT_AVATAR':
                 if (index.client) {
                     let url = index.client.user.avatarURL;
@@ -147,6 +152,32 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
                 return result;
             default:
                 break;
+        }
+    }
+
+    if (param.toUpperCase().startsWith('VISIBLE:')) {
+        param = param.substring('VISIBLE:'.length);
+
+        if (param.equalsIgnoreCase('NoToken')) {
+            if (userToken) {
+                return 'd-none';
+            }
+        } else if (param.equalsIgnoreCase('InvalidToken')) {
+            if (userToken !== 'INVALID') {
+                return 'd-none';
+            }
+        } else if (param.equalsIgnoreCase('InvalidGuild')) {
+            if (pageType !== 1 || guild !== 'INVALID') {
+                return 'd-none';
+            }
+        } else if (param.equalsIgnoreCase('NoPermissionOnGuild')) {
+            if (!(guild instanceof discord.Guild) || !user || guild.members.get(user.id).hasPermission('ADMINISTRATOR')) {
+                return 'd-none';
+            }
+        } else if (param.equalsIgnoreCase('ChooseServer')) {
+            if (pageType !== 0) {
+                return 'd-none';
+            }
         }
     }
 
