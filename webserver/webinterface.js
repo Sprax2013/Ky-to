@@ -19,7 +19,7 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
     let user;
 
     // DEBUG
-    if (token) {
+    if (token && index.client) {
         for (const u of index.client.users.values()) {
             if (u.id === '174140530572263424') {
                 user = u;
@@ -167,27 +167,31 @@ function getStringForParam(param, userToken, guild = null, user = null, pageType
             }
         } else
 
-        if (param.equalsIgnoreCase('NoToken')) {
-            if (userToken) {
-                return 'd-none';
+            if (param.equalsIgnoreCase('NoToken')) {
+                if (userToken) {
+                    return 'd-none';
+                }
+            } else if (param.equalsIgnoreCase('InvalidToken')) {
+                if (userToken !== 'INVALID') {
+                    return 'd-none';
+                }
+            } else if (param.equalsIgnoreCase('InvalidGuild')) {
+                if (pageType !== 1 || guild !== 'INVALID') {
+                    return 'd-none';
+                }
+            } else if (param.equalsIgnoreCase('NoPermissionOnGuild')) {
+                if (!(guild instanceof discord.Guild) || !user || guild.members.get(user.id).hasPermission('ADMINISTRATOR')) {
+                    return 'd-none';
+                }
+            } else if (param.equalsIgnoreCase('ChooseServer')) {
+                if (!user || pageType !== 0) {
+                    return 'd-none';
+                }
+            } else if (param.equalsIgnoreCase('Guild')) {
+                if (!(guild instanceof discord.Guild) || !user || !guild.members.get(user.id).hasPermission('ADMINISTRATOR')) {
+                    return 'd-none';
+                }
             }
-        } else if (param.equalsIgnoreCase('InvalidToken')) {
-            if (userToken !== 'INVALID') {
-                return 'd-none';
-            }
-        } else if (param.equalsIgnoreCase('InvalidGuild')) {
-            if (pageType !== 1 || guild !== 'INVALID') {
-                return 'd-none';
-            }
-        } else if (param.equalsIgnoreCase('NoPermissionOnGuild')) {
-            if (!(guild instanceof discord.Guild) || !user || guild.members.get(user.id).hasPermission('ADMINISTRATOR')) {
-                return 'd-none';
-            }
-        } else if (param.equalsIgnoreCase('ChooseServer')) {
-            if (!user || pageType !== 0) {
-                return 'd-none';
-            }
-        }
     }
 
     return '';
