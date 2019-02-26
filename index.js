@@ -266,12 +266,38 @@ client.on('message', (msg) => {
     const cmdOrg = args.shift();
     const cmd = cmdOrg.toLowerCase();
 
-    if (client.cmds.has(cmd)) {
-        client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
-    } else if (client.cmdAliases.has(cmd)) {
-        client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
-    } else {
-        msg.channel.send(localization.getStringForGuild(null, 'Bot:UnknownCommand', msg));
+    try {
+        if (client.cmds.has(cmd)) {
+            client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
+        } else if (client.cmdAliases.has(cmd)) {
+            client.cmdAliases.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);
+        } else {
+            msg.channel.send(localization.getStringForGuild(null, 'Bot:UnknownCommand', msg));
+        }
+    } catch (ex) {
+        console.error(ex);
+    }
+});
+
+client.on('messageReactionAdd', (msgReact, user) => {
+    if (user.bot) return;
+    if (!msgReact.message.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
+
+    if (!handleGuild(msgReact.message)) return;
+
+    let called = [];
+
+    for (const arr of Array.of(client.cmds.values(), client.cmdAliases.values())) {
+        for (const cmd of arr) {
+            try {
+                if (!called.includes(cmd) && cmd.onAddedReaction && typeof cmd.onAddedReaction === 'function') {
+                    called.push(cmd);
+                    cmd.onAddedReaction(client, msgReact, user);
+                }
+            } catch (ex) {
+                console.error(ex);
+            }
+        }
     }
 });
 
