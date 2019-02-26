@@ -6,7 +6,7 @@ module.exports.cmd = {
     name: 'clear',
     aliases: ['clearchat', 'cc'],
 
-    category: index.CommandCategory.ADMIN
+    category: index.CommandCategory.MODERATOR
 };
 
 var messages = new dc.Collection();
@@ -74,44 +74,49 @@ module.exports.onAddedReaction = async (bot, msgReact, user) => {
 
         messages.delete(msgReact.message);
 
-        channel.fetchMessages({
-                limit: data.count,
-                before: data.msg.id
-            })
-            .then((messages) => {
-                channel.bulkDelete(messages, true).then(async () => {
-                    // Deletes messages older that 14 days
-                    for (const [key] of messages) {
-                        channel.fetchMessage(key).then((msg) => {
-                            msg.delete();
-                        }).catch((err) => {
-                            if (err.code !== 10008) { // Message already deleted
-                                console.error(err);
-                            }
-                        });
-                    }
+        await data.msg.delete();
+        await msgReact.message.delete();
 
-                    channel.send(new dc.RichEmbed()
-                        .setColor(13632027)
+        let countLeft = data.count;
+        while (countLeft > 0) {
+            let nextCount = countLeft >= 100 ? 100 : countLeft;
+            countLeft -= nextCount;
 
-                        .setAuthor(user.username, user.avatarURL)
-                        .setDescription(`Der Chat-Verlauf wurde von <@${user.id}> geleert`)
+            deleteRecentMessages(channel, nextCount);
+        }
 
-                        .setTimestamp()
-                    );
-                }).catch((err) => {
-                    console.log(err);
+        channel.send(new dc.RichEmbed()
+            .setColor(13632027)
 
-                    channel.send('An error occured');
-                });
+            .setAuthor(user.username, user.avatarURL)
+            .setDescription(`Der Chat-Verlauf wurde von <@${user.id}> geleert`)
 
-                data.msg.delete();
-                msgReact.message.delete();
-            })
-            .catch((err) => {
-                console.log(err);
-
-                channel.send('An error occured');
-            });
+            .setTimestamp()
+        );
     }
+}
+
+async function deleteRecentMessages(channel, count) {
+    channel.fetchMessages({
+            limit: count
+        })
+        .then((messages) => {
+            channel.bulkDelete(messages, true).then(async () => {
+                // Deletes messages older that 14 days
+                for (const [key] of messages) {
+                    channel.fetchMessage(key).then((msg) => {
+                        msg.delete();
+                    }).catch((err) => {
+                        if (err.code !== 10008) { // Message already deleted
+                            console.error(err);
+                        }
+                    });
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 }
