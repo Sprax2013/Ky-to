@@ -22,7 +22,7 @@
 
         "ThanksForInvite": "Thank you for adding me to your server! :3\nI recommend starting with `{0}Settings` (on your server)\nFor a list of commands, see `{0}Commands`\n\nPS: At the moment I do not react to DMs",
         "UnknownCommand": "Unknown Command :thinking:",
-        "ChannelNotNSFW": ":warning: Yea.. no this channel isn't marked as *NSFW*."
+        "ChannelNotNSFW": ":underage: Yea.. no this channel isn't marked as *NSFW*."
     },
     "Commands": {
         "Template": {

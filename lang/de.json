@@ -22,7 +22,7 @@
 
         "ThanksForInvite": "Vielen Dank, dass Du mich zu deinem Server hinzugefügt hast! :3\nIch schlage vor, dass du mit `{0}Einstellungen` (auf dem Server) beginnst\nEine Befehlliste bekommst du mit `{0}Befehle`\n\nPS: Aktuell reagiere ich nicht auf DMs",
         "UnknownCommand": "Unbekannter Befehl :thinking:",
-        "ChannelNotNSFW": ":warning: Dieser Channel ist nicht als *NSFW* gekennzeichnet!"
+        "ChannelNotNSFW": ":underage: Dieser Channel ist nicht als *NSFW* gekennzeichnet!"
     },
     "Commands": {
         "Template": {
