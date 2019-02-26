@@ -73,7 +73,7 @@ module.exports = {
     },
     getGuildID: (obj) => {
         if (obj) {
-            if (obj instanceof dc.Message) {
+            if (obj instanceof dc.Message && obj.guild) {
                 return obj.guild.id;
             } else if (obj instanceof dc.Guild) {
                 return obj.id;
