@@ -1,20 +1,39 @@
-const index = require('../../index'); // Kann genutzt werden um z.B. die Prefix für eine Gilde zu ändern etc.
-const loc = index.getLocalization(); // Hiermit kann auf die Lokalisation zugegriffen werden
-const dc = require('discord.js'); // Praktisch für RichEmbed etc.
+const index = require('../../index');
+const loc = index.getLocalization();
+
+const API_URL = 'https://nekos.life/api/v2/owoify?text=';
 
 module.exports.cmd = {
-    name: 'owo', // Führt onCommand aus, bei einer Nachricht wie '!template Arg1 Arg2'
-    aliases: ['owoify'], // Alternative Bezeichnungen des Befehls (Kann auch als Fallback dienen)
+    name: 'Owoify',
+    aliases: ['owo'],
 
-    category: index.CommandCategory.MISC // (Optional, Standard: 'MISC') Die Kategorie wird beim Auflisten von Befehlen genutzt
+    category: index.CommandCategory.MISC
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    let newArgs = [loc.getWordForGuild('Prefix', msg)];
-    const client = require('nekos.life');
-    const neko = new client();
-    // Text with ,
-    var apis = await neko.sfw.OwOify({text: args})
-    var apir = apis.owo.replaceAll(",", " ")
-      msg.reply(apir);
+    if (args.length >= 1) {
+        index.Utils.getJSONFromURL(API_URL + encodeURIComponent(getText(args)), (json) => {
+            if (json && json.owo) {
+                msg.reply(json.owo);
+            } else {
+                msg.reply(loc.getStringForGuild(this, 'ERR_OCCURRED', msg));
+            }
+        });
+    } else {
+        msg.reply('`' + loc.getStringForGuild(this, '{%cmd}:cmd.Usage', msg).format(guildPrefix, module.exports.cmd.name) + '`');
+    }
+}
+
+function getText(args) {
+    let result = '';
+
+    for (const word of args) {
+        if (result.length > 0) {
+            result += ' ';
+        }
+
+        result += word;
+    }
+
+    return result;
 }

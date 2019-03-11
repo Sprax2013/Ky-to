@@ -17,6 +17,10 @@ module.exports = {
             __KEY: 'ADMIN',
             color: '0xEF2B48'
         },
+        'MODERATOR': {
+            __KEY: 'MODERATOR',
+            color: '0xEF2B48'
+        },
         'MISC': {
             __KEY: 'MISC',
             color: '0xB7C0EE'
@@ -301,7 +305,6 @@ client.on('messageReactionAdd', (msgReact, user) => {
     }
 });
 
-// DEBUG
 client.login(cfg.botToken);
 
 function updateBotActivity() {
