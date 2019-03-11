@@ -11,7 +11,7 @@ module.exports.cmd = {
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
     if (args.length <= 1) {
-        msg.channel.send(loc.getStringForGuild(this, '{%cmd}:cmd.Usage', msg).format(guildPrefix, module.exports.cmd.name));
+        msg.reply('`' + loc.getStringForGuild(this, '{%cmd}:cmd.Usage', msg).format(guildPrefix, module.exports.cmd.name) + '`');
     } else {
         msg.channel.fetchMessage(args[0]).catch(() => {
             msg.reply(loc.getStringForGuild(this, '{%cmd}:MessageNotFound', msg));
