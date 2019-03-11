@@ -32,6 +32,18 @@
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
 
+        "Clear": {
+            "cmd.Description": "Deletes the last *n* messages.",
+            "cmd.Usage": "{0}{1} <Amount>",
+
+            "Confirm": "Please confirm the deletion of the {0} recent messages by clicking on the Robot below (Abort in {1} seconds)",
+            "Canceled": "~~{0}, Please confirm by clicking on the Robot below.~~ (Action canceled)",
+
+            "SuccessFooter": "The chat was cleared by {0}",
+
+            "AtLeatOneMessage": "You have to delete at least one message.",
+            "NotAllowed": "You are not allowed to delete messages!"
+        },
         "Commands": {
             "cmd.Description": "Lists all commands sorted by category.",
             "cmd.Usage": "{0}{1}",
@@ -55,6 +67,10 @@
             "RichTitle": ">> Invite Link <<",
             "RichDescription": "Use **{0}Commands** after the Bot has joined the server!",
             "RichFooter": "{0}'s request has been processed"
+        },
+        "Owoify": {
+            "cmd.Description": "Owoifies your message.",
+            "cmd.Usage": "{0}{1} *Your message belongs here*"
         },
         "Ping": {
             "cmd.Description": "Tries to determine your Ping. Mention Kyūto to see his ping.",
@@ -98,6 +114,10 @@
         },
         "Status": {
             "cmd.Description": "Shows my current status and that of the system I am running on.",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Token": {
+            "cmd.Description": "Creates a temporary link for accessing my web interface.",
             "cmd.Usage": "{0}{1}"
         },
         "Wallpaper": {
@@ -178,11 +198,15 @@
         },
         "ADMIN": {
             "name": "Admin",
-            "description": "Commands that require **admin rights on the server** - With these commands you can customize my functionality on each server."
+            "description": "Commands that require **admin rights on the server** - With these commands you can customize my functionalities on each server."
         },
         "MISC": {
             "name": "Miscellaneous",
             "description": "Commands, which I could not assign a precise category."
+        },
+        "MODERATOR": {
+            "name": "Moderation",
+            "description": "Commands, that require *elevated rights on the server*"
         },
         "INFO": {
             "name": "Info",

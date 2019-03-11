@@ -32,6 +32,18 @@
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
 
+        "Clear": {
+            "cmd.Description": "Löscht die letzten *n* Nachrichten.",
+            "cmd.Usage": "{0}{1} <Anzahl>",
+
+            "Confirm": "Bitte bestätigen Sie den Löschvorgang der letzten {0} Nachrichten, indem Sie unten auf den Roboter klicken (Abbruch in {1} Sekunden).",
+            "Canceled": "~~{0}, Bitte bestätigen Sie den Löschvorgang, indem Sie unten auf den Roboter klicken.~~ (Action canceled)",
+
+            "SuccessFooter": "Der Chatverlauf wurde von {0} gereinigt!",
+
+            "AtLeatOneMessage": "Du musst mindestens eine Nachricht löschen.",
+            "NotAllowed": "Du bist nicht berechtigt den Chatverlauf zu bearbeiten!"
+        },
         "Commands": {
             "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie.",
             "cmd.Usage": "{0}{1}",
@@ -55,6 +67,10 @@
             "RichTitle": ">> Einladungslink <<",
             "RichDescription": "Nutze **{0}Commands**, nachdem der Bot dem Server beigetreten ist!",
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
+        },
+        "Owoify": {
+            "cmd.Description": "Owoifiziert deine Nachricht.",
+            "cmd.Usage": "{0}{1} *Deine Nachricht kann einfach dahinter*"
         },
         "Ping": {
             "cmd.Description": "Versucht Deinen Ping zu ermitteln. Erwähne Kyūto, um seinen Ping zu sehen.",
@@ -98,6 +114,10 @@
         },
         "Status": {
             "cmd.Description": "Zeigt meinen aktuellen Status und den des Systems an, auf dem ich laufe.",
+            "cmd.Usage": "{0}{1}"
+        },
+        "Token": {
+            "cmd.Description": "Erzeugt einen temporären Link für meine Weboberfläche.",
             "cmd.Usage": "{0}{1}"
         },
         "Wallpaper": {
@@ -183,6 +203,10 @@
         "MISC": {
             "name": "Sonstige",
             "description": "Befehle, denen ich keine genaue Kategorie zuweisen konnte."
+        },
+        "MODERATOR": {
+            "name": "Moderation",
+            "description": "Befehle, die **erhöhte Rechte** auf dem Server benötigen"
         },
         "INFO": {
             "name": "Info",
