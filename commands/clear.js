@@ -3,8 +3,8 @@ const loc = index.getLocalization();
 const dc = require('discord.js');
 
 module.exports.cmd = {
-    name: 'clear',
-    aliases: ['clearchat', 'cc'],
+    name: 'Clear',
+    aliases: ['ClearChat', 'cc'],
 
     category: index.CommandCategory.MODERATOR
 };
@@ -27,7 +27,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         }
 
         if (count > 0) {
-            let reply = await msg.reply(`Please confirm the deletion of the {0} recent messages by clicking on the Robot below (Abort in {1} seconds)`.format(count, 5));
+            let reply = await msg.reply(loc.getStringForGuild(this, '{%cmd}:Confirm', msg).format(count, 5));
 
             messages.set(reply, {
                 msg: msg,
@@ -38,13 +38,11 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
             reply.react('🤖').then(async () => {
                 for (let i = 5; i >= 0; i--) {
                     if (messages.has(reply)) {
-                        // let str = loc.getStringForGuild(this, '{%cmd}:CheckDMs', msg).format(i);
-
                         if (i !== 5) {
                             if (i !== 0) {
-                                await reply.edit(`${msg.author}, ${'Please confirm the deletion of the {0} recent messages by clicking on the Robot below (Abort in {1} seconds)'.format(count, i)}`);
+                                await reply.edit(`${msg.author}, ${loc.getStringForGuild(this, '{%cmd}:Confirm', msg).format(count, i)}`);
                             } else {
-                                reply.edit(`~~${msg.author}, ${'Please confirm by clicking on the Robot below'}~~ (Aktion abgebrochen)`);
+                                reply.edit(loc.getStringForGuild(this, '{%cmd}:Canceled', msg).format(msg.author));
                             }
                         }
 
@@ -55,11 +53,10 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
                 console.error(err);
 
                 messages.delete(reply);
-
-                reply.edit('An error occured :cry:');
+                reply.edit(loc.getStringForGuild(this, 'ERR_OCCURRED', msg));
             });
         } else {
-            msg.reply('Du musst min. eine Nachricht löschen lassen');
+            msg.reply(loc.getStringForGuild(this, '{%cmd}:AtLeatOneMessage', msg));
         }
     } else {
         sendBasicRichEmbed(msg, embedTitel, loc.getStringForGuild(this, '{%cmd}:NotAllowed', msg));
@@ -89,7 +86,7 @@ module.exports.onAddedReaction = async (bot, msgReact, user) => {
             .setColor(13632027)
 
             .setAuthor(user.username, user.avatarURL)
-            .setDescription(`Der Chat-Verlauf wurde von <@${user.id}> geleert`)
+            .setDescription(loc.getStringForGuild(this, '{%cmd}:SuccessFooter', msg).format(`<@${user.id}>`))
 
             .setTimestamp()
         );
