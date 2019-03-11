@@ -2,23 +2,23 @@
     "Bot": {
         "Console": {
             "InsertBotToken": "Du musst einen Bot-Token eintragen {0}",
-            "InvalidDefaultLanguage": "Die Standardsprache in {0} scheint ungültig zu sein",
-            "InvalidDefaultPrefix": "Das Standardpräfix in {0} scheint ungültig zu sein",
+            "InvalidDefaultLanguage": "Die Standardsprache in {0} scheint ungültig zu sein.",
+            "InvalidDefaultPrefix": "Das Standardpräfix in {0} scheint ungültig zu sein.",
 
-            "SavedToFile": "Dateiänderungen wurden automatisch in {0} gespeichert",
+            "SavedToFile": "Dateiänderungen wurden automatisch in {0} gespeichert.",
 
-            "InvalidCommandFile": "\"{0}\" ist ungültig - Bitte mit \"{1}\" vergleichen",
-            "AlreadyRegistered": "\"{0}\" hat versucht, den {2} \"{1}\" zu registrieren, der bereits von einer anderen Datei verwendet wird",
-            "NoCommandsLoaded": "Es wurden keine Befehle geladen",
+            "InvalidCommandFile": "\"{0}\" ist ungültig - Bitte mit \"{1}\" vergleichen.",
+            "AlreadyRegistered": "\"{0}\" hat versucht, den {2} \"{1}\" zu registrieren, der bereits von einer anderen Datei verwendet wird.",
+            "NoCommandsLoaded": "Es wurden keine Befehle geladen.",
             "CommandLoaded": "\"{0}\" wurde geladen!",
             "CommandLoadedWithAliases": "\"{0}\" wurde geladen ({1})!",
 
-            "JoinedGuild": "Ich wurde der Gilde \"{0}\" (ID: {1}) hinzugefügt",
-            "LeftGuild": "Ich wurde von der Gilde \"{0}\" (ID: {1}) entfernt",
+            "JoinedGuild": "Ich wurde der Gilde \"{0}\" (ID: {1}) hinzugefügt.",
+            "LeftGuild": "Ich wurde von der Gilde \"{0}\" (ID: {1}) entfernt.",
 
-            "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})"
+            "Status": "Der Bot ist in {0} aktiv (und ignoriert {1}), in {2} für insgesammt {3} (+{4})."
         },
-        "Status_Public": "Der Bot ist in {0} aktiv, mit {1} für insgesammt {2} (außgenommen Bots)",
+        "Status_Public": "Der Bot ist in {0} aktiv, mit {1} für insgesammt {2} (außgenommen Bots).",
 
         "ThanksForInvite": "Vielen Dank, dass Du mich zu deinem Server hinzugefügt hast! :3\nIch schlage vor, dass du mit `{0}Einstellungen` (auf dem Server) beginnst\nEine Befehlliste bekommst du mit `{0}Befehle`\n\nPS: Aktuell reagiere ich nicht auf DMs",
         "UnknownCommand": "Unbekannter Befehl :thinking:",
@@ -26,30 +26,30 @@
     },
     "Commands": {
         "Template": {
-            "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand",
+            "cmd.Description": "Dies ist der Befehl der Vorlage. Er antwortet mit den Argumente von #onCommand.",
             "cmd.Usage": "{0}{1}",
 
             "msg": "#onCommand(bot[.user.id] = {0}, msg, cmd = {1}, args = {2}, guildPrefix = {3})"
         },
 
         "Commands": {
-            "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie",
+            "cmd.Description": "Listet dir alle Befehle auf, sortiert nach Kategorie.",
             "cmd.Usage": "{0}{1}",
 
             "CheckDMs": "Schaue in deine DMs :mailbox_with_mail: (Die Nachrichten werden in **{0} Sekunden** gelöscht)"
         },
         "Google": {
-            "cmd.Description": "**BETA** Zeigt das erste Ergebnis einer gewünschten Google-Suchanfrage",
+            "cmd.Description": "**BETA** Zeigt das erste Ergebnis einer beliebigen Google-Suchanfrage.",
             "cmd.Usage": "{0}{1}",
 
             "NoResults": "Ich konnte keine Suchergebnisse finden.",
-            "NoQuery": "Du musst eine Suchanfrage eingeben",
-            "QueryTooLong": "Die Suchanfrage ist zu lang",
+            "NoQuery": "Du musst eine Suchanfrage eingeben.",
+            "QueryTooLong": "Die Suchanfrage ist zu lang.",
 
             "RichFooter": "{0}s Anfrage wurde verarbeitet"
         },
         "Invite": {
-            "cmd.Description": "Erstellt einen Einladungslink, um mich zu einem anderen Server hinzuzufügen",
+            "cmd.Description": "Erstellt einen Einladungslink, um mich zu einem anderen Server hinzuzufügen.",
             "cmd.Usage": "{0}{1}",
 
             "RichTitle": ">> Einladungslink <<",
@@ -61,38 +61,47 @@
             "cmd.Usage": "{0}{1}",
 
             "BeingAppreciated": "Ping wird geschätzt... :bar_chart:",
-            "BotPing": "Ich habe einen Ping von {0}ms",
-            "UserPing": "Dein Ping liegt bei etwa {0}ms"
+            "BotPing": "Ich habe einen Ping von {0}ms.",
+            "UserPing": "Dein Ping liegt bei etwa {0}ms."
         },
         "Prefix": {
             "cmd.Description": "Ändert die Command-Prefix, auf die ich reagiere - **Die Kurzform vom Settings-Befehl**",
             "cmd.Usage": "{0}{1}"
         },
+        "Reply": {
+            "cmd.Description": "Nutze diesen Befehl, um auf eine Nachricht aufmerksam zu machen oder um auf eine zu antworten.",
+            "cmd.Usage": "{0}{1} <**Nachrichten-ID**> *Anschließend kann Deine Nachricht einfach dahinter*",
+
+            "MessageNotFound": "ich konnte zu der angegebenen *Nachrichten-ID* keine Nachricht im Channel finden.",
+            "URLToMessage": "[Link zur ursprünglichen Nachricht]",
+            "MessageFrom": "Nachricht von {0}",
+            "ReplyFrom": "Antwort von {0}"
+        },
         "Settings": {
-            "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf",
+            "cmd.Description": "Listet die verschiedenen Einstellungsmöglichkeiten, wie Sprache oder Befehl-Präfix, auf.",
             "cmd.Usage": "{0}{1}",
 
             "Lang": {
-                "Set": "Die Sprache wurde auf {0} geändert",
-                "AlreadySet": "Die Sprache steht bereits auf {0}",
-                "NotFound": "Die gewünschte Sprache beherrsche ich noch nicht",
+                "Set": "Die Sprache wurde auf {0} geändert.",
+                "AlreadySet": "Die Sprache steht bereits auf {0}.",
+                "NotFound": "Die gewünschte Sprache beherrsche ich noch nicht.",
                 "NoneGiven": "Du musst eine Sprache angeben: `{0}`",
                 "NotAllowed": "Du bist nicht berechtigt die Sprache zu ändern!"
             },
             "Prefix": {
-                "Set": "Das Präfix wurde auf `{0}` geändert",
-                "AlreadySet": "Das Präfix steht bereits auf `{0}`",
+                "Set": "Das Präfix wurde auf `{0}` geändert.",
+                "AlreadySet": "Das Präfix steht bereits auf `{0}`.",
                 "NoneGiven": "Du musst eine Präfix angeben: `{0}`",
                 "TooLong": "Das Präfix darf nur ein Zeichen lang sein!",
                 "NotAllowed": "Du bist nicht berechtigt die Präfix zu ändern!"
             }
         },
         "Status": {
-            "cmd.Description": "Zeigt meinen aktuellen Status und den des Systems an, auf dem ich laufe",
+            "cmd.Description": "Zeigt meinen aktuellen Status und den des Systems an, auf dem ich laufe.",
             "cmd.Usage": "{0}{1}"
         },
         "Wallpaper": {
-            "cmd.Description": "Sendet ein zufälliges Hintergrundbild, dass Du verwenden kannst",
+            "cmd.Description": "Sendet ein zufälliges Hintergrundbild, dass Du verwenden kannst.",
             "cmd.Usage": "{0}{1}",
 
             "RichTitle": "Dein neuer Wallpaper",
@@ -101,7 +110,7 @@
 
         "Nekos.Life-API": {
             "Avatar": {
-                "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann",
+                "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann.",
                 "cmd.Usage": "{0}{1} <Lewd>",
 
                 "RichTitle": "Ein neuer Avatar für dich",
@@ -110,7 +119,7 @@
                 "RichFooter_NSFW": "{0}s neuer, unanständiger Avatar"
             },
             "Cum": {
-                "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild",
+                "cmd.Description": "Zeigt ein zufälliges Cum/Sperma-Bild.",
                 "cmd.Usage": "{0}{1} <Gif>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
@@ -118,14 +127,14 @@
                 "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Facts": {
-                "cmd.Description": "Zeigt einen zufälligen \"Fakt\"",
+                "cmd.Description": "Zeigt einen zufälligen \"Fakt\".",
                 "cmd.Usage": "{0}{1}",
 
                 "RichTitle": "Zufälliger (wissenschaftlicher) Fakt",
                 "RichFooter": "{0}s Anfrage wurde verarbeitet"
             },
             "Fox": {
-                "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild",
+                "cmd.Description": "Zeigt ein zufälliges Fuchs-Bild.",
                 "cmd.Usage": "{0}{1} <Lewd>",
 
                 "RichTitle": "Ring Ding Ding Ding Dinge Dinge Ding.",
@@ -134,7 +143,7 @@
                 "RichFooter_NSFW": "{0}s unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Hentai": {
-                "cmd.Description": "Zeigt ein zufälliges Hentai-Bild",
+                "cmd.Description": "Zeigt ein zufälliges Hentai-Bild.",
                 "cmd.Usage": "{0}{1} <Gif> <Feet|Blowjob>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
@@ -142,7 +151,7 @@
                 "RichFooter_NSFW_Animated": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Neko": {
-                "cmd.Description": "Zeigt ein zufälliges Neko-Bild",
+                "cmd.Description": "Zeigt ein zufälliges Neko-Bild.",
                 "cmd.Usage": "{0}{1} <Lewd> <Gif>",
 
                 "RichTitle": "NYAAAAA!",
@@ -152,7 +161,7 @@
                 "RichFooter_Animated_NSFW": "{0}s animierte, unanständige Waifu   |   Weitere Variationen mit {1}"
             },
             "Pussy": {
-                "cmd.Description": "Zeigt ein zufälliges Pussy-Bild",
+                "cmd.Description": "Zeigt ein zufälliges Pussy-Bild.",
                 "cmd.Usage": "{0}{1} <Gif>",
 
                 "RichTitle": "Oh my, how Lewd! >.<",
@@ -165,15 +174,15 @@
     "CommandCategory": {
         "NEKOS_LIFE": {
             "name": "Nekos.life",
-            "description": "*Nekos.life* bietet viele Bilder zum Thema **Neko** und **Anime** - Auf Wunsch zeige ich dir verschiedene Bilder zu einer Kategorie deiner Wahl"
+            "description": "*Nekos.life* bietet viele Bilder zum Thema **Neko** und **Anime** - Auf Wunsch zeige ich dir verschiedene Bilder zu einer Kategorie deiner Wahl."
         },
         "ADMIN": {
             "name": "Admin",
-            "description": "Befehle, die **Admin-Rechte** auf dem Server benötigen - Mit diesen Befehlen kann man meine Funktionsweise für jeden Server individuell einstellen"
+            "description": "Befehle, die **Admin-Rechte** auf dem Server benötigen - Mit diesen Befehlen kann man meine Funktionsweise für jeden Server individuell einstellen."
         },
         "MISC": {
             "name": "Sonstige",
-            "description": "Befehle, denen ich keine genaue Kategorie zuweisen konnte"
+            "description": "Befehle, denen ich keine genaue Kategorie zuweisen konnte."
         },
         "INFO": {
             "name": "Info",
