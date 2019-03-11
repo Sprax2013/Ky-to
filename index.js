@@ -305,7 +305,6 @@ client.on('messageReactionAdd', (msgReact, user) => {
     }
 });
 
-// DEBUG
 client.login(cfg.botToken);
 
 function updateBotActivity() {
