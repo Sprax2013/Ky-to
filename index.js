@@ -213,12 +213,12 @@ client.on('ready', () => {
     console.log(
         localization.getStringForConsole(
             'Bot:Console:Status', 'Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)')
-        .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
-            `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
-            `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
-            `${clientCount} ${localization.getWordForConsole('Client', clientCount)}`,
-            `${botCount} ${localization.getWordForConsole('Bot', botCount)}`
-        )
+            .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
+                `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
+                `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
+                `${clientCount} ${localization.getWordForConsole('Client', clientCount)}`,
+                `${botCount} ${localization.getWordForConsole('Bot', botCount)}`
+            )
     );
 
     module.exports.client = client;
@@ -309,8 +309,8 @@ client.login(cfg.botToken);
 
 function updateBotActivity() {
     client.user.setActivity(`${module.exports.getDefaultCommandPrefix()}Commands [${client.guilds.size} server${client.guilds.size !== 1 ? 's' : ''}]`, {
-            type: 'LISTENING'
-        })
+        type: 'LISTENING'
+    })
         // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
         .catch(console.error);
 }
