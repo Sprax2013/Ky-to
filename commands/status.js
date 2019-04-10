@@ -41,21 +41,21 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
 
     let reply = await msg.channel.send(
         new dc.RichEmbed()
-        .setColor('0x81c6c8')
+            .setColor('0x81c6c8')
 
-        .setTitle('Bot-Status')
+            .setTitle('Bot-Status')
 
-        .setDescription(loc.getStringForGuild(this, 'Bot:Status_Public', msg)
-            .format(`${guildCount} ${loc.getWordForGuild('Guild', msg, guildCount)}`,
-                `${channelCount} ${loc.getWordForGuild('Channel', msg, channelCount)}`,
-                `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
-            ))
-        .addBlankField()
-        .addField('API-Ping', `${ping}ms`)
-        .addField('Memory Usage', memoryUsage)
-        .addField('CPU Usage', ':mag:')
+            .setDescription(loc.getStringForGuild(this, 'Bot:Status_Public', msg)
+                .format(`${guildCount} ${loc.getWordForGuild('Guild', msg, guildCount)}`,
+                    `${channelCount} ${loc.getWordForGuild('Channel', msg, channelCount)}`,
+                    `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
+                ))
+            .addBlankField()
+            .addField('API-Ping', `${ping}ms`)
+            .addField('Memory Usage', memoryUsage)
+            .addField('CPU Usage', ':mag:')
 
-        .setFooter(`Requested by ${index.Utils.getUsernameFromUser(msg)}`, msg.author.avatarURL)
+            .setFooter(`Requested by ${index.Utils.getUsernameFromUser(msg)}`, msg.author.avatarURL)
     );
 
     // System-Status
@@ -72,21 +72,21 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
 
         reply.edit(
             new dc.RichEmbed()
-            .setColor('0x81c6c8')
+                .setColor('0x81c6c8')
 
-            .setTitle('Bot-Status')
+                .setTitle('Bot-Status')
 
-            .setDescription(loc.getStringForGuild(this, 'Bot:Status_Public', msg)
-                .format(`${guildCount} ${loc.getWordForGuild('Guild', msg, guildCount)}`,
-                    `${channelCount} ${loc.getWordForGuild('Channel', msg, channelCount)}`,
-                    `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
-                ))
-            .addBlankField()
-            .addField('API-Ping', `About ${ping}ms`)
-            .addField('Memory Usage', memoryUsage)
-            .addField('CPU Usage', cpuUsage)
+                .setDescription(loc.getStringForGuild(this, 'Bot:Status_Public', msg)
+                    .format(`${guildCount} ${loc.getWordForGuild('Guild', msg, guildCount)}`,
+                        `${channelCount} ${loc.getWordForGuild('Channel', msg, channelCount)}`,
+                        `${clientCount} ${loc.getWordForGuild('Client', msg, clientCount)}`
+                    ))
+                .addBlankField()
+                .addField('API-Ping', `About ${ping}ms`)
+                .addField('Memory Usage', memoryUsage)
+                .addField('CPU Usage', cpuUsage)
 
-            .setFooter(`Requested by ${index.Utils.getUsernameFromUser(msg)}`, msg.author.avatarURL)
+                .setFooter(`Requested by ${index.Utils.getUsernameFromUser(msg)}`, msg.author.avatarURL)
         );
     });
 }
