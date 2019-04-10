@@ -153,7 +153,7 @@ module.exports = {
     getSprax2013APIToken: () => {
         return cfg.Sprax2013_API_Token;
     }
-}
+};
 
 const localization = require('./localization');
 
@@ -213,12 +213,12 @@ client.on('ready', () => {
     console.log(
         localization.getStringForConsole(
             'Bot:Console:Status', 'Bot is active on {0} guilds (while ignoring {1} guilds), in {2} channels for {3} clients (+{4} Bots)')
-        .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
-            `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
-            `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
-            `${clientCount} ${localization.getWordForConsole('Client', clientCount)}`,
-            `${botCount} ${localization.getWordForConsole('Bot', botCount)}`
-        )
+            .format(`${guildCount} ${localization.getWordForConsole('Guild', guildCount)}`,
+                `${guildsIgnoredCount} ${localization.getWordForConsole('Guild', guildsIgnoredCount)}`,
+                `${channelCount} ${localization.getWordForConsole('Channel', channelCount)}`,
+                `${clientCount} ${localization.getWordForConsole('Client', clientCount)}`,
+                `${botCount} ${localization.getWordForConsole('Bot', botCount)}`
+            )
     );
 
     module.exports.client = client;
@@ -251,7 +251,9 @@ client.on('error', (err) => {
 
 client.on('message', (msg) => {
     if (msg.author.bot) return;
-    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
+    if (!(msg.channel instanceof dc.TextChannel)) return; // Vorerst nicht auf DMs reagieren.
+    // Below might be fixed
+    // if (!msg.guild) return;  // WTF. Es kommt ab und an vor, dass keine Guild vorliegt, obwohl die Nachricht aus einem TextChannel stammt? Gibt's nen GuildTextChannel?
 
     if (!handleGuild(msg)) return;
 
@@ -309,8 +311,8 @@ client.login(cfg.botToken);
 
 function updateBotActivity() {
     client.user.setActivity(`${module.exports.getDefaultCommandPrefix()}Commands [${client.guilds.size} server${client.guilds.size !== 1 ? 's' : ''}]`, {
-            type: 'LISTENING'
-        })
+        type: 'LISTENING'
+    })
         // .then(pres => console.log(`Activity set to ${pres.game ? pres.game.name : 'none'}`))
         .catch(console.error);
 }

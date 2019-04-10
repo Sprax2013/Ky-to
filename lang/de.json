@@ -129,6 +129,10 @@
         },
 
         "Nekos.Life-API": {
+            "8Ball": {
+                "cmd.Description": "Beantwortet eine Frage Deiner Wahl.",
+                "cmd.Usage": "{0}{1} <Frage>"
+            },
             "Avatar": {
                 "cmd.Description": "Zeigt ein zufälliges Bild, dass als Avatar genutzt werden kann.",
                 "cmd.Usage": "{0}{1} <Lewd>",

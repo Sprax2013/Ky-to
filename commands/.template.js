@@ -10,5 +10,14 @@ module.exports.cmd = {
 };
 
 module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
-    msg.channel.send(loc.getStringForGuild(this, '{%cmd}:msg', msg).format(bot.user.id, cmd, args, guildPrefix));
+    msg.channel.send(
+        new dc.RichEmbed()
+            .setColor('0x81c6c8')
+
+            .setTitle('Template-Command')
+
+            .setDescription(loc.getStringForGuild(this, '{%cmd}:msg', msg).format(bot.user.id, cmd, args, guildPrefix))
+
+            .setFooter(`Requested by ${index.Utils.getUsernameFromUser(msg)}`, msg.author.avatarURL)
+    );
 }
