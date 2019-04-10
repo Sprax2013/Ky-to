@@ -153,7 +153,7 @@ module.exports = {
     getSprax2013APIToken: () => {
         return cfg.Sprax2013_API_Token;
     }
-}
+};
 
 const localization = require('./localization');
 
@@ -251,8 +251,9 @@ client.on('error', (err) => {
 
 client.on('message', (msg) => {
     if (msg.author.bot) return;
-    if (!msg.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
-    if (!msg.guild) return;  // WTF. Es kommt ab und an vor, dass keine Guild vorliegt, obwohl die Nachricht aus einem TextChannel stammt? Gibt's nen GuildTextChannel?
+    if (!(msg.channel instanceof dc.TextChannel)) return; // Vorerst nicht auf DMs reagieren.
+    // Below might be fixed
+    // if (!msg.guild) return;  // WTF. Es kommt ab und an vor, dass keine Guild vorliegt, obwohl die Nachricht aus einem TextChannel stammt? Gibt's nen GuildTextChannel?
 
     if (!handleGuild(msg)) return;
 
