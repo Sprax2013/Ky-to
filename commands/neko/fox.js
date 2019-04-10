@@ -22,25 +22,23 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
         return;
     }
 
-    let rndNumber = Math.random();
-
     index.Utils.getJSONFromURL((nsfw ? apiURL_NSFW.random() : apiURL.random()), (json) => {
         if (json && json.url) {
             msg.channel.send(
                 new dc.RichEmbed()
-                .setColor(0x00AE86)
-                .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle' + (nsfw ? '_NSFW' : ''), msg))
+                    .setColor(0x00AE86)
+                    .setTitle(loc.getStringForGuild(this, '{%cmd}:RichTitle' + (nsfw ? '_NSFW' : ''), msg))
 
-                .setImage(json.url)
+                    .setImage(json.url)
 
-                .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter' + (nsfw ? '_NSFW' : ''), msg)
-                    .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
+                    .setFooter(loc.getStringForGuild(this, '{%cmd}:RichFooter' + (nsfw ? '_NSFW' : ''), msg)
+                        .format(index.Utils.getUsernameFromUser(msg), `${guildPrefix}Help ${this.cmd.name}`), msg.author.avatarURL)
             );
         } else {
             msg.channel.send(
                 new dc.RichEmbed()
-                .setColor(0x00AE86)
-                .setTitle(loc.getStringForGuild(this, 'ERR_OCCURRED', msg))
+                    .setColor(0x00AE86)
+                    .setTitle(loc.getStringForGuild(this, 'ERR_OCCURRED', msg))
             );
         }
     });
