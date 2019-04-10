@@ -31,7 +31,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
     let ping = Math.round(bot.ping);
 
     let memoryUsage = Math.round((os.freemem() / os.totalmem()) * 100);
-    if (memoryUsage >= 50) {
+    if (memoryUsage >= 50 && memoryUsage <= 90) {
         memoryUsage = 'Normal *(50-90%)*';
     } else if (memoryUsage > 90) {
         memoryUsage = 'Close to the limit *(Above 90%)*';
