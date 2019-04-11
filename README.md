@@ -1,4 +1,6 @@
 # Kyūto
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Sprax2013/Kyuto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Sprax2013/Kyuto/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Sprax2013/Kyuto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Sprax2013/Kyuto/context:javascript)
 
 # ToDo
  - !Help <Command> - Zeigt die Usage des Commands
@@ -18,3 +20,4 @@
 
  # ToDo - Geringste Priorität
  - Eine Möglichkeit finden als Admin die guilds.json von 'Zombies' zu befreien. Gilde, in denen der Bot nicht mehr ist, zu entfernen.
+ 
