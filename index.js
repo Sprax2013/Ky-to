@@ -287,7 +287,7 @@ client.on('message', (msg) => {
 
 client.on('messageReactionAdd', (msgReact, user) => {
     if (user.bot) return;
-    if (!msgReact.message.channel instanceof dc.TextChannel) return; // Vorerst nicht auf DMs reagieren.
+    if (!(msgReact.message.channel instanceof dc.TextChannel)) return; // Vorerst nicht auf DMs reagieren.
 
     if (!handleGuild(msgReact.message)) return;
 
