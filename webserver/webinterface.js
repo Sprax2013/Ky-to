@@ -57,7 +57,7 @@ router.get('/wi/:token?/:page?', (req, res, next) => {
         }
 
         // TODO replace lang with users/guilds lang.
-        res.contentType('html').send(modifyWebinterfacePage(data, isValidToken(token) ? token : 'INVALID', guild ? guild : 'INVALID', user, pageType, undefined));
+        res.contentType('html').send(modifyWebinterfacePage(data, isValidToken(token) ? token : 'INVALID', isValidGuildID(guild) ? guild : 'INVALID', user, pageType, undefined));
     });
 });
 
@@ -65,7 +65,11 @@ module.exports = router;
 
 /* Helpers */
 function isValidToken(token) {
-    return token && token.lastIndexOf('.') < 0;
+    return token && token.lastIndexOf('.') < 0 && /^[a-z0-9]+$/i.test(token);
+}
+
+function isValidGuildID(guildID) {
+    return guildID && /^[0-9]+$/i.test(guildID);
 }
 
 function modifyWebinterfacePage(rawHTML = '', userToken = '', guild = null, user = null, pageType = 0, langEnum = index.getLocalization().LanguageEnum.ENGLISH) {
