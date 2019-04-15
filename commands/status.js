@@ -62,7 +62,7 @@ module.exports.onCommand = async (bot, msg, cmd, args = [], guildPrefix) => {
     os.cpuUsage((cpuUsage) => {
         cpuUsage = Math.round(cpuUsage * 100);
 
-        if (cpuUsage >= 50) {
+        if (cpuUsage >= 50 && cpuUsage <= 90) {
             cpuUsage = 'Normal *(50-90%)*';
         } else if (cpuUsage > 90) {
             cpuUsage = 'Close to the limit *(Above 90%)*';
