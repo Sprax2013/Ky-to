@@ -272,6 +272,8 @@ client.on('message', (msg) => {
     const cmdOrg = args.shift();
     const cmd = cmdOrg.toLowerCase();
 
+    if(!cmd || !cmd.trim()) return;
+
     try {
         if (client.cmds.has(cmd)) {
             client.cmds.get(cmd).onCommand(client, msg, cmdOrg, args, guildPrefix);

@@ -4,7 +4,7 @@ const dc = require('discord.js'); // Praktisch für RichEmbed etc.
 
 module.exports.cmd = {
     name: 'Commands',
-    aliases: ['Command', 'cmd', 'cmds', 'Befehl', 'Befehle'],
+    aliases: ['Command', 'cmd', 'cmds', 'Befehl', 'Befehle', 'help', '?'],
 
     category: index.CommandCategory.INFO
 };
