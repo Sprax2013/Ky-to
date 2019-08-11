@@ -5,10 +5,18 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon --ignore ./storage --ignore ./logs"
+        "start": "nodemon index.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Sprax2013/Kyuto.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Sprax2013/Kyuto/issues"
+    },
+    "homepage": "https://github.com/Sprax2013/Kyuto#ky%C5%ABto",
     "author": "Sprax2013 and APH",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "discord.js": "^11.4.2",
         "express": "^4.17.1",
@@ -16,5 +24,11 @@
         "nodemon": "^1.19.1",
         "os-utils": "0.0.14",
         "request": "^2.88.0"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "./storage",
+            "./logs"
+        ]
     }
 }
