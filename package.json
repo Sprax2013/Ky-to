@@ -13,7 +13,7 @@
         "discord.js": "^11.4.2",
         "express": "^4.16.4",
         "morgan": "^1.9.1",
-        "nodemon": "^1.18.10",
+        "nodemon": "^1.19.1",
         "os-utils": "0.0.14",
         "request": "^2.88.0"
     }
